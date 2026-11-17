@@ -452,7 +452,7 @@ def ai_documents() -> None:
         did = f"DOC-{n:02d}"
         docs.append([did, topic, title, version, eff or "", review, superseded or ""])
         (FILES / "day3" / "ai" / "docs").mkdir(parents=True, exist_ok=True)
-        (FILES / "day3" / "ai" / "docs" / f"{did}.txt").write_text(f"{title}\n\n{body}\n", encoding="utf-8")
+        (FILES / "day3" / "ai" / "docs" / f"{did}.txt").write_text(f"{title}\n\n{body}\n", encoding="utf-8", newline=chr(10))
 
     add("staff_ratio", "تعميم نسبة مقدمي الرعاية (الإصدار 1)", "1", "2023-01-15", "2024-01-10", "DOC-02",
         "يلتزم المركز بمقدم رعاية واحد لكل ثمانية أطفال في الفئة العمرية من سنتين إلى أربع سنوات.")
@@ -551,7 +551,7 @@ def main() -> None:
     ai_documents()
     lab["key"]["permits_example"] = permits_example(rng)
     REF.mkdir(parents=True, exist_ok=True)
-    (REF / "seeded_defects.json").write_text(json.dumps(lab["key"], ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+    (REF / "seeded_defects.json").write_text(json.dumps(lab["key"], ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8", newline=chr(10))
     k = lab["key"]
     print("rows:", k["counts"])
     for name, v in k["defects"].items():

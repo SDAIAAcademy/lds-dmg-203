@@ -1,0 +1,7 @@
+rule_id,element,baseline_pct,need_from,threshold_pct,escalate_below_pct,reason
+H1,inspections.entered_at,91.55,Q06,95,90,متابعة الملاحظات تحتاج النتيجة خلال خمسة أيام؛ خط الأساس دون الحاجة فالقاعدة تفشل اليوم والعتبة لا تُخفَّض إليه
+H2,licences.licence_no,100.0,Q12,100,99.5,الرقم يتحقق منه الجمهور؛ رقم واحد خاطئ يعني رخصة لا تُوجد
+H3,licences.expiry_date,100.0,Q07,100,100,بلا تاريخ لا تذكير ولا حالة؛ أي فراغ يُصعَّد
+H4,inspections.score,99.37,Q05,99,98,مؤشر الامتثال يتحمل قليلًا من الخطأ لأنه يُجمع شهريًا
+H5,applications.capacity_requested,97.26,Q13,95,90,يخدم مؤشرًا داخليًا واحدًا؛ والطلبات المسحوبة مستثناة
+H6,inspections.inspector_id,99.21,Q05,99,98,بلا مفتش لا مساءلة عن النتيجة

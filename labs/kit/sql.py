@@ -33,7 +33,11 @@ def main() -> None:
     for i, s in enumerate(todo, 1):
         if len(todo) > 1:
             print(f"\n-- [{i}] {s.splitlines()[0][:90]}")
-        h, rows = query(con, s)
+        try:
+            h, rows = query(con, s)
+        except Exception as e:  # show the engine message, not a traceback
+            print("error: " + str(e).strip().splitlines()[0])
+            continue
         show(h, rows, a.limit)
 
 
