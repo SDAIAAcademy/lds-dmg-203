@@ -1,0 +1,24 @@
+# فحوص المختبر 2.3: أربع عشرة قاعدة مكتوبة، وست عليك كتابتها في مواضعها المعلَّمة.
+# التشغيل من مجلد labs:  uv run kit/run_checks.py files/day2/checks_start.yml --catalogue files/day2/rules_reference.csv
+run_date: 2026-10-31
+checks:
+  - {id: R01, cde: licences.licence_no, dimension: التفرد, table: licences, type: unique, columns: [licence_no], threshold: 100, owner: محلل الجودة}
+  - {id: R02, cde: licences.licence_no, dimension: الصلاحية, table: licences, type: pattern, column: licence_no, pattern: 'AKM-L-[0-9]{4}-[0-9]{5}', threshold: 100, owner: محلل الجودة}
+  - {id: R03, cde: licences.status, dimension: الصلاحية, table: licences, type: in_set, column: status, values: [ACTIVE, EXPIRED, RENEWED, SUSPENDED, CANCELLED], threshold: 100, owner: محلل الجودة}
+  - {id: R04, cde: licences.status, dimension: الاتساق, table: licences, type: row, where: "status = 'ACTIVE'", must: "expiry_date >= DATE '2026-10-31'", threshold: 100, owner: محلل الجودة}
+  - {id: R05, cde: licences.expiry_date, dimension: الاكتمال, table: licences, type: not_null, column: expiry_date, threshold: 100, owner: محلل الجودة}
+  - {id: R06, cde: licences.expiry_date, dimension: الاتساق, table: licences, type: row, must: "expiry_date = issue_date + INTERVAL 730 DAY", threshold: 99, owner: محلل الجودة}
+  # R07: اكتبها أنت. لا يتكرر application_id بين الرخص بحالة ACTIVE (النوع unique مع where). انظر الصف R07 في rules_reference.csv
+  - {id: R08, cde: licences.capacity_licensed, dimension: الصلاحية, table: licences, type: between, column: capacity_licensed, min: 1, max: 150, threshold: 100, owner: محلل الجودة}
+  # R09: اكتبها أنت. الحضانة المنزلية لا تزيد على 10 مقاعد (النوع row، والجدول licences مع from يربط centres). انظر الصف R09 في rules_reference.csv
+  - {id: R10, cde: centres.centre_type, dimension: الصلاحية, table: centres, type: in_set, column: centre_type, values: [CENTRE, HOME], threshold: 100, owner: محلل الجودة}
+  - {id: R11, cde: centres.city_code, dimension: الصلاحية, table: centres, type: reference, column: city_code, ref_table: cities, ref_column: city_code, threshold: 100, owner: محلل الجودة}
+  - {id: R12, cde: inspections.outcome, dimension: الصلاحية, table: inspections, type: in_set, column: outcome, values: [PASS, COND, FAIL], threshold: 99.5, owner: محلل الجودة}
+  # R13: اكتبها أنت. أول رقمين من الرمز البريدي يطابقان بادئة المدينة في cities (النوع row مع from). انظر الصف R13 في rules_reference.csv
+  - {id: R14, cde: centres.postal_code, dimension: الصلاحية, table: centres, type: pattern, column: postal_code, pattern: '[0-9]{6}', threshold: 100, owner: محلل الجودة}
+  - {id: R15, cde: centres.district_code, dimension: الصلاحية, table: centres, type: reference, column: district_code, ref_table: districts, ref_column: district_code, threshold: 99, owner: محلل الجودة}
+  # R16: اكتبها أنت. مدينة الحي تساوي city_code، وأول أربعة أرقام من الرمز البريدي تساوي رقم الحي (النوع row مع from يربط districts). انظر الصف R16 في rules_reference.csv
+  - {id: R17, cde: inspections.outcome, dimension: الاكتمال, table: inspections, type: not_null, column: outcome, threshold: 100, owner: محلل الجودة}
+  # R18: اكتبها أنت. تُدخل الزيارة خلال خمسة أيام من تاريخها (النوع row). انظر الصف R18 في rules_reference.csv
+  # R19: اكتبها أنت. كل زيارة تخص رقم رخصة موجودًا في licences (النوع reference). انظر الصف R19 في rules_reference.csv
+  - {id: R20, cde: inspections.inspection_date, dimension: الصلاحية, table: inspections, type: row, must: "inspection_date BETWEEN DATE '2018-01-01' AND DATE '2026-10-31'", threshold: 100, owner: محلل الجودة}

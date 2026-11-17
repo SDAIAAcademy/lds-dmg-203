@@ -1,0 +1,2 @@
+rule_id,cde,dimension,requirement,scope,method,threshold_pct,escalate_below_pct,frequency,rule_owner,data_owner
+X01,permits.permit_no,التفرد,مثال من سجل التصاريح لا من الترخيص: لكل تصريح رقم واحد,كل التصاريح,لا يتكرر permit_no,100,100,يومي,محلل جودة البيانات,مالك سجل التصاريح

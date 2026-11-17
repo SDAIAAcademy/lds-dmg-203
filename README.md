@@ -5,7 +5,7 @@ Data Quality Management
 
 مسار التنفيذيين والقادة · أكاديمية سدايا · LDS-DMG-203 · المستوى 200
 
-REPLACE: سطر واحد تحت العنوان: ما يستطيع المشارك فعله بعد المقرر
+تدير برنامج جودة لمجال بيانات واحد: قواعد قابلة للقياس لها عتبات وملاك، وتنميط يكشف العيوب، وفحوص تُشغَّل وبطاقة أداء صادقة، وسبب جذري يُعالج من منشئه، وحكم مقيس على صلاحية البيانات للذكاء الاصطناعي
 
 يدير المشاركون برنامجًا للجودة في مجال خدمة واحد لجهة افتراضية لا يتفق تقريرها الشهري مع أنظمتها المصدر. فيحولون المتطلبات إلى قواعد قابلة للقياس، وينمّطون جداول اصطناعية، وينفذون القواعد ويسجلون المشكلات. ثم يتتبعون خطأً متكررًا حتى منشئه، ويتفقون مع الملاك على إجراءات تصحيحية ووقائية، ويحكمون على صلاحية مجموعة بيانات ومجموعة وثائق لتدريب نظام ذكاء اصطناعي أو لتأسيس إجاباته على مصادر. وتُتناول عقود البيانات ومراقبتها على مستوى مسارات المعالجة في DEV-DAT-204.
 
@@ -30,9 +30,9 @@ REPLACE: سطر واحد تحت العنوان: ما يستطيع المشارك
 
 | الوحدة | العنوان | الجلسات | الشرائح |
 |---|---|---|---|
-| اليوم 1 | REPLACE: موضوع هذه الوحدة في كلمات قليلة | REPLACE: عنوان الجلسة 1; REPLACE: عنوان الجلسة 2; REPLACE: عنوان الجلسة 3; REPLACE: عنوان الجلسة 4 | [`slides/day1.html`](slides/day1.html) |
-| اليوم 2 | REPLACE: موضوع هذه الوحدة في كلمات قليلة | REPLACE: عنوان الجلسة 1; REPLACE: عنوان الجلسة 2; REPLACE: عنوان الجلسة 3; REPLACE: عنوان الجلسة 4 | [`slides/day2.html`](slides/day2.html) |
-| اليوم 3 | REPLACE: موضوع هذه الوحدة في كلمات قليلة | REPLACE: عنوان الجلسة 1; REPLACE: عنوان الجلسة 2; REPLACE: عنوان الجلسة 3; REPLACE: عنوان الجلسة 4 | [`slides/day3.html`](slides/day3.html) |
+| اليوم 1 | من المتطلبات إلى القواعد | الجودة صلاحية لاستخدام محدد; عناصر البيانات الحرجة; قواعد قابلة للقياس; العتبات والتفاوتات والاستثناءات | [`slides/day1.html`](slides/day1.html) |
+| اليوم 2 | التنميط والتنفيذ وبطاقة الأداء | تنميط الأعمدة; العلاقات والتبعيات والمعاينة; من القاعدة إلى فحص يُشغَّل; بطاقات أداء لا تضلل | [`slides/day2.html`](slides/day2.html) |
+| اليوم 3 | المشكلات والتشغيل والذكاء الاصطناعي | دورة حياة المشكلة; السبب الجذري والوقاية; الجودة في التشغيل; بيانات يستخدمها الذكاء الاصطناعي | [`slides/day3.html`](slides/day3.html) |
 | المشروع الختامي | عروض المشروع الختامي |  | [`slides/capstone.html`](slides/capstone.html) |
 <!-- /academy:units -->
 
@@ -47,18 +47,18 @@ REPLACE: سطر واحد تحت العنوان: ما يستطيع المشارك
 
 | | الجلسة | المختبر | الملف |
 |---|---|---|---|
-| 1.1 | اليوم 1 · الجلسة 1 | REPLACE: ما يبنيه المشاركون في المختبر 1.1 | [`D1_1.html`](labs/D1_1.html) |
-| 1.2 | اليوم 1 · الجلسة 2 | REPLACE: ما يبنيه المشاركون في المختبر 1.2 | [`D1_2.html`](labs/D1_2.html) |
-| 1.3 | اليوم 1 · الجلسة 3 | REPLACE: ما يبنيه المشاركون في المختبر 1.3 | [`D1_3.html`](labs/D1_3.html) |
-| 1.4 | اليوم 1 · الجلسة 4 | REPLACE: ما يبنيه المشاركون في المختبر 1.4 | [`D1_4.html`](labs/D1_4.html) |
-| 2.1 | اليوم 2 · الجلسة 1 | REPLACE: ما يبنيه المشاركون في المختبر 2.1 | [`D2_1.html`](labs/D2_1.html) |
-| 2.2 | اليوم 2 · الجلسة 2 | REPLACE: ما يبنيه المشاركون في المختبر 2.2 | [`D2_2.html`](labs/D2_2.html) |
-| 2.3 | اليوم 2 · الجلسة 3 | REPLACE: ما يبنيه المشاركون في المختبر 2.3 | [`D2_3.html`](labs/D2_3.html) |
-| 2.4 | اليوم 2 · الجلسة 4 | REPLACE: ما يبنيه المشاركون في المختبر 2.4 | [`D2_4.html`](labs/D2_4.html) |
-| 3.1 | اليوم 3 · الجلسة 1 | REPLACE: ما يبنيه المشاركون في المختبر 3.1 | [`D3_1.html`](labs/D3_1.html) |
-| 3.2 | اليوم 3 · الجلسة 2 | REPLACE: ما يبنيه المشاركون في المختبر 3.2 | [`D3_2.html`](labs/D3_2.html) |
-| 3.3 | اليوم 3 · الجلسة 3 | REPLACE: ما يبنيه المشاركون في المختبر 3.3 | [`D3_3.html`](labs/D3_3.html) |
-| 3.4 | اليوم 3 · الجلسة 4 | REPLACE: ما يبنيه المشاركون في المختبر 3.4 | [`D3_4.html`](labs/D3_4.html) |
+| 1.1 | اليوم 1 · الجلسة 1 | التقرير أمام المصدر | [`D1_1_report_gap.html`](labs/D1_1_report_gap.html) |
+| 1.2 | اليوم 1 · الجلسة 2 | عشرة عناصر حرجة | [`D1_2_critical_elements.html`](labs/D1_2_critical_elements.html) |
+| 1.3 | اليوم 1 · الجلسة 3 | قواعد لخدمة الترخيص | [`D1_3_rules.html`](labs/D1_3_rules.html) |
+| 1.4 | اليوم 1 · الجلسة 4 | عتبات من خط الأساس | [`D1_4_thresholds.html`](labs/D1_4_thresholds.html) |
+| 2.1 | اليوم 2 · الجلسة 1 | تنميط الأعمدة في أربعة جداول | [`D2_1_column_profiling.html`](labs/D2_1_column_profiling.html) |
+| 2.2 | اليوم 2 · الجلسة 2 | العلاقات والتبعيات | [`D2_2_relationships.html`](labs/D2_2_relationships.html) |
+| 2.3 | اليوم 2 · الجلسة 3 | تنفيذ القواعد | [`D2_3_run_checks.html`](labs/D2_3_run_checks.html) |
+| 2.4 | اليوم 2 · الجلسة 4 | نشر بطاقة أداء | [`D2_4_scorecard.html`](labs/D2_4_scorecard.html) |
+| 3.1 | اليوم 3 · الجلسة 1 | فرز سجل المشكلات | [`D3_1_issue_triage.html`](labs/D3_1_issue_triage.html) |
+| 3.2 | اليوم 3 · الجلسة 2 | خطأ العناوين حتى نموذج الإدخال | [`D3_2_root_cause.html`](labs/D3_2_root_cause.html) |
+| 3.3 | اليوم 3 · الجلسة 3 | قبل النشر وفي الاتفاقية وعند الخلاف | [`D3_3_operations.html`](labs/D3_3_operations.html) |
+| 3.4 | اليوم 3 · الجلسة 4 | صلاحية مجموعتين للذكاء الاصطناعي | [`D3_4_ai_fitness.html`](labs/D3_4_ai_fitness.html) |
 <!-- /academy:labs -->
 
 ## المشروع الختامي
@@ -86,7 +86,29 @@ REPLACE: سطر واحد تحت العنوان: ما يستطيع المشارك
 <!-- academy:sources -->
 ## المصادر
 
-- REPLACE: كل مصدر يستشهد به المقرر مع عنوانه، في course.json ضمن "sources"؛ هذه القائمة تُكتب من هناك
+### المراجع الوطنية
+
+- [سدايا: الأنظمة والسياسات (صفحة الفهرس)](https://sdaia.gov.sa/ar/SDAIA/about/Pages/RegulationsAndPolicies.aspx)
+- [مكتب إدارة البيانات الوطنية: ضوابط ومواصفات إدارة البيانات الوطنية وحوكمتها وحماية البيانات الشخصية (مجال جودة البيانات)](https://sdaia.gov.sa/ar/SDAIA/about/Documents/DataManagementPersonalDataProtectionStandardsAr.pdf)
+- [NDMO: Data Management and Personal Data Protection Standards (English edition, Data Quality domain)](https://sdaia.gov.sa/en/SDAIA/about/Documents/DataManagementPersonalDataProtectionStandards.pdf)
+- [سدايا: مبادئ أخلاقيات الذكاء الاصطناعي](https://sdaia.gov.sa/ar/SDAIA/about/Documents/ai-principles.pdf)
+- [مبادئ الذكاء الاصطناعي التوليدي للجهات الحكومية (سدايا، 2025)](https://sdaia.gov.sa/ar/SDAIA/about/Files/GenAIGuidelinesForGovernmentARCompressed.pdf)
+
+### معايير جودة بيانات الذكاء الاصطناعي
+
+- [ISO/IEC 5259-1:2024 Data quality for analytics and machine learning, Part 1: Overview, terminology, and examples](https://www.iso.org/standard/81088.html)
+- [ISO/IEC 5259-2:2024 Part 2: Data quality measures](https://www.iso.org/standard/81860.html)
+- [ISO/IEC 5259-3:2024 Part 3: Data quality management requirements and guidelines](https://www.iso.org/standard/81092.html)
+- [ISO/IEC 5259-4:2024 Part 4: Data quality process framework](https://www.iso.org/standard/81093.html)
+- [ISO/IEC 5259-5:2025 Part 5: Data quality governance framework](https://www.iso.org/standard/84150.html)
+
+### الأدوات (أمثلة)
+
+- [DuckDB documentation](https://duckdb.org/docs/stable/)
+- [Great Expectations (GX Core) documentation](https://docs.greatexpectations.io/docs/core/introduction/)
+- [Soda documentation](https://docs.soda.io/)
+- [LibreOffice Calc](https://www.libreoffice.org/discover/calc/)
+- [uv documentation](https://docs.astral.sh/uv/)
 <!-- /academy:sources -->
 
 ### المرجعيات الوطنية

@@ -1,0 +1,11 @@
+cde_id,element,requirements_served,data_owner,business_steward
+E01,licences.licence_no,Q01 Q07 Q11 Q12,وليد الدغريري,ابتسام الهزازي
+E02,licences.status,Q01 Q07 Q09 Q11,وليد الدغريري,ابتسام الهزازي
+E03,licences.expiry_date,Q01 Q07 Q11,وليد الدغريري,ابتسام الهزازي
+E04,licences.capacity_licensed,Q02 Q08 Q09,وليد الدغريري,ابتسام الهزازي
+E05,centres.centre_type,Q08 Q09 Q10,وليد الدغريري,ابتسام الهزازي
+E06,centres.city_code,Q01 Q02 Q03,وليد الدغريري,ابتسام الهزازي
+E07,centres.postal_code,Q03 Q09,وليد الدغريري,ابتسام الهزازي
+E08,centres.district_code,Q03 Q09,وليد الدغريري,ابتسام الهزازي
+E09,inspections.outcome,Q05 Q10,بدر الوداعي,ابتسام الهزازي
+E10,inspections.inspection_date,Q04 Q06 Q10,بدر الوداعي,ابتسام الهزازي
