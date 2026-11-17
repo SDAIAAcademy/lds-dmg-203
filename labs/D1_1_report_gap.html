@@ -1,37 +1,67 @@
 <article class="lab" data-lab="1.1">
-  <div class="box goal">
-    <h3>الهدف</h3>
-    <p>REPLACE: في النهاية يستطيع المشاركون …</p>
-  </div>
-
-  <h2>ما تحتاجه</h2>
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
   <ul>
-    <li>REPLACE: الملفات والأداة والحساب التي يستخدمها المختبر</li>
+    <li>جدول لكل مدينة: الرخص السارية والمقاعد في تقرير أكتوبر، والرقمان نفساهما محسوبين من المصدر بتعريف التقرير، والفرق.</li>
+    <li>تقدير لأثر فرق المقاعد في دعم الربع القادم، وثلاثة أسطر لرئيسة التقارير.</li>
   </ul>
+</div>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الأولى <span class="min">15 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-    <div class="prompt" data-tool="محرك SQL تحليلي مضمَّن">REPLACE: الأمر الذي ينسخه المشاركون، والأجزاء التي يغيّرونها <span class="ph">ملوّنة</span></div>
-  </div>
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/day1/report_2026_10.csv" download><b>day1/report_2026_10.csv</b><span>تقرير أكتوبر كما نُشر: الرخص السارية والمقاعد في كل مدينة.</span></a>
+  <a href="files/day1/report_method.txt"><b>day1/report_method.txt</b><span>تعريف التقرير، وقيمة دعم المقعد في كل مدينة.</span></a>
+  <a href="files/data/licences.csv" download><b>data/</b><span>الجداول المصدر. وصف أعمدتها في <code>day1/data_dictionary.csv</code>.</span></a>
+</div>
+<p class="small">تعمل من مجلد <code>labs</code> بالأمر <code>uv run kit/sql.py "…"</code>، أو في أي محرك SQL يقرأ ملفات CSV. المساعد الذكي غير مطلوب هنا؛ إن استعملته فاسأله عن صياغة SQL بكلماتك، ولا تُدخله صفوف الجداول.</p>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الثانية <span class="min">10 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-  </div>
+<h2>الخطوات</h2>
 
-  <div class="step stretch">
-    <h3>✱ إضافي</h3>
-    <p>REPLACE: توسعة لمن ينهي مبكرًا</p>
-  </div>
+<div class="step">
+  <h3>1 · التعريف شروطًا <span class="min">5 د</span></h3>
+  <p>اقرأ <code>report_method.txt</code> واكتب التعريف شروطًا على الأعمدة: أي حالة، وأي تاريخ مقابل أي تاريخ، وكم مرة تُعد المنشأة، ومن أين تأتي المدينة.</p>
+</div>
 
-  <h2>أسئلة تحقق</h2>
-  <ol class="checks">
-    <li>REPLACE: سؤال يبيّن أن المختبر نجح</li>
-  </ol>
+<div class="step">
+  <h3>2 · الرخص السارية بالتعريف <span class="min">10 د</span></h3>
+  <p>اربط <code>licences</code> مع <code>centres</code>، وطبّق شروطك، وعدّ المنشآت لكل مدينة.</p>
+  <pre class="code"><code>uv run kit/sql.py "SELECT c.city_code, count(DISTINCT l.centre_id) FROM licences l JOIN centres c USING (centre_id) WHERE … GROUP BY 1 ORDER BY 1"</code></pre>
+</div>
 
-  <details class="instructor">
-    <summary>للمدرّب</summary>
-    <p>REPLACE: مفتاح الإجابة والفخاخ والأخطاء الشائعة</p>
-  </details>
+<div class="step">
+  <h3>3 · المقاعد والفرقان <span class="min">8 د</span></h3>
+  <p>احسب المقاعد لكل مدينة بالتعريف نفسه (منشأة واحدة، رخصة واحدة)، ثم ضع أرقامك بجانب التقرير واحسب الفرقين. يقرأ المحرك ملف التقرير مباشرة: <code>FROM 'files/day1/report_2026_10.csv'</code>.</p>
+</div>
+
+<div class="step">
+  <h3>4 · الأثر بالريال <span class="min">7 د</span></h3>
+  <p>اضرب فرق المقاعد في كل مدينة في دعم المقعد الشهري لتلك المدينة، ثم في ثلاثة أشهر. هذا ما سيُرصد زيادةً إن بقي التقرير كما هو.</p>
+</div>
+
+<div class="step">
+  <h3>5 · ثلاثة أسطر لخلود العويدي <span class="min">5 د</span></h3>
+  <p>السطر الأول: الفرق بالأرقام. الثاني: أثره. الثالث: ما لا تعرفه بعد. لا تذكر سببًا لم تثبته باستعلام.</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>سمِّ سببين قد يبقى بهما الرقم خاطئًا حتى لو طابق التقرير التعريف تمامًا، وما الذي تحتاجه لتختبر كلًا منهما.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>كم رخصة سارية في التقرير، وكم بالتعريف؟ في أي مدينة أكبر فرق؟</li>
+  <li>هل يزيد التقرير أم ينقص في كل المدن؟ ماذا يقول لك الاتجاه الواحد؟</li>
+  <li>كم يُرصد زيادةً في الربع القادم؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب</summary>
+  <ul>
+    <li>المرجع: <code>solutions/D1_1_report_gap.md</code>. التحقق: <code>uv run solutions/check.py 1.1</code>.</li>
+    <li>الأرقام: التقرير 931 رخصة و58,341 مقعدًا؛ بالتعريف 853 و54,041؛ الفرق 78 رخصة و4,300 مقعد، والتقرير أعلى في كل المدن. الأثر 1,543,010 ريالات في الشهر و4,629,030 في الربع.</li>
+    <li>الفخاخ: نسيان شرط تاريخ الانتهاء، وعدّ الصفوف بدل المنشآت، وجمع المقاعد من كل الصفوف. لا تكشف الأسباب اليوم: هي عمل اليوم الثاني.</li>
+    <li>جواب التمرين الإضافي: المدينة نفسها قد تكون خاطئة في <code>centres</code>، والمقاعد قد تحمل قيمة غير معقولة؛ التعريف لا يحمي منهما.</li>
+  </ul>
+</details>
 </article>
