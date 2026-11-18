@@ -8,4 +8,4 @@ D6,2.2,inspections,licence_no,زيارات لرقم رخصة غير موجود,1
 D7,2.2,licences,application_id,طلب واحد صدرت له رخصتان ساريتان,37,التفرد,SELECT count(*) - count(DISTINCT application_id) FROM licences WHERE status = 'ACTIVE'
 D8,2.2,licences,status + expiry_date,رخص حالتها ACTIVE وانتهى تاريخها,41,الاتساق,SELECT count(*) FROM licences WHERE status = 'ACTIVE' AND expiry_date < DATE '2026-10-31'
 D9,2.2,centres,city_code + postal_code,مدينة مسجلة لا تطابقها بادئة الرمز البريدي,56,الدقة,"SELECT count(*) FROM centres c JOIN cities ci USING (city_code) WHERE length(c.postal_code) = 6 AND substr(c.postal_code, 1, 2) <> ci.postal_prefix"
-D10,2.2,licences + centres,capacity_licensed + centre_type,حضانة منزلية مرخصة لأكثر من عشرة مقاعد,12,الصلاحية,SELECT count(*) FROM licences l JOIN centres c USING (centre_id) WHERE c.centre_type = 'HOME' AND l.capacity_licensed > 10 AND l.capacity_licensed <> 999
+D10,2.2,licences + centres,capacity_licensed + centre_type,حضانة منزلية مرخصة لأكثر من عشرة مقاعد,12,الاتساق,SELECT count(*) FROM licences l JOIN centres c USING (centre_id) WHERE c.centre_type = 'HOME' AND l.capacity_licensed > 10 AND l.capacity_licensed <> 999

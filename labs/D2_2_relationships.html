@@ -1,37 +1,67 @@
 <article class="lab" data-lab="2.2">
-  <div class="box goal">
-    <h3>الهدف</h3>
-    <p>REPLACE: في النهاية يستطيع المشاركون …</p>
-  </div>
-
-  <h2>ما تحتاجه</h2>
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
   <ul>
-    <li>REPLACE: الملفات والأداة والحساب التي يستخدمها المختبر</li>
+    <li>سجل عيوب مكتمل: العيوب بين الجداول والأعمدة، لكل منها استعلامه وعدده وبعده.</li>
+    <li>تقدير لنسبة المنشآت المسجلة في مدينة غير مدينة موقعها، من عينة تحقق ميداني، بمجال ثقة 95%.</li>
   </ul>
+</div>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الأولى <span class="min">15 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-    <div class="prompt" data-tool="محرك SQL تحليلي مضمَّن">REPLACE: الأمر الذي ينسخه المشاركون، والأجزاء التي يغيّرونها <span class="ph">ملوّنة</span></div>
-  </div>
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/data/licences.csv" download><b>data/</b><span>الجداول الأربعة وقوائم الرموز.</span></a>
+  <a href="files/day2/field_verification.csv" download><b>day2/field_verification.csv</b><span>60 منشأة اختيرت عشوائيًا، زارها المفتشون وسجلوا مدينة موقعها.</span></a>
+</div>
+<p class="small">تبدأ من الجداول نفسها، لا من سجلك في 2.1؛ إن لم تكمله فابدأ سجلًا جديدًا. مرشد ذكاء اصطناعي مسموح لشرح مفهوم أو صياغة SQL، دون صفوف.</p>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الثانية <span class="min">10 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-  </div>
+<h2>الخطوات</h2>
 
-  <div class="step stretch">
-    <h3>✱ إضافي</h3>
-    <p>REPLACE: توسعة لمن ينهي مبكرًا</p>
-  </div>
+<div class="step">
+  <h3>1 · المفاتيح <span class="min">10 د</span></h3>
+  <p>هل يتكرر ما يجب ألا يتكرر؟ هل يشير عمود إلى مفتاح غير موجود في جدوله؟ جرّب كل علاقة: الزيارة بالرخصة، والرخصة بالطلب والمنشأة.</p>
+  <pre class="code"><code>uv run kit/sql.py "SELECT count(*) FROM inspections i WHERE NOT EXISTS (SELECT 1 FROM licences l WHERE l.licence_no = i.licence_no)"</code></pre>
+</div>
 
-  <h2>أسئلة تحقق</h2>
-  <ol class="checks">
-    <li>REPLACE: سؤال يبيّن أن المختبر نجح</li>
-  </ol>
+<div class="step">
+  <h3>2 · تبعيتان <span class="min">10 د</span></h3>
+  <p>عمود يحدد آخر: أول رقمين من الرمز البريدي يحددان المدينة (<code>cities.postal_prefix</code>)، ونوع المنشأة يحدد حدًا للمقاعد (الحضانة المنزلية عشرة على الأكثر). عدّ المخالفات.</p>
+</div>
 
-  <details class="instructor">
-    <summary>للمدرّب</summary>
-    <p>REPLACE: مفتاح الإجابة والفخاخ والأخطاء الشائعة</p>
-  </details>
+<div class="step">
+  <h3>3 · الحالة والتاريخ <span class="min">5 د</span></h3>
+  <p>هل يتفق <code>status</code> مع <code>expiry_date</code> في 2026-10-31؟ عدّ ما لا يتفق.</p>
+</div>
+
+<div class="step">
+  <h3>4 · العينة الميدانية <span class="min">6 د</span></h3>
+  <p>قارن المدينة المسجلة بالمدينة التي وجدها المفتش للمنشآت الستين، ثم قدّر النسبة في 1,000 منشأة.</p>
+  <pre class="code"><code>uv run kit/sample_estimate.py --n 60 --failed <span class="ph">العدد</span> --population 1000</code></pre>
+</div>
+
+<div class="step">
+  <h3>5 · السجل كاملًا <span class="min">4 د</span></h3>
+  <p>أضف ما وجدته إلى سجل العيوب، وعدّ العيوب في السجل كله، من المختبرين.</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>قارن تقدير العينة بما يعدّه استعلام التبعية على كل المنشآت، واشرح لماذا لا يكفي الاستعلام وحده لقياس الدقة.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>كم عيبًا من العشرة في سجلك، ولكل منها استعلام؟</li>
+  <li>ما تقدير العينة ومجاله؟ ولماذا هو واسع؟</li>
+  <li>أي عيبين يفسران فرق التقرير في المختبر 1.1؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب</summary>
+  <ul>
+    <li>المرجع: <code>solutions/reference/defect_log_reference.csv</code> و<code>solutions/D2_2_relationships.md</code>. التحقق: <code>uv run solutions/check.py 2.2</code>.</li>
+    <li>العيوب الخمسة: 17 زيارة يتيمة، و37 رخصة سارية مكررة لطلب واحد، و41 رخصة سارية منتهية، و56 منشأة مدينتها تخالف رمزها البريدي (و3 أخرى يخفيها رمز من خمسة أرقام)، و12 حضانة منزلية فوق عشرة مقاعد.</li>
+    <li>العينة: 4 من 60 (6.7%)، ومجال 95% من 2.6% إلى 15.9%. الاستعلام يجد 56 من 1,000 (5.6%) لأن الرمز البريدي دليل غير مباشر؛ العينة تقيس الدقة نفسها لكنها واسعة.</li>
+    <li>فرق المختبر 1.1 (78) = 37 مكررة + 41 منتهية. دليل LO2: ثمانية عيوب على الأقل، لكل منها استعلامه.</li>
+  </ul>
+</details>
 </article>
