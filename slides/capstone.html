@@ -1,95 +1,155 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">اليوم لهم: اقصر كلامك على الافتتاح والختام. تأكّد أولًا من ترتيب العروض وتجهيزات التجربة الحية (مشاركة الشاشة، والحسابات، ونسخة مسجلة احتياطية).</aside>
+  <aside class="notes"><p>اليوم للمشاركين: اقصر كلامك على الافتتاح والختام. تأكّد قبل البدء من ثلاثة أمور: أن كل رابط مجلد مشترك يُفتح لك، وأن عندك نسخة من الجداول ومن <code>labs/kit/seed_defect.py</code> على جهاز المقيّم، وأن أوراق الاختبار العملي مطبوعة أو جاهزة في نظام الاختبار.</p></aside>
 </section>
 
 <section class="slide" id="agenda" data-label="الجدول">
-  <div class="kicker">المشروع الختامي</div>
-  <h2>كيف تسير العروض</h2>
+  <div class="kicker">يوم المشروع الختامي</div>
+  <h2>كيف يسير اليوم</h2>
   <div class="agenda">
-    <div class="item now"><div><b>التوقعات والتحضير الأخير</b><small>سلم التقدير، وتدريب أخير، ثم أول العروض</small></div></div>
-    <div class="item"><div><b>العروض</b><small>كل عرض بوقت محدد تليه الأسئلة</small></div></div>
-    <div class="item"><div><b>المراجعة والختام</b><small>تعليقات الأقران، ومراجعة المدرّب، وما بعد المقرر</small></div></div>
+    <div class="item now"><div><b>الاختبار العملي المراقب</b><small>قواعد لخمسة عناصر وتنميط واحد، دون أي مساعد ذكاء اصطناعي</small></div></div>
+    <div class="item"><div><b>التوقعات والتحضير الأخير</b><small>سلم التقدير، وما تفعله اللجنة، وتجربة أخيرة</small></div></div>
+    <div class="item"><div><b>المناقشات</b><small>اثنتا عشرة مناقشة: عشر دقائق عرضًا وعشر مع اللجنة</small></div></div>
+    <div class="item"><div><b>المراجعة والختام</b><small>تعليقات الأقران، ومراجعة المدرّب، ومهمة المتابعة</small></div></div>
   </div>
+  <aside class="notes"><p>الدقائق: الاختبار العملي 60، والتوقعات والتحضير الأخير 30، والمناقشات 240، والمراجعة والختام 30. المشروع فردي. حسبت المناقشات لدفعة من 12 مشاركًا (12 × 20 = 240 دقيقة). مع عدد أقل لا تقصر مدة المناقشة: يُعطى ما يفضل للمراجعة بعد ملاحظات اللجنة.</p><p>الاستراحات بزر B خارج هذه الدقائق: بعد الاختبار، وبعد المناقشة الرابعة والثامنة. تعليقات الأقران تُكتب أثناء مناقشة كل زميل وتُجمع في المراجعة.</p></aside>
+</section>
+
+<section class="slide" id="practical-rules" data-label="الاختبار العملي">
+  <div class="kicker">الاختبار العملي المراقب · 20% من الدرجة</div>
+  <h2>ساعة واحدة، فرديًا، دون أي مساعد ذكاء اصطناعي</h2>
+  <div class="cols cols-2">
+    <ul class="bullets small">
+      <li>قواعد لخمسة عناصر بيانات من متطلبات جديدة: النطاق والطريقة والمعيار والتكرار والمالك</li>
+      <li>تنميط جدول واحد جديد: كل عيب باستعلامه وعدد صفوفه وبعده</li>
+      <li>الأدوات: الطرفية و<code>kit/sql.py</code> و<code>kit/profile.py</code> وجدول بيانات</li>
+    </ul>
+    <div class="card c-coral"><h4>لا يُسمح</h4><p class="small mb0">أي أداة ذكاء اصطناعي، أو تواصل مع زميل، أو فتح ملفات المختبرات المرجعية.</p></div>
+  </div>
+  <p class="small mt">النجاح يتطلب 60% على الأقل في هذا الاختبار، و60% في المشروع، و70% إجمالًا.</p>
+  <aside class="notes"><p>الأسئلة والجداول خارج المستودع: يسلمها منسق الاختبار. خطة الساعة: 5 دقائق للتعليمات وتوزيع الملفات، و25 للقواعد، و25 للتنميط، و5 للمراجعة والتسليم.</p><p>صفحة التدريب في المقرر فيها أسئلة من النوع نفسه بمواقف أخرى. لا تجب عن أسئلة المحتوى أثناء الاختبار؛ أسئلة الأدوات فقط.</p></aside>
+</section>
+
+<section class="slide dark" id="practical-timer" data-label="الاختبار يبدأ">
+  <div class="kicker">الاختبار العملي</div>
+  <h1>ستون دقيقة</h1>
+  <div class="timer" data-minutes="60"></div>
+  <p class="lead">أغلق كل أداة ذكاء اصطناعي. اكتب اسمك في أول ملف. ابدأ بما تعرفه.</p>
+  <aside class="notes">اضغط T لتشغيل المؤقّت بعد توزيع الملفات. نبّه عند بقاء 10 دقائق و5 دقائق.</aside>
 </section>
 
 <section class="slide" id="rubric" data-label="سلم التقدير">
-  <div class="kicker">كيف تُقيَّم العروض</div>
+  <div class="kicker">كيف تُقيَّم المناقشة · 50% من الدرجة</div>
   <h2>سلم التقدير</h2>
   <div class="bars">
-    <div class="row"><span>REPLACE: المعيار 1 من سلم التقدير ووزنه (مجموع الأوزان 100)</span><div class="bar c-teal" style="--w:100%"></div><span class="val">25%</span></div>
-    <div class="row"><span>REPLACE: المعيار 2 من سلم التقدير ووزنه (مجموع الأوزان 100)</span><div class="bar c-cyan" style="--w:100%"></div><span class="val">25%</span></div>
-    <div class="row"><span>REPLACE: المعيار 3 من سلم التقدير ووزنه (مجموع الأوزان 100)</span><div class="bar c-coral" style="--w:80%"></div><span class="val">20%</span></div>
-    <div class="row"><span>REPLACE: المعيار 4 من سلم التقدير ووزنه (مجموع الأوزان 100)</span><div class="bar c-purple" style="--w:80%"></div><span class="val">20%</span></div>
-    <div class="row"><span>REPLACE: المعيار 5 من سلم التقدير ووزنه (مجموع الأوزان 100)</span><div class="bar c-amber" style="--w:40%"></div><span class="val">10%</span></div>
+    <div class="row"><span>قواعد مشغّلة وسجل تشغيل يلتقط العيب المزروع</span><div class="bar c-teal" style="--w:100%"></div><span class="val">25%</span></div>
+    <div class="row"><span>بطاقة أداء صادقة ومسار عمل للمشكلات</span><div class="bar c-cyan" style="--w:80%"></div><span class="val">20%</span></div>
+    <div class="row"><span>تحليل السبب الجذري والوقاية ومقياس التكرار</span><div class="bar c-coral" style="--w:80%"></div><span class="val">20%</span></div>
+    <div class="row"><span>الدفاع عن الأولوية المعترض عليها أمام اللجنة</span><div class="bar c-purple" style="--w:80%"></div><span class="val">20%</span></div>
+    <div class="row"><span>الأولويات والعناصر الحرجة بمستهلكيها وملاكها</span><div class="bar c-amber" style="--w:60%"></div><span class="val">15%</span></div>
   </div>
-  <div class="callout tip mt"><b>اعرض نتائج من تجربتين مقيستين على الأقل.</b> الادعاء بلا رقم خطة لا نتيجة.</div>
-  <aside class="notes">اشرح كل معيار بمثال واحد لما تبدو عليه الدرجة الكاملة.</aside>
+  <div class="callout tip mt"><b>رقم من سجل تشغيلك</b> أقوى من أي جملة. اللجنة تسأل: من أين هذا الرقم؟</div>
+  <aside class="notes"><p>الدرجة الكاملة: (1) كتالوج من 15 قاعدة أو أكثر يشغّله ملف الفحوص كاملًا دون NOT RUN، والعيب المزروع يظهر في السجل أو يُضاف له قاعدة أمام اللجنة وتلتقطه؛ (2) البطاقة بالعتبات والمقامات والأسوأ أولًا بمالكه، وكل مشكلة لها خطورة ومالك ومدة ومتى تُغلق؛ (3) منشأ يصل إلى تصميم أو قرار، وإجراءات بملاكها، ومقياس تكرار بهدف؛ (4) دفاع بالأرقام، أو تغيير الأولوية بسبب مقيس؛ (5) العناصر مرتبة بمستهلكيها وملاكها.</p><p>الأوزان من صفحة المقرر.</p></aside>
 </section>
 
 <section class="slide" id="format" data-label="الصيغة">
   <div class="kicker">الصيغة</div>
-  <h2>REPLACE: كم دقيقة يستغرق كل عرض وأسئلته</h2>
+  <h2>عشر دقائق للعرض، ثم عشر مع اللجنة</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>1 · المشكلة</h4><p class="small mb0">من، وماذا، ولماذا الآن. شريحة واحدة.</p></div>
-    <div class="card c-cyan"><h4>2 · ما بنيته</h4><p class="small mb0">التصميم والقرارات والموازنات، ثم التجربة الحية.</p></div>
-    <div class="card c-coral"><h4>3 · ما قسته</h4><p class="small mb0">خط الأساس، والتحسن، والإخفاقات، والخطوة التالية.</p></div>
+    <div class="card c-teal"><h4>1 · الأولويات</h4><p class="small mb0">ما يُصلح أولًا ولماذا، بالأرقام.</p></div>
+    <div class="card c-cyan"><h4>2 · القواعد والبطاقة</h4><p class="small mb0">الكتالوج وسجل التشغيل والبطاقة، والمشكلات ومسارها.</p></div>
+    <div class="card c-coral"><h4>3 · السبب والمراقبة</h4><p class="small mb0">تحليل سبب جذري واحد، وما يُشغَّل ومتى ومن يُنبَّه.</p></div>
   </div>
-  <div class="callout note mt"><b>تعليقات الأقران.</b> بعد كل عرض يكتب كل مشارك نقطة قوة وسؤالًا واقتراحًا.</div>
+  <div class="callout note mt"><b>تعليقات الأقران.</b> أثناء كل مناقشة يكتب كل مشارك نقطة قوة، وسؤالًا كان سيسأله، واقتراحًا واحدًا.</div>
+  <aside class="notes">اللجنة الصورية: المدرّب رئيسًا ومقيِّمًا، ومعه مشاركان بالتناوب في دوري مالك بيانات الترخيص ورئيس التفتيش. يجوز أن يستعيرا أسماء الحالة: وليد الدغريري وبدر الوداعي.</aside>
 </section>
 
-<section class="slide order" id="running-order" data-label="ترتيب العروض">
-  <div class="kicker">ترتيب العروض</div>
+<section class="slide" id="panel-moves" data-label="ما تفعله اللجنة" data-lo="LO6">
+  <div class="kicker">في الدقائق العشر</div>
+  <h2>حركتان للجنة، بهذا الترتيب</h2>
+  <div class="flow">
+    <div class="step c-navy"><b>اعتراض على أولوية</b>«لماذا هذه قبل تلك؟»</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>عيب مزروع</b>شغّل فحوصك على نسخة جديدة</div>
+  </div>
+  <div class="callout tip mt"><b>الإجابة الجيدة عن العيب</b> تسمّي القاعدة التي التقطته وعدد صفوفه، أو تقول إن أي قاعدة لم تلتقطه وتكتب القاعدة الناقصة وتشغّلها.</div>
+  <aside class="notes"><p>الاعتراض: اختر أولوية المشارك الأولى، وادفع بالرأي الآخر من رسالة الخلاف في المختبر 3.3. الدرجة على الأرقام لا على الثبات: تغيير الأولوية بسبب مقيس دفاع جيد.</p><p>العيب: انظر الشريحة التالية.</p></aside>
+</section>
+
+<section class="slide" id="seeding-procedure" data-label="زرع العيب">
+  <div class="kicker">للمقيّم</div>
+  <h2>كيف يُزرع العيب ويُشغَّل أمام اللجنة</h2>
+  <pre class="code s" data-file="الطرفية، من مجلد labs"><code>uv run kit/seed_defect.py --kind &lt;nulls | duplicates | codes | orphans | range | stale | postal&gt; --out out/seeded --seed &lt;رقم&gt;
+uv run kit/run_checks.py &lt;ملف فحوص المشارك&gt; --data out/seeded</code></pre>
+  <ul class="bullets small mt">
+    <li>نوع مختلف لكل مشاركين متتاليين، ورقم بذرة مختلف لكل مشارك</li>
+    <li>المشارك يشغّل فحوصه؛ المقيّم يقارن عدد الفاشل بسجل تشغيله الأصلي</li>
+  </ul>
+  <aside class="notes"><p>الأنواع السبعة يلتقطها الكتالوج المرجعي (تحقق منها <code>uv run solutions/check.py assessor</code>). كتالوج المشارك قد لا يلتقط نوعًا: هذا ما تقيسه الحركة، لا خطأ في الأداة.</p><p>احذف <code>out/seeded</code> بعد كل مناقشة.</p></aside>
+</section>
+
+<section class="slide order" id="running-order" data-label="ترتيب المناقشات">
+  <div class="kicker">ترتيب المناقشات</div>
   <h2>من يعرض ومتى</h2>
   <table class="t small">
-    <tr><th>#</th><th>المشارك</th><th>المشروع</th></tr>
-    <tr><td>1</td><td><input placeholder="الاسم"></td><td><input placeholder="المشروع"></td></tr>
-    <tr><td>2</td><td><input placeholder="الاسم"></td><td><input placeholder="المشروع"></td></tr>
-    <tr><td>3</td><td><input placeholder="الاسم"></td><td><input placeholder="المشروع"></td></tr>
-    <tr><td>4</td><td><input placeholder="الاسم"></td><td><input placeholder="المشروع"></td></tr>
-    <tr><td>5</td><td><input placeholder="الاسم"></td><td><input placeholder="المشروع"></td></tr>
-    <tr><td>6</td><td><input placeholder="الاسم"></td><td><input placeholder="المشروع"></td></tr>
-    <tr><td>7</td><td><input placeholder="الاسم"></td><td><input placeholder="المشروع"></td></tr>
-    <tr><td>8</td><td><input placeholder="الاسم"></td><td><input placeholder="المشروع"></td></tr>
+    <tr><th>#</th><th>المشارك</th><th>نوع العيب</th></tr>
+    <tr><td>1</td><td><input placeholder="الاسم"></td><td><input placeholder="النوع"></td></tr>
+    <tr><td>2</td><td><input placeholder="الاسم"></td><td><input placeholder="النوع"></td></tr>
+    <tr><td>3</td><td><input placeholder="الاسم"></td><td><input placeholder="النوع"></td></tr>
+    <tr><td>4</td><td><input placeholder="الاسم"></td><td><input placeholder="النوع"></td></tr>
+    <tr><td>5</td><td><input placeholder="الاسم"></td><td><input placeholder="النوع"></td></tr>
+    <tr><td>6</td><td><input placeholder="الاسم"></td><td><input placeholder="النوع"></td></tr>
+    <tr><td>7</td><td><input placeholder="الاسم"></td><td><input placeholder="النوع"></td></tr>
+    <tr><td>8</td><td><input placeholder="الاسم"></td><td><input placeholder="النوع"></td></tr>
+    <tr><td>9</td><td><input placeholder="الاسم"></td><td><input placeholder="النوع"></td></tr>
+    <tr><td>10</td><td><input placeholder="الاسم"></td><td><input placeholder="النوع"></td></tr>
+    <tr><td>11</td><td><input placeholder="الاسم"></td><td><input placeholder="النوع"></td></tr>
+    <tr><td>12</td><td><input placeholder="الاسم"></td><td><input placeholder="النوع"></td></tr>
   </table>
   <aside class="notes">اكتب الأسماء في البداية؛ الحقول قابلة للتحرير أثناء العرض ولا تُحفظ، فاحتفظ بالقائمة في ملاحظاتك.</aside>
 </section>
 
-<section class="slide dark" id="final-prep" data-label="قبل أول عرض">
-  <div class="kicker">قبل أول عرض</div>
-  <h1>التحضير الأخير · 20 د</h1>
-  <div class="timer" data-minutes="20"></div>
-  <p class="lead">تدرّب مرة، وسجّل نسخة احتياطية، وجرّب العرض على هذه الشاشة.</p>
-  <aside class="notes">اضغط T لتشغيل المؤقّت. الاستراحات ليست شرائح: اضغط B حين تحتاجها القاعة.</aside>
+<section class="slide dark" id="final-prep" data-label="قبل أول مناقشة">
+  <div class="kicker">قبل أول مناقشة</div>
+  <h1>التحضير الأخير · 30 د</h1>
+  <div class="timer" data-minutes="30"></div>
+  <p class="lead">تأكد أن رابط مجلدك يُفتح، وشغّل ملف فحوصك مرة أخيرة حتى لا يبقى NOT RUN، واكتب رقمين تدافع بهما عن أولويتك الأولى.</p>
+  <aside class="notes">اضغط T لتشغيل المؤقّت. الدقائق الثلاث الأولى لسلم التقدير وما تفعله اللجنة إن لم تعرضهما قبل. اجمع روابط المجلدات قبل نهاية المؤقّت.</aside>
 </section>
 
 <section class="slide dark presenting" id="now-presenting" data-label="يعرض الآن">
   <div class="kicker center">يعرض الآن</div>
-  <div class="center"><input placeholder="المشارك · المشروع"></div>
-  <aside class="notes">اكتب اسم المشارك واضغط T لتشغيل المؤقّت. أعد استخدام هذه الشريحة لكل مشارك.</aside>
+  <div class="center"><input placeholder="المشارك"></div>
+  <div class="timers mt">
+    <div><h3>العرض</h3><div class="timer" data-minutes="10"></div></div>
+    <div><h3>اللجنة: اعتراض وعيب مزروع</h3><div class="timer" data-minutes="10"></div></div>
+  </div>
+  <aside class="notes">اكتب اسم المشارك واضغط T لتشغيل المؤقّت. أعد استخدام هذه الشريحة لكل مشارك. سجّل الأولوية المعترض عليها وما قاله المشارك، ونوع العيب، والقاعدة التي التقطته أو التي أضافها.</aside>
 </section>
 
 <section class="slide" id="review" data-label="مراجعة المدرّب">
   <div class="kicker">مراجعة المدرّب</div>
-  <h2>ما أظهرته العروض</h2>
+  <h2>ما أظهرته المناقشات</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>أقوى الأنماط</h4><p class="small mb0">ما أحسنته عدة مشاريع.</p></div>
-    <div class="card c-coral"><h4>الفجوات الشائعة</h4><p class="small mb0">ما ستصلحه معظم المشاريع تاليًا.</p></div>
+    <div class="card c-teal"><h4>أقوى الأنماط</h4><p class="small mb0">ما أحسنته عدة خطط.</p></div>
+    <div class="card c-coral"><h4>الفجوات الشائعة</h4><p class="small mb0">عيوب لم تلتقطها قاعدة، أو مشكلات تُغلق بلا قياس.</p></div>
     <div class="card c-purple"><h4>مفاجأة واحدة</h4><p class="small mb0">ما لم يتوقعه أحد.</p></div>
   </div>
-  <aside class="notes">املأها من ملاحظات التقييم في آخر استراحة. سمِّ المشاريع عند ذكر نقاط القوة، ولا تسمِّها عند ذكر الفجوات.</aside>
+  <aside class="notes">املأها من ملاحظات التقييم في آخر استراحة. سمِّ المشاركين عند ذكر نقاط القوة، ولا تسمِّهم عند ذكر الفجوات. الفجوة الأكثر توقعًا: كتالوج يغطي الصلاحية والاكتمال ولا يغطي العلاقات بين الجداول، فيفوته عيب الصفوف اليتيمة.</aside>
 </section>
 
 <section class="slide" id="what-next" data-label="بعد المقرر">
   <div class="kicker">بعد المقرر</div>
-  <h2>استمر</h2>
+  <h2>من الحالة إلى جهتك</h2>
   <ul class="bullets">
-    <li><b>مشروعك يبقى لك:</b> أبقِه قابلًا للإعادة وأضف التحسين التالي الذي ذكرته اليوم</li>
-    <li><b>مقرر الأكاديمية التالي:</b> REPLACE: المقرر الذي يلي هذا المقرر</li>
+    <li><b>مهمة المتابعة خلال 30 يومًا:</b> لمجال من جهتك، ثلاثة عناصر حرجة وست قواعد بمعاييرها وملاكها، تشغّلها على مستخرج مصنف «عام» أو بيانات اصطناعية، وصفحة بالنتائج يراجعها المدرّب</li>
+    <li><b>مقررات الأكاديمية التالية:</b> جودة البيانات في خطوط النقل وعقودها، وحوكمة البيانات للذكاء الاصطناعي، وأدلة الامتثال وتقييم النضج</li>
   </ul>
+  <aside class="notes">المقررات في الكتالوج: DEV-DAT-204 جودة البيانات والعقود وقابلية المراقبة، وLDS-DMG-301 حوكمة البيانات للذكاء الاصطناعي: التدريب والاسترجاع ووصول الوكلاء، وLDS-DMG-207 أدلة الامتثال وتقييم نضج البيانات. لا يدخل مهمة المتابعة أي محتوى مصنف «مقيد» فأعلى.</aside>
 </section>
 
 <section class="slide dark" id="thanks" data-label="شكرًا">
   <div class="kicker">أكاديمية سدايا</div>
   <h1>شكرًا</h1>
   <p class="lead">إدارة جودة البيانات</p>
+  <aside class="notes">اشكر المشاركين واللجنة. ذكّر بموعد تسليم مهمة المتابعة وقناة إرسالها.</aside>
 </section>
