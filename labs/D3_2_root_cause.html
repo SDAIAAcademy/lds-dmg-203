@@ -1,37 +1,76 @@
 <article class="lab" data-lab="3.2">
-  <div class="box goal">
-    <h3>الهدف</h3>
-    <p>REPLACE: في النهاية يستطيع المشاركون …</p>
-  </div>
-
-  <h2>ما تحتاجه</h2>
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
   <ul>
-    <li>REPLACE: الملفات والأداة والحساب التي يستخدمها المختبر</li>
+    <li>تحليل سبب جذري لخطأ مدينة الموقع: أين يتركز، ومخطط السبب والنتيجة، والأسئلة الخمسة حتى المنشأ.</li>
+    <li>إجراء تصحيحي وإجراءان وقائيان بملاكهم، ومقياس أسبوعي للتكرار بهدفه.</li>
   </ul>
+</div>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الأولى <span class="min">15 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-    <div class="prompt" data-tool="محرك SQL تحليلي مضمَّن">REPLACE: الأمر الذي ينسخه المشاركون، والأجزاء التي يغيّرونها <span class="ph">ملوّنة</span></div>
-  </div>
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/day3/lineage.txt" download><b>day3/lineage.txt</b><span>مسار عنوان المنشأة من التقديم إلى المستهلكين، وملاحظات الإصدارات.</span></a>
+  <a href="files/day3/form_spec.txt" download><b>day3/form_spec.txt</b><span>مواصفة قسم العنوان في نموذج البوابة، الإصداران v2 وv3.</span></a>
+  <a href="files/day3/address_weekly.csv" download><b>day3/address_weekly.csv</b><span>الطلبات المعتمدة أسبوعيًا، وكم منها مدينته لا يطابقها الرمز البريدي.</span></a>
+  <a href="files/data/applications.csv" download><b>data/applications.csv</b><span>القناة والإصدار وإجابة المربع لكل طلب.</span></a>
+</div>
+<p class="small">مرشد ذكاء اصطناعي مسموح: اطلب منه أن يسألك أسئلة السبب الجذري أو أن يراجع مخططك، بكلماتك ودون صفوف من البيانات.</p>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الثانية <span class="min">10 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-  </div>
+<h2>الخطوات</h2>
 
-  <div class="step stretch">
-    <h3>✱ إضافي</h3>
-    <p>REPLACE: توسعة لمن ينهي مبكرًا</p>
-  </div>
+<div class="step">
+  <h3>1 · العزل <span class="min">10 د</span></h3>
+  <p>خذ لكل منشأة آخر طلب معتمد لها، وقسّم المنشآت المخالفة بالقناة، ثم بالإصدار، ثم بإجابة المربع، ثم بنوع المنشأة. توقف حين يبقى في المخالفات قسم واحد.</p>
+  <pre class="code"><code>WITH last AS (
+  SELECT * FROM applications WHERE decision = 'APPROVED'
+  QUALIFY row_number() OVER (PARTITION BY centre_id ORDER BY submitted_at DESC) = 1)
+SELECT a.channel, count(*) AS centres,
+       sum(CASE WHEN length(c.postal_code) = 6
+                 AND substr(c.postal_code, 1, 2) &lt;&gt; ci.postal_prefix THEN 1 ELSE 0 END) AS mismatched
+FROM centres c JOIN cities ci USING (city_code) JOIN last a USING (centre_id)
+GROUP BY ALL ORDER BY 1;</code></pre>
+  <p class="small">احفظه في ملف وشغّله بـ <code>uv run kit/sql.py -f</code>، ثم أضف الأعمدة <code>form_version</code> و<code>premises_same_as_owner</code> و<code>centre_type</code> واحدًا بعد الآخر.</p>
+</div>
 
-  <h2>أسئلة تحقق</h2>
-  <ol class="checks">
-    <li>REPLACE: سؤال يبيّن أن المختبر نجح</li>
-  </ol>
+<div class="step">
+  <h3>2 · المسار والمواصفة <span class="min">7 د</span></h3>
+  <p>اقرأ المسار والمواصفة، وارسم مخطط السبب والنتيجة: النتيجة «زيارة تصل إلى مدينة خاطئة»، والفروع: النموذج، ومهمة التكامل، والقواعد، والناس، والقياس.</p>
+</div>
 
-  <details class="instructor">
-    <summary>للمدرّب</summary>
-    <p>REPLACE: مفتاح الإجابة والفخاخ والأخطاء الشائعة</p>
-  </details>
+<div class="step">
+  <h3>3 · الأسئلة الخمسة <span class="min">6 د</span></h3>
+  <p>ابدأ من «زيارة أحيلت إلى مكتب آخر» واسأل «لماذا؟» حتى تصل إلى قرار أو تصميم يمكن تغييره. كل جواب يُسند بدليل من الخطوة 1 أو من الملفين.</p>
+</div>
+
+<div class="step">
+  <h3>4 · الإجراءات <span class="min">7 د</span></h3>
+  <p>إجراء تصحيحي واحد للصفوف الحالية، وإجراءان وقائيان: واحد عند نقطة الإدخال وواحد في التكامل. لكل إجراء مالك بالاسم وموعد.</p>
+</div>
+
+<div class="step">
+  <h3>5 · مقياس التكرار <span class="min">5 د</span></h3>
+  <p>من <code>address_weekly.csv</code>: نسبة المخالفات من الطلبات المعتمدة أسبوعيًا قبل إطلاق v3 وبعده. عرّف المقياس وهدفه ومتى تُغلق المشكلة.</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>قدّر كم زيارة أحيلت بسبب هذا الخطأ منذ إطلاق الإصدار v3 (العمود <code>inspections.reassigned</code>).</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>في أي قسم تتركز المخالفات كلها؟</li>
+  <li>ما المنشأ في جملة واحدة، ولماذا لا يكفي «خطأ إدخال من المتقدم»؟</li>
+  <li>ما نسبة المخالفات الأسبوعية قبل v3 وبعده؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب</summary>
+  <ul>
+    <li>المرجع: <code>solutions/D3_2_root_cause.md</code>. التحقق: <code>uv run solutions/check.py 3.2</code>.</li>
+    <li>المخالفات الـ 56 كلها في قسم واحد: البوابة، الإصدار v3، المربع مؤشَّر (Y)، نوع المنشأة مركز (CENTRE). المربع يفتح مؤشَّرًا فيملأ مدينة المالك، والمركز ليس في منزل المالك.</li>
+    <li>النسبة الأسبوعية 0.0% قبل v3 و8.1% بعده. أحيلت 66 زيارة.</li>
+    <li>الفخ: التوقف عند «المتقدم لم ينتبه». السؤال التالي: لماذا كان المربع مؤشَّرًا؟ لأن التصميم جعله افتراضيًا ولا تحقق من الرمز البريدي.</li>
+  </ul>
+</details>
 </article>
