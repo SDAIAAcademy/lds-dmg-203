@@ -19,6 +19,11 @@ def wilson(failed: int, n: int, z: float = 1.959964) -> tuple[float, float]:
     return max(0.0, centre - half), min(1.0, centre + half)
 
 
+def pct(x: float) -> str:
+    """A share as a percentage with one decimal, halves rounded up (5 of 80 is 6.3%, as on paper)."""
+    return f"{math.floor(1000 * x + 0.5) / 10:.1f}%"
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, required=True)
@@ -27,8 +32,8 @@ def main() -> None:
     a = ap.parse_args()
     lo, hi = wilson(a.failed, a.n)
     p = a.failed / a.n
-    print(f"sample: {a.failed} of {a.n} failed = {100 * p:.1f}%")
-    print(f"95% interval: {100 * lo:.1f}% to {100 * hi:.1f}%")
+    print(f"sample: {a.failed} of {a.n} failed = {pct(p)}")
+    print(f"95% interval: {pct(lo)} to {pct(hi)}")
     if a.population:
         print(f"in {a.population} records: about {round(p * a.population)} (between {math.floor(lo * a.population)} and {math.ceil(hi * a.population)})")
 
