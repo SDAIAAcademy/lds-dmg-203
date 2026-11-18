@@ -1,0 +1,4 @@
+code,meaning
+PASS,مستوفٍ
+COND,مستوفٍ بشروط
+FAIL,غير مستوفٍ

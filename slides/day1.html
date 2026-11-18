@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="deck" data-track="executives">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>اليوم 1 · من المتطلبات إلى القواعد · إدارة جودة البيانات</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day1.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<div class="deck" data-course="إدارة جودة البيانات" data-track="executives" data-day="اليوم 1">
+<section class="slide title" id="title" data-auto="title" data-label="الترحيب" data-n="1">
+  <div class="kicker">أكاديمية سدايا · إدارة جودة البيانات</div>
+  <h1>من المتطلبات إلى القواعد</h1>
+  <p class="lead mt">اليوم 1: تقرير لا يطابق مصدره، والعناصر التي تستحق القياس، وقواعد لها طريقة وعتبة ومالك</p>
+  <div class="meta"><span class="track">مسار التنفيذيين والقادة</span><span>3 أيام تدريبية + يوم للمشروع الختامي</span><span>4 جلسات · 4 مختبرات</span><span>LDS-DMG-203</span></div>
+  <aside class="notes"><p>رحّب بالمشاركين واسألهم: «متى رأيت آخر مرة رقمًا منشورًا في جهتك لا يطابق ما في النظام؟ ماذا فعلتم؟». اسمع إجابتين، ثم قل إن هذا المقرر عن تحويل ذلك الشعور إلى قواعد وقياس وإجراء.</p><p>اليوم أربع جلسات من 70 دقيقة: نحو 35 دقيقة للأفكار ونقطة التحقق، ثم مختبر من 35 دقيقة. الاستراحات بزر B.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="جدول اليوم" data-n="2">
+  <div class="kicker">اليوم</div>
+  <h2>من المتطلبات إلى القواعد</h2>
+  <div class="agenda"><div class="item"><div><b>الجلسة 1 · الجودة صلاحية لاستخدام محدد</b><small>الجودة تُقاس مقابل استخدام، والفرق بين رقم منشور ومصدره يُحسب بالتعريف المعتمد ثم يُقدَّر أثره في التكلفة والخدمة</small></div></div><div class="item"><div><b>الجلسة 2 · عناصر البيانات الحرجة</b><small>ليس كل عمود حرجًا: العنصر الحرج يخدم قرارات عدة أو قرارًا عالي الأثر، وله مالك، وبه تبدأ خطة الجودة</small></div></div><div class="item"><div><b>الجلسة 3 · قواعد قابلة للقياس</b><small>القاعدة تذكر المتطلب والعنصر والبعد والنطاق والطريقة والمقياس ومعيار الاجتياز وحد التصعيد والتكرار والمالك، والقواعد التي يقترحها مساعد تُراجع قاعدةً قاعدة</small></div></div><div class="item"><div><b>الجلسة 4 · العتبات والتفاوتات والاستثناءات</b><small>معيار الاجتياز يأتي من حاجة الاستخدام، وخط الأساس يقول كم نبعد عنه، وحد التصعيد يفصل التنبيه عن الإنذار، والاستثناء يُكتب بمدة ومالك</small></div></div></div>
+  <aside class="notes"><p>اليوم الأول من المتطلبات إلى القواعد: نقيس فرق التقرير، ونختار ما يستحق القياس، ونكتب القواعد، ونضع عتباتها. التنميط والتشغيل غدًا، والمشكلات والذكاء الاصطناعي بعد غد، ثم يوم المشروع الختامي.</p></aside>
+</section>
+
+<section class="slide" id="setup-check" data-lo="LO1" data-n="3">
+  <div class="kicker">قبل أن نبدأ</div>
+  <h2>أمر واحد يثبت أن أدواتك جاهزة</h2>
+  <div class="cols cols-2">
+    <div class="stack">
+      <p class="small">من مجلد <code>labs</code> في نسخة المقرر:</p>
+      <pre class="code" data-file="الطرفية"><code>uv run kit/sql.py "SELECT count(*) FROM centres"</code></pre>
+      <p class="small">الجواب المنتظر: <b>1000</b>. أول تشغيل ينزّل محرك DuckDB ومكتبة واحدة، ولا نموذج.</p>
+    </div>
+    <ul class="bullets small">
+      <li>جدول بيانات لأوراق القواعد والبطاقة: LibreOffice Calc أو غيره</li>
+      <li>من أنهى العمل التحضيري: <code>uv run kit/check_prework.py files/prework/sql_drills.sql</code></li>
+      <li>لا حساب في أي خدمة، ولا مفتاح، ولا تنزيل نموذج</li>
+    </ul>
+  </div>
+  <div class="callout note mt small"><b>قاعدة المقرر للذكاء الاصطناعي.</b> جداول الحالة مصنفة «مقيد»: لا تدخل أي أداة ذكاء اصطناعي توليدي. يدخلها ما تكتبه بكلماتك فقط.</div>
+  <aside class="notes"><p>اطلب من الجميع تشغيل الأمر الآن. الأعطال المعتادة: uv غير مثبت (رابط التثبيت في README المختبرات)، أو التشغيل من خارج مجلد labs، أو جهاز يمنع التنزيل: عندها يعمل المشارك مع زميل. البديل دون تثبيت: Google Colab بأمر pip لمكتبتي duckdb وpyyaml ثم الأمر نفسه.</p><p>القاعدة مأخوذة من مبادئ الذكاء الاصطناعي التوليدي للجهات الحكومية: لا شيء مصنف «مقيد» فأعلى في أي أداة ذكاء اصطناعي توليدي.</p><p>المصادر: سدايا، مبادئ الذكاء الاصطناعي التوليدي للجهات الحكومية (2025).</p></aside>
+</section>
+
+<!-- الجلسة 1 -->
+
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="4">
+  <div class="kicker">الجلسة 1</div>
+  <h1>الجودة صلاحية لاستخدام محدد</h1>
+  <ul class="bullets outcomes"><li>يعيد حساب رقم منشور من المصدر بالتعريف المعتمد</li><li>يقدّر أثر الفرق في التكلفة والخدمة بأرقام</li><li>يفرّق بين الفرق المقيس وسببه الذي لم يُعرف بعد</li></ul>
+  <div class="sess-no">01</div>
+</section>
+
+<section class="slide" id="akmam-problem" data-lo="LO1 LO6" data-n="5" data-session="1">
+  <div class="kicker">هيئة أكمام</div>
+  <h2>تقرير شهري لا يطابق مصدره، وزيارات تصل إلى المدينة الخطأ</h2>
+  <div class="cols cols-3">
+    <div class="card c-navy"><h4>ما تفعله الهيئة</h4><p class="small mb0">ترخّص مراكز رعاية الأطفال والحضانات المنزلية في خمس مدن، ويزورها مفتشوها كل سنة.</p></div>
+    <div class="card c-coral"><h4>ما يقلقها</h4><p class="small mb0">رقم الرخص والمقاعد في التقرير الشهري أعلى مما يجده الموظفون، ويُرصد عليه دعم المقاعد.</p></div>
+    <div class="card c-teal"><h4>دورك</h4><p class="small mb0">محلل جودة في مكتب إدارة البيانات: برنامج جودة لمجال الترخيص في ثلاثة أيام.</p></div>
+  </div>
+  <p class="small muted mt">الهيئة والمدن والأشخاص والبيانات كلها افتراضية.</p>
+  <aside class="notes"><p>قدّم الأشخاص من موجز الحالة (files/case_brief.txt): د. نجلاء المديهيم رئيسة المكتب، ووليد الدغريري مالك بيانات الترخيص، وابتسام الهزازي المشرفة، ومهند الوهيبي المشرف الفني، وخلود العويدي صاحبة التقرير، وبدر الوداعي رئيس التفتيش، ورقية الدخيل الله قائدة برنامج الذكاء الاصطناعي.</p><p>الأمثلة على الشرائح من سجل آخر في الهيئة نفسها: تصاريح مقدمي الرعاية. المختبرات على الترخيص، فلا تكشف شريحة جواب مختبر.</p></aside>
+</section>
+
+<section class="slide" id="fitness-for-use" data-lo="LO1" data-n="6" data-session="1">
+  <div class="kicker">ما الجودة</div>
+  <h2>الجودة صلاحية البيانات لاستخدام محدد، لا صفة فيها وحدها</h2>
+  <div class="cols cols-2">
+    <div class="card tint c-teal"><h4>العمود نفسه، استخدامان</h4><p class="small mb0">تاريخ انتهاء التصريح صالح لعدّ التصاريح السنوية حتى لو تأخر إدخاله أسبوعًا، وغير صالح لمنع مقدم رعاية من العمل في يوم انتهائه.</p></div>
+    <div class="card tint c-purple"><h4>كما يقولها المعيار الوطني</h4><p class="small mb0">مجال جودة البيانات في الضوابط الوطنية غايته أن تكون البيانات صالحة للغرض بحسب متطلبات من يستهلكها.</p></div>
+  </div>
+  <div class="callout tip mt"><b>السؤال الأول دائمًا.</b> صالحة لماذا، ولمن؟ قبل أن تسأل: هل البيانات جيدة؟</div>
+  <aside class="notes"><p>اسأل القاعة: هل يمكن أن تكون البيانات «جيدة» لقسم و«سيئة» لآخر؟ نعم، والأمثلة تكثر في الجهات. لذلك تبدأ كل قاعدة في هذا المقرر بمتطلب مستهلك.</p><p>المصادر: مكتب إدارة البيانات الوطنية، الضوابط والمواصفات، مجال جودة البيانات (وصف المجال في القسم 9.3).</p></aside>
+</section>
+
+<section class="slide" id="six-dimensions-recap" data-lo="LO1" data-n="7" data-session="1">
+  <div class="kicker">تذكير من LDS-DMG-101</div>
+  <h2>ستة أبعاد، ولكل بعد سؤال عن السجل</h2>
+  <table class="t small">
+    <tr><th>البعد</th><th>السؤال</th><th>في سجل التصاريح</th></tr>
+    <tr><td>الاكتمال</td><td>هل القيمة اللازمة موجودة؟</td><td>هل لكل تصريح تاريخ شهادة إسعافات؟</td></tr>
+    <tr><td>التفرد</td><td>هل يتكرر ما يجب ألا يتكرر؟</td><td>هل سُجل التصريح مرتين؟</td></tr>
+    <tr><td>التوقيت</td><td>هل القيمة حديثة ومتاحة حين تُطلب؟</td><td>هل أُدخل التصريح يوم صدوره؟</td></tr>
+    <tr><td>الصلاحية</td><td>هل تطابق الصيغة والنوع والمدى؟</td><td>هل نوع التصريح FULL أو ASSIST؟</td></tr>
+    <tr><td>الدقة</td><td>هل تطابق الواقع؟</td><td>هل الشهادة صدرت فعلًا في ذلك اليوم؟</td></tr>
+    <tr><td>الاتساق</td><td>هل تتفق القيمة مع غيرها؟</td><td>هل التصريح «ساري» وتاريخه لم ينته؟</td></tr>
+  </table>
+  <aside class="notes"><p>شريحة تذكير واحدة: الأبعاد درسوها في LDS-DMG-101. الأسماء هنا كما يكتبها دليل المقررات (التفرد، التوقيت)؛ النسخة العربية من الضوابط الوطنية تسمي البعدين «الانفراد» و«الجدة»، وسمّى LDS-DMG-101 التوقيت «الآنية»؛ والمعنى واحد.</p><p>اسأل: أي بعد أصعب قياسًا؟ الدقة، لأنها تحتاج مرجعًا من خارج الجدول. نعود إليها في الجلسة 3 وفي اليوم الثاني.</p><p>المصادر: الضوابط الوطنية، المواصفة DQ.2.1 (تعريفات الأبعاد الستة).</p></aside>
+</section>
+
+<section class="slide" id="recount-by-definition" data-lo="LO1 LO6" data-n="8" data-session="1">
+  <div class="kicker">رقم منشور أمام مصدره</div>
+  <h2>أعد حساب الرقم من المصدر بتعريفه المعتمد، ثم قارن</h2>
+  <div class="flow">
+    <div class="step c-navy"><b>1 · التعريف</b>من وثيقة المنهجية، لا من الذاكرة</div>
+    <div class="arrow">←</div>
+    <div class="step c-teal"><b>2 · الشروط</b>حالة، وتاريخ، ومرة لكل كيان</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>3 · إعادة الحساب</b>استعلام على الجداول المصدر</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>4 · الفرق</b>لكل فئة، بالعدد والنسبة</div>
+  </div>
+  <div class="callout note mt small"><b>إذا لم توجد منهجية مكتوبة</b> فهذه أول مشكلة جودة: لا يمكن الحكم على رقم بلا تعريف.</div>
+  <aside class="notes"><p>اشرح أن التعريف يتحول إلى شروط على أعمدة: «ساري» تعني حالة وتاريخًا معًا، و«عدد المراكز» يعني عدًا مميزًا لا عدّ صفوف.</p><p>في المختبر تفعل ذلك بتقرير أكتوبر للترخيص؛ الشريحة التالية مثال من سجل التصاريح.</p></aside>
+</section>
+
+<section class="slide" id="permits-recount" data-lo="LO1" data-n="9" data-session="1">
+  <div class="kicker">مثال: سجل التصاريح</div>
+  <h2>التقرير يقول 786 تصريحًا ساريًا، والتعريف يعطي 765</h2>
+  <div class="cols cols-21 mid">
+    <pre class="code s" data-file="kit/sql.py"><code>SELECT count(*) FILTER (WHERE status = 'ACTIVE') AS report,
+       count(DISTINCT permit_no) FILTER (
+         WHERE status = 'ACTIVE'
+           AND expiry_date >= DATE '2026-10-31') AS by_definition
+FROM 'files/examples/permits.csv';</code></pre>
+    <div class="stat center"><div class="big">21</div><div class="lbl">تصريحًا زائدًا في التقرير، 2.7%</div></div>
+  </div>
+  <p class="small mt">التقرير يعد كل صف حالته ACTIVE؛ التعريف يشترط ألا ينتهي التاريخ، ويعد التصريح مرة واحدة.</p>
+  <aside class="notes"><p>شغّل الاستعلام أمامهم من مجلد labs: <code>uv run kit/sql.py -f</code> مع ملف فيه الاستعلام، أو انسخه في سطر واحد. الأرقام من الملف files/examples/permits.csv (1509 صفوف).</p><p>لا تشرح سبب الفرق هنا: الفكرة أن الفرق يُقاس قبل أن يُفسَّر. التفسير عمل التنميط.</p></aside>
+</section>
+
+<section class="slide" id="gap-is-not-cause" data-lo="LO1 LO6" data-n="10" data-session="1">
+  <div class="kicker">الفرق والسبب</div>
+  <h2>الفرق يقول إن هناك مشكلة، ولا يقول أين</h2>
+  <div class="cols cols-2">
+    <div class="card flat c-coral"><h4>ما يغري</h4><p class="small mb0">«الفرق 21 إذن هناك 21 تصريحًا مكررًا.» تخمين يُكتب في البريد ويصبح حقيقة.</p></div>
+    <div class="card flat c-teal"><h4>ما يُكتب</h4><p class="small mb0">«الفرق 21 (2.7%) في التصاريح السارية، وسببه لم يُعرف بعد؛ التنميط هذا الأسبوع.»</p></div>
+  </div>
+  <div class="callout warn mt"><b>والتعريف لا يحمي من كل شيء.</b> قد يطابق الرقمُ تعريفه ويبقى خاطئًا: إذا كانت قيمة في المصدر نفسه خاطئة.</div>
+  <aside class="notes"><p>هذه أمانة التقرير التي يطلبها دليل المقررات في الاستخدام المسؤول: لا تذكر سببًا لم تثبته. ستطلب الخطوة الخامسة من المختبر ثلاثة أسطر بهذه الروح.</p></aside>
+</section>
+
+<section class="slide" id="impact-chain" data-lo="LO6" data-n="11" data-session="1">
+  <div class="kicker">التكلفة والخدمة</div>
+  <h2>ضعف الجودة يكلف حين يصل إلى قرار</h2>
+  <div class="flow">
+    <div class="step c-navy"><b>القيمة الخاطئة</b>تصريح منتهٍ يظهر ساريًا</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>القرار</b>جدول المناوبات يحسب مقدم الرعاية</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>الأثر</b>نقص فعلي في الكادر، أو مخالفة في التفتيش</div>
+  </div>
+  <table class="t small mt">
+    <tr><th>نوع الأثر</th><th>كيف يُقدَّر</th></tr>
+    <tr><td>مال</td><td>الفرق × سعر الوحدة × المدة</td></tr>
+    <tr><td>خدمة</td><td>طلبات أو زيارات تأخرت، وأيام التأخير</td></tr>
+    <tr><td>ثقة وامتثال</td><td>رقم منشور يُصحَّح علنًا، أو مخالفة لضابط</td></tr>
+  </table>
+  <aside class="notes"><p>اطلب مثالًا من القاعة لكل صف. الأثر المالي أسهل في الإقناع، وأثر الخدمة أقرب إلى الناس. في المختبر تحسب الأثر المالي لفرق المقاعد بدعم المقعد الشهري المذكور في منهجية التقرير.</p></aside>
+</section>
+
+<section class="slide" id="check-report-gap" data-lo="LO1 LO6" data-n="12" data-session="1">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>ماذا تكتب لمالكة التقرير؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO1 LO6" data-id="check-report-gap-q1">
+    <p class="lead">أعدت حساب تصاريح مقدمي الرعاية السارية بالتعريف المعتمد فوجدت 765، والتقرير المنشور 786. لم تبحث بعدُ في الصفوف. أي رسالة أصح؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يقدّم سببًا لم يُثبت باستعلام، فيصبح التخمين حقيقة في البريد" data-k="أ">في التقرير 21 تصريحًا مكررًا يجب حذفها</div>
+      <div class="opt" data-ok data-k="ب">التقرير أعلى بـ 21 تصريحًا (2.7%)، والسبب قيد التنميط</div>
+      <div class="opt" data-why="يرى الفرق صغيرًا فيُسقطه، مع أن الرقم يقود جدول المناوبات" data-k="ج">الفرق أقل من 3%، فلا حاجة لإبلاغ أحد</div>
+      <div class="opt" data-why="يفترض أن المصدر صحيح دائمًا، والمصدر قد يحمل الخطأ نفسه" data-k="د">انشر رقم المصدر 765 مكان رقم التقرير فورًا، وأبلغ القراء بالتصحيح</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الرسالة تذكر الفرق بالعدد والنسبة وتقول بأمانة ما لم يُعرف بعد. السبب يُكتب حين يثبته استعلام.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ب. من اختار «د» ذكّره بالشريحة السابقة: التعريف لا يحمي من قيمة خاطئة في المصدر نفسه. من اختار «ج»: النسبة الصغيرة قد تكون عشرات الأشخاص في جدول المناوبات.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-1" data-auto="lab" data-lab="1.1" data-label="المختبر 1.1" data-n="13" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.1 · 35 دقيقة</div><h2>التقرير أمام المصدر</h2><p class="lead small">تعيد حساب الرخص السارية والمقاعد المرخصة لكل مدينة من الجداول المصدر بتعريف التقرير نفسه، وتقيس الفرق عن تقرير أكتوبر، وتقدّر أثره في دعم المقاعد للربع القادم.</p><a class="nb" href="../labs/D1_1_report_gap.html">D1_1_report_gap.html</a></div><ul class="checklist"><li>اقرأ منهجية التقرير وحوّل التعريف إلى شروط <span class="min">5 د</span></li><li>أعد حساب الرخص السارية لكل مدينة بالتعريف <span class="min">10 د</span></li><li>أعد حساب المقاعد واحسب الفرقين لكل مدينة <span class="min">8 د</span></li><li>قدّر أثر فرق المقاعد في دعم الربع القادم <span class="min">7 د</span></li><li>اكتب ثلاثة أسطر لرئيسة التقارير <span class="min">5 د</span></li><li class="stretch">✱ إضافي: سمِّ سببين قد يبقى بهما الرقم خاطئًا حتى لو طابق التقرير التعريف تمامًا</li></ul></div>
+  <aside class="notes"><p>البداية من day1/report_2026_10.csv وday1/report_method.txt والجداول في data/. راقب من يعد صفوفًا بدل المنشآت ومن ينسى شرط التاريخ. لا تجب عن «لماذا» الفرق: قل «غدًا».</p><p>من يتعثر في SQL: أعطه هيكل الاستعلام في الخطوة 2 من صفحة المختبر، والعمل التحضيري فيه أمثلة ربط وتجميع.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-1" data-label="بعد المختبر 1.1" data-lo="LO1 LO6" data-n="14" data-session="1">
+  <div class="kicker">بعد المختبر 1.1</div>
+  <h2>التقرير أعلى من تعريفه في المدن الخمس</h2>
+  <div class="cols cols-3">
+    <div class="stat center"><div class="big">78</div><div class="lbl">رخصة زائدة: 931 في التقرير، 853 بالتعريف</div></div>
+    <div class="stat center"><div class="big">4,300</div><div class="lbl">مقعد زائد: 58,341 أمام 54,041</div></div>
+    <div class="stat center"><div class="big">4.63</div><div class="lbl">مليون ريال تُرصد زيادةً في الربع</div></div>
+  </div>
+  <div class="callout note mt small"><b>اتجاه واحد في كل المدن</b> يوحي بسبب منهجي لا بخطأ إدخال عشوائي. ما هو؟ غدًا.</div>
+  <aside class="notes"><p>الأرقام من uv run solutions/check.py 1.1. أكبر فرق في الرخص والمقاعد في السرو (24 رخصة و1,878 مقعدًا). الأثر الشهري 1,543,010 ريالات بدعم 350 للمقعد في المدن الكبرى و420 في الشوحط والأثاب.</p><p>اسأل عن التمرين الإضافي، ولا تؤكد الإجابات: اكتبها على اللوح لتعودوا إليها بعد التنميط.</p></aside>
+</section>
+
+<!-- الجلسة 2 -->
+
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="15">
+  <div class="kicker">الجلسة 2</div>
+  <h1>عناصر البيانات الحرجة</h1>
+  <ul class="bullets outcomes"><li>يستخرج من المتطلبات العناصر التي يعتمد عليها كل قرار</li><li>يختار العناصر الحرجة بمعيار مكتوب</li><li>يسمّي لكل عنصر حرج مالكه ومشرفه</li></ul>
+  <div class="sess-no">02</div>
+</section>
+
+<section class="slide" id="not-every-column" data-lo="LO1" data-n="16" data-session="2">
+  <div class="kicker">أين نبدأ</div>
+  <h2>لا تقيس كل عمود: ابدأ بما تبنى عليه القرارات</h2>
+  <div class="cols cols-3">
+    <div class="stat center"><div class="big">35</div><div class="lbl">عمودًا في الجداول الأربعة للترخيص</div></div>
+    <div class="stat center"><div class="big">14</div><div class="lbl">متطلبًا من خمسة مستهلكين</div></div>
+    <div class="stat center"><div class="big">10</div><div class="lbl">عناصر نبدأ بها البرنامج</div></div>
+  </div>
+  <p class="small mt">جهد الجودة محدود: قاعدة لكل عمود تعني تنبيهات لا يقرؤها أحد، وأعمدة مهمة تضيع بين غيرها.</p>
+  <aside class="notes"><p>الأرقام من ملفي day1/data_dictionary.csv وday1/requirements.csv. العشرة اختيار هذا المقرر للبدء، لا حد في المعيار. الضوابط الوطنية تطلب ترتيب البيانات بحسب أهميتها لإدارة الجودة قبل التقييم الأول.</p></aside>
+</section>
+
+<section class="slide" id="what-makes-critical" data-lo="LO1" data-n="17" data-session="2">
+  <div class="kicker">عنصر البيانات الحرج</div>
+  <h2>العنصر حرج إذا انكسر انكسر معه قرار مهم</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>مستهلكون كثيرون</h4><p class="small mb0">يخدم متطلبين أو أكثر من جهات مختلفة.</p></div>
+    <div class="card c-coral"><h4>قرار عالي الأثر</h4><p class="small mb0">سلامة الناس، أو مال، أو رقم منشور.</p></div>
+    <div class="card c-purple"><h4>التزام نظامي</h4><p class="small mb0">يطلبه نظام أو ضابط أو اتفاقية.</p></div>
+    <div class="card c-cyan"><h4>يدخل نموذجًا</h4><p class="small mb0">يتعلم منه نظام ذكاء اصطناعي أو يجيب منه.</p></div>
+  </div>
+  <aside class="notes"><p>عنصر واحد قد يكفيه معيار واحد من الأربعة إذا كان القرار خطيرًا. اكتب معيارك قبل أن تختار، وإلا اخترت ما يسهل قياسه.</p></aside>
+</section>
+
+<section class="slide" id="requirement-to-elements" data-lo="LO1" data-n="18" data-session="2">
+  <div class="kicker">من المتطلب إلى العناصر</div>
+  <h2>المتطلب يُقرأ بسؤال: ما الأعمدة التي لا يتحقق دونها؟</h2>
+  <div class="card tint c-navy">
+    <h4>متطلب في سجل التصاريح</h4>
+    <p class="small">«لا يعمل مقدم رعاية بتصريح كامل إلا إذا كانت شهادة إسعافاته سارية.»</p>
+    <div class="cols cols-3 mt-s">
+      <div class="card c-teal"><h4>permit_type</h4><p class="small mb0">أي تصريح هو «كامل»</p></div>
+      <div class="card c-teal"><h4>status و expiry_date</h4><p class="small mb0">هل التصريح يعمل اليوم</p></div>
+      <div class="card c-teal"><h4>first_aid_date</h4><p class="small mb0">متى صدرت الشهادة</p></div>
+    </div>
+  </div>
+  <aside class="notes"><p>المثال من سجل التصاريح، لا من الترخيص. لاحظ أن المتطلب الواحد يحتاج أربعة أعمدة، ومعها قاعدة ضمنية: الشهادة سارية سنتين.</p><p>في المختبر تفعل هذا لأربعة عشر متطلبًا، ثم تقلب الجدول: لكل عمود كم متطلبًا يخدم.</p></aside>
+</section>
+
+<section class="slide" id="element-matrix" data-lo="LO1" data-n="19" data-session="2">
+  <div class="kicker">اقلب الجدول</div>
+  <h2>عدّ المستهلكين لكل عنصر، ثم اسأل عن أخطر قراراته</h2>
+  <table class="t small">
+    <tr><th>العنصر في سجل التصاريح</th><th class="num">متطلبات</th><th>أخطر قرار</th><th>حرج؟</th></tr>
+    <tr class="hl"><td>status</td><td class="num">4</td><td>من يُحسب في المناوبة</td><td>نعم</td></tr>
+    <tr class="hl"><td>first_aid_date</td><td class="num">2</td><td>سلامة الأطفال</td><td>نعم</td></tr>
+    <tr><td>training_hours</td><td class="num">1</td><td>تقرير التدريب السنوي</td><td>لاحقًا</td></tr>
+    <tr><td>caregiver_id</td><td class="num">3</td><td>ربط التصريح بالشخص</td><td>نعم</td></tr>
+  </table>
+  <aside class="notes"><p>جدول توضيحي لسجل التصاريح: عدد المتطلبات مثال من هذه الشريحة لا من ملف. «لاحقًا» قرار مشروع: العنصر يدخل حين يكبر أثره. اطلب من المشاركين أن يكتبوا معيارًا يفسر الأعمدة الأربعة.</p></aside>
+</section>
+
+<section class="slide" id="prioritise-first" data-lo="LO1 LO6" data-n="20" data-session="2">
+  <div class="kicker">في الضوابط الوطنية</div>
+  <h2>ترتيب البيانات بحسب أهميتها قبل أول تقييم للجودة</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>نتيجة الترتيب قائمة مرتبة يتبعها التقييم الأولي</li>
+      <li>الأولوية الأولى تشمل البيانات الرئيسة للجهة على الأقل</li>
+      <li>ثم خطة جودة بخارطة طريق وموارد</li>
+    </ul>
+    <div class="card c-purple"><h4>في هيئة أكمام</h4><p class="small mb0">المنشأة والرخصة بيانات رئيسة: تُرجع إليها كل الزيارات والطلبات. عناصرهما تتصدر القائمة.</p></div>
+  </div>
+  <aside class="notes"><p>هذه إعادة صياغة للمواصفتين DQ.1.1 وDQ.1.2: الترتيب يخرج قائمة مرتبة، وأولويتها الأولى تشمل البيانات الرئيسة على الأقل، وخطة الجودة فيها خارطة طريق وتخصيص للموارد والميزانية.</p><p>المصادر: الضوابط الوطنية، مجال جودة البيانات، الضابط DQ.1 (التخطيط).</p></aside>
+</section>
+
+<section class="slide" id="owner-and-steward" data-lo="LO1" data-n="21" data-session="2">
+  <div class="kicker">من يملك العنصر</div>
+  <h2>المالك يقرر مستوى الجودة، والمشرف يتابعه كل يوم</h2>
+  <div class="cols cols-2">
+    <div class="card c-navy"><h4>مالك البيانات</h4><p class="small mb0">يعتمد العتبة، ويقبل الاستثناء، ويُصعَّد إليه. في التصاريح: مديرة شؤون الكوادر.</p></div>
+    <div class="card c-teal"><h4>مشرف بيانات الأعمال</h4><p class="small mb0">يقرأ نتائج الفحص، ويفتح المشكلة، ويتابع إصلاحها.</p></div>
+  </div>
+  <div class="callout warn mt small"><b>عنصر بلا مالك</b> لا تُعتمد له عتبة، ولا يتحرك أحد حين يفشل.</div>
+  <aside class="notes"><p>تذكير من LDS-DMG-101 (والتفصيل لمن درس LDS-DMG-201). في الترخيص المالك وليد الدغريري لعناصر الرخص والمنشآت، وبدر الوداعي لعناصر التفتيش، والمشرفة ابتسام الهزازي. «مديرة شؤون الكوادر» في سجل التصاريح دور مثال لا اسم.</p></aside>
+</section>
+
+<section class="slide" id="easy-to-measure-trap" data-lo="LO1" data-n="22" data-session="2">
+  <div class="kicker">أين يقع الخطأ</div>
+  <h2>القائمة التي تختار ما يسهل قياسه تفوّت ما يهم</h2>
+  <div class="cols cols-2">
+    <div class="card flat c-coral"><h4>اختيار سهل</h4><ul class="bullets tight small"><li>أعمدة المعرّفات لأن فحصها بسيط</li><li>كل عمود فيه فراغات</li><li>ما يطلبه أعلى صوت</li></ul></div>
+    <div class="card flat c-teal"><h4>اختيار بمعيار</h4><ul class="bullets tight small"><li>ما تبنى عليه قرارات كثيرة أو خطيرة</li><li>ولو كان قياسه صعبًا، مثل دقة العنوان</li><li>مع سطر سبب لكل اختيار</li></ul></div>
+  </div>
+  <aside class="notes"><p>الدقة مثال جيد: قياسها يحتاج مرجعًا أو زيارة، ولذلك يتجنبها الناس. لكن عنصرًا يوجّه المفتش إلى مدينة لا يُترك لأن قياسه صعب. غدًا نرى كيف تُقاس الدقة بعينة.</p></aside>
+</section>
+
+<section class="slide" id="check-critical" data-lo="LO1" data-n="23" data-session="2">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>أي عنصر يدخل القائمة؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO1" data-id="check-critical-q1">
+    <p class="lead">في سجل التصاريح أربعة أعمدة مرشحة، ومكانك لعنصر واحد. أيها أولى بالدخول؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يختار ما يكثر فيه الفراغ، والفراغ وحده لا يجعل العنصر حرجًا" data-k="أ">ملاحظات المشرف، لأن نصف خاناتها فارغة فهي الأسوأ اكتمالًا</div>
+      <div class="opt" data-why="يختار ما يسهل فحصه، لا ما يقوم عليه قرار" data-k="ب">رقم التصريح، لأن فحص صيغته أسهل</div>
+      <div class="opt" data-ok data-k="ج">تاريخ شهادة الإسعافات، لأن عليه يقوم قرار سلامة</div>
+      <div class="opt" data-why="يخلط الاستخدام الداخلي الواحد بالأثر الكبير" data-k="د">ساعات التدريب، لأنها في التقرير السنوي للتدريب</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> العنصر يُختار بأثر القرار المبني عليه: هنا هل يعمل مقدم الرعاية مع الأطفال اليوم.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ج. رقم التصريح مهم أيضًا، وقد يكون العنصر الحادي عشر؛ لكن السؤال عن الأولى بالمكان الواحد، والسبب المذكور معه (سهولة الفحص) خاطئ.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-2" data-auto="lab" data-lab="1.2" data-label="المختبر 1.2" data-n="24" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.2 · 35 دقيقة</div><h2>عشرة عناصر حرجة</h2><p class="lead small">من أربعة عشر متطلبًا لخمسة مستهلكين تختار عشرة عناصر بيانات حرجة في مجال الترخيص، ولكل منها المتطلبات التي يخدمها ومالكه ومشرفه وسبب اختياره.</p><a class="nb" href="../labs/D1_2_critical_elements.html">D1_2_critical_elements.html</a></div><ul class="checklist"><li>اقرأ المتطلبات وحدد العناصر التي يحتاجها كل منها <span class="min">10 د</span></li><li>عدّ المستهلكين والقرارات لكل عنصر <span class="min">6 د</span></li><li>اختر عشرة عناصر حرجة بمعيار مكتوب <span class="min">9 د</span></li><li>سمِّ المالك والمشرف لكل عنصر <span class="min">5 د</span></li><li>قارن قائمتك بقائمة زميل وسجّل خلافًا واحدًا <span class="min">5 د</span></li><li class="stretch">✱ إضافي: اختر عنصرًا تركته خارج القائمة واكتب ما الذي يجعله حرجًا في السنة القادمة</li></ul></div>
+  <aside class="notes"><p>البداية من day1/requirements.csv وday1/data_dictionary.csv. راقب من يعد عناصر لا يحتاجها متطلب، ومن ينسى المالك. المساعد مرشد: يسأله المشارك عن المعايير، لا عن القائمة.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-2" data-label="بعد المختبر 1.2" data-lo="LO1" data-n="25" data-session="2">
+  <div class="kicker">بعد المختبر 1.2</div>
+  <h2>العشرة المرجعية: أربعة من الرخصة، وأربعة من المنشأة، واثنان من الزيارة</h2>
+  <div class="cols cols-3">
+    <div class="card c-navy"><h4>الرخصة</h4><p class="small mb0">رقمها، وحالتها، وتاريخ انتهائها، ومقاعدها.</p></div>
+    <div class="card c-teal"><h4>المنشأة</h4><p class="small mb0">نوعها، ومدينتها، ورمزها البريدي، وحيّها.</p></div>
+    <div class="card c-purple"><h4>الزيارة</h4><p class="small mb0">نتيجتها وتاريخها.</p></div>
+  </div>
+  <p class="small mt">خارجها: تاريخ التقديم والقرار (مؤشر داخلي واحد)، ورمز المالك، ورقم المبنى، ورمز المفتش، والدرجة.</p>
+  <aside class="notes"><p>القائمة في day1/cde_list.csv، وكل عنصر يخدم متطلبين أو أكثر. الخلاف المقبول: من أدخل تاريخ التقديم لأن مدة المعالجة قد تُنشر. اسأل من أدخل عنصرًا آخر عن معياره.</p></aside>
+</section>
+
+<!-- الجلسة 3 -->
+
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="26">
+  <div class="kicker">الجلسة 3</div>
+  <h1>قواعد قابلة للقياس</h1>
+  <ul class="bullets outcomes"><li>يكتب قاعدة كاملة الحقول لعنصر حرج</li><li>يحوّل متطلبًا مكتوبًا إلى شرط يُفحص صفًا صفًا</li><li>يراجع قواعد اقترحها مساعد ويقبل أو يعدّل أو يرفض بسبب</li></ul>
+  <div class="sess-no">03</div>
+</section>
+
+<section class="slide" id="rule-anatomy" data-lo="LO1" data-n="27" data-session="3">
+  <div class="kicker">ما تطلبه الضوابط الوطنية</div>
+  <h2>القاعدة وثيقة لها صاحب، ومتطلب، وبعد، ومقياس، وحد تصعيد</h2>
+  <div class="cols cols-2">
+    <ul class="bullets small">
+      <li><b>صاحب القاعدة:</b> محلل جودة البيانات الذي عرّفها</li>
+      <li><b>وصف الأعمال</b> للمتطلب الذي تتحقق منه</li>
+      <li><b>البعد</b> من الأبعاد الستة</li>
+      <li><b>السمات</b> التي تفحصها</li>
+    </ul>
+    <ul class="bullets small">
+      <li><b>المقياس:</b> مثل الصفوف المملوءة ÷ كل الصفوف</li>
+      <li><b>حد التصعيد</b> الذي يطلق تنبيهًا، مثل أقل من 90%</li>
+      <li>ونضيف في المقرر: النطاق، ومعيار الاجتياز، والتكرار، ومالك البيانات</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>البنود الستة الأولى إعادة صياغة للمواصفة DQ.2.1 (تطوير قواعد جودة البيانات)، ومنها مثال المقياس ومثال حد التصعيد. لاحظ أن «صاحب القاعدة» في المواصفة هو محلل الجودة، وهو غير مالك البيانات: الأول يعرّف القاعدة، والثاني يعتمد مستوى الجودة.</p><p>المصادر: الضوابط الوطنية، المواصفة DQ.2.1.</p></aside>
+</section>
+
+<section class="slide" id="wish-vs-condition" data-lo="LO1" data-n="28" data-session="3">
+  <div class="kicker">من المتطلب إلى الشرط</div>
+  <h2>القاعدة شرط يُفحص صفًا صفًا، لا أمنية</h2>
+  <div class="cols cols-2">
+    <div class="card flat c-coral"><h4>أمنية</h4><p class="small mb0">«يجب أن تكون شهادات الإسعافات محدثة.»</p></div>
+    <div class="card flat c-teal"><h4>شرط</h4><p class="small mb0">«لكل تصريح FULL ساري: first_aid_date بعد اليوم ناقص سنتين.»</p></div>
+  </div>
+  <table class="t small mt">
+    <tr><th>الحقل</th><th>قيمته في المثال</th></tr>
+    <tr><td>النطاق</td><td>التصاريح FULL بحالة ACTIVE</td></tr>
+    <tr><td>الطريقة</td><td>first_aid_date ≥ تاريخ الفحص − 730 يومًا</td></tr>
+    <tr><td>المقياس</td><td>الصفوف الناجحة ÷ صفوف النطاق</td></tr>
+    <tr><td>معيار الاجتياز · حد التصعيد</td><td>100% · 98%</td></tr>
+  </table>
+  <aside class="notes"><p>اختبار سريع لكل قاعدة: هل يستطيع شخصان أن يشغّلاها على الملف نفسه فيحصلا على الرقم نفسه؟ إن لم يكن، فهي أمنية.</p><p>العتبة 100% هنا لأن القرار سلامة؛ في الجلسة 4 نرى متى تكون أقل.</p></aside>
+</section>
+
+<section class="slide" id="rule-types" data-lo="LO1" data-n="29" data-session="3">
+  <div class="kicker">أنواع الفحص</div>
+  <h2>كل بعد له أشكال قليلة تتكرر</h2>
+  <table class="t small">
+    <tr><th>البعد</th><th>شكل الفحص</th><th>مثال من سجل التصاريح</th></tr>
+    <tr><td>الاكتمال</td><td>غير فارغ في النطاق</td><td>first_aid_date للتصاريح FULL</td></tr>
+    <tr><td>الصلاحية</td><td>من قائمة، أو بصيغة، أو في مدى</td><td>permit_type من FULL وASSIST</td></tr>
+    <tr><td>التفرد</td><td>لا يتكرر المفتاح أو التركيب</td><td>permit_no مرة واحدة</td></tr>
+    <tr><td>الاتساق</td><td>عمود مع عمود، أو جدول مع جدول</td><td>ACTIVE وتاريخ لم ينته</td></tr>
+    <tr><td>التوقيت</td><td>فرق بين تاريخين</td><td>إدخال خلال يومي عمل من الإصدار</td></tr>
+    <tr><td>الدقة</td><td>مقابل مرجع أو الواقع</td><td>الشهادة في سجل جهة التدريب</td></tr>
+  </table>
+  <aside class="notes"><p>الأشكال الخمسة الأولى تُكتب على الجدول وحده. الدقة تحتاج شيئًا من خارجه: مرجعًا موثوقًا، أو عينة يُتحقق منها في الميدان. غدًا تقيس دقة مدينة الموقع بعينة.</p></aside>
+</section>
+
+<section class="slide" id="accuracy-needs-reference" data-lo="LO1" data-n="30" data-session="3">
+  <div class="kicker">أصعب الأبعاد</div>
+  <h2>الدقة لا يثبتها الجدول وحده</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>مرجع موثوق</h4><p class="small mb0">قائمة رموز، أو سجل رسمي تملك حق الاطلاع عليه.</p></div>
+    <div class="card c-cyan"><h4>دليل غير مباشر</h4><p class="small mb0">عمود آخر يلزم أن يتفق معه، مثل بادئة رمز يدل على منطقة.</p></div>
+    <div class="card c-purple"><h4>عينة ميدانية</h4><p class="small mb0">زيارة لعدد صغير مختار عشوائيًا، ثم تقدير بمجال ثقة.</p></div>
+  </div>
+  <div class="callout warn mt small"><b>انتبه للبيانات الشخصية.</b> المطابقة بسجل جهة أخرى نقل لبيانات شخصية: تحتاج أساسًا نظاميًا واتفاقية، لا قاعدة جودة فقط.</div>
+  <aside class="notes"><p>الخصوصية حين تمس الفحوص بيانات شخصية جزء من الاستخدام المسؤول في هذا المقرر. القاعدة التي تطابق رقم هوية بسجل خارجي ليست قرار محلل الجودة.</p><p>المصادر: الضوابط الوطنية (مجال حماية البيانات الشخصية)، ونظام حماية البيانات الشخصية، كما في LDS-DMG-101.</p></aside>
+</section>
+
+<section class="slide" id="ai-suggested-rules" data-lo="LO1" data-n="31" data-session="3">
+  <div class="kicker">قواعد يقترحها الذكاء الاصطناعي</div>
+  <h2>المساعد يقترح من أسماء الأعمدة ووصفها، وأنت تراجع كل قاعدة</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>ما يدخل المساعد</h4><ul class="bullets tight small"><li>أسماء الأعمدة ووصفها من القاموس</li><li>نص المتطلب بكلماتك</li><li>مسودة قاعدة كتبتها</li></ul></div>
+    <div class="card c-coral"><h4>ما لا يدخله</h4><ul class="bullets tight small"><li>صفوف الجداول ولو عينة</li><li>مخرجات الفحص التي فيها مفاتيح</li><li>أي شيء مصنف «مقيد» فأعلى</li></ul></div>
+  </div>
+  <aside class="notes"><p>في المختبر ثمانية اقتراحات مسجلة سلفًا من مساعد معتمد أُعطي أسماء الأعمدة ووصفها فقط (day1/assistant_note.txt)، فلا يحتاج أحد مساعدًا ليكمل. من يريد أن يجرب مساعدًا معتمدًا في جهته يعطيه القاموس فقط.</p><p>المصادر: سدايا، مبادئ الذكاء الاصطناعي التوليدي للجهات الحكومية.</p></aside>
+</section>
+
+<section class="slide" id="review-checklist" data-lo="LO1" data-n="32" data-session="3">
+  <div class="kicker">مراجعة الاقتراح</div>
+  <h2>أربعة أسئلة تقرر: قبول، أو تعديل، أو رفض</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · يُقاس؟</b>شرط وصفوف ومقياس</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>2 · في النطاق؟</b>عنصر حرج ومتطلب</div>
+    <div class="arrow">←</div>
+    <div class="step c-purple"><b>3 · يحترم الخصوصية؟</b>لا نقل ولا كشف بلا حاجة</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>4 · عتبته من الاستخدام؟</b>لا 100% لكل شيء</div>
+  </div>
+  <p class="small mt">مثال من سجل التصاريح: «لا يتكرر caregiver_id» تبدو قاعدة تفرد، لكن مقدم الرعاية قد يحمل تصريحين لمركزين. التعديل: «تصريح ساري واحد لكل مقدم رعاية في المركز الواحد».</p>
+  <aside class="notes"><p>اقتراحات المساعدات تبدو معقولة لأنها مكتوبة بثقة. أكثر ما يفوت المراجِع: قاعدة تفرد على عمود يتكرر مشروعًا، وقائمة رموز ناقصة، وعتبة 100% بلا سبب.</p></aside>
+</section>
+
+<section class="slide" id="check-rule" data-lo="LO1" data-n="33" data-session="3">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>أي صياغة قاعدة قابلة للتشغيل؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO1" data-id="check-rule-q1">
+    <p class="lead">متطلب مديرة شؤون الكوادر: «لا يُحسب في المناوبة إلا من تصريحه ساري.» أي صياغة قاعدة يمكن تشغيلها كما هي؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يكتب الغاية لا الشرط، فلا يعرف المحرك ما يفحصه" data-k="أ">بيانات التصاريح دقيقة ومحدثة دائمًا</div>
+      <div class="opt" data-why="يذكر العمود دون شرط ولا عتبة، فكل قيمة تمر" data-k="ب">عمود status في جدول التصاريح يُراجع شهريًا</div>
+      <div class="opt" data-why="يضع عتبة دون شرط يُفحص، والرقم وحده لا يقول ما يُعد ناجحًا" data-k="ج">نسبة التصاريح السارية في السجل لا تقل عن 95%</div>
+      <div class="opt" data-ok data-k="د">التصاريح بحالة ACTIVE تاريخ انتهائها لا يسبق يوم الفحص؛ الاجتياز 100% يوميًا</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> فيها نطاق وشرط على أعمدة ومعيار اجتياز وتكرار، فيشغّلها اثنان ويحصلان على الرقم نفسه.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: د. انتبه إلى «ج»: نسبة السارية ليست قاعدة جودة أصلًا، بل وصف للسجل؛ قد تكون 40% وكل الصفوف صحيحة.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-3" data-auto="lab" data-lab="1.3" data-label="المختبر 1.3" data-n="34" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.3 · 35 دقيقة</div><h2>قواعد لخدمة الترخيص</h2><p class="lead small">تكتب كتالوجًا من 15 قاعدة أو أكثر للعناصر العشرة، لكل منها معيار اجتياز ومالك، وتراجع ثماني قواعد اقترحها مساعد معتمد من أسماء الأعمدة ووصفها فقط.</p><a class="nb" href="../labs/D1_3_rules.html">D1_3_rules.html</a></div><ul class="checklist"><li>اكتب عشر قواعد بنفسك لخمسة عناصر <span class="min">12 د</span></li><li>راجع اقتراحات المساعد الثمانية: قبول أو تعديل أو رفض بسبب <span class="min">10 د</span></li><li>أضف ما قبلته وأكمل الكتالوج إلى 15 قاعدة <span class="min">8 د</span></li><li>تحقق أن لكل قاعدة معيار اجتياز ومالكًا وتكرارًا <span class="min">5 د</span></li><li class="stretch">✱ إضافي: اكتب لثلاث من قواعدك شرطها بلغة <span class="ltr" dir="ltr">SQL</span> كما سيكتبها محرك الفحص</li></ul></div>
+  <aside class="notes"><p>البداية من day1/cde_list.csv (القائمة المرجعية، فلا يعتمد أحد على المختبر 1.2) وday1/rules_template.csv وday1/assistant_suggestions.csv. المساعد مرشد: يسأله المشارك عن صياغة قاعدته، ويعطيه وصف العمود فقط.</p><p>راقب الكتالوجات التي تكثر من الاكتمال وتنسى الاتساق، والقواعد بلا معيار اجتياز. هذا الكتالوج دليل LO1.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-3" data-label="بعد المختبر 1.3" data-lo="LO1" data-n="35" data-session="3">
+  <div class="kicker">بعد المختبر 1.3</div>
+  <h2>من ثمانية اقتراحات: اثنان قُبلا، وأربعة عُدّلت، واثنان رُفضا</h2>
+  <table class="t small">
+    <tr><th>الحكم</th><th>الاقتراحات</th><th>السبب الغالب</th></tr>
+    <tr><td>رفض</td><td>S1، S2</td><td>بيانات شخصية تُنقل خارج النطاق؛ وأمنية لا تُقاس</td></tr>
+    <tr><td>تعديل</td><td>S5، S6، S7، S8</td><td>عتبة بلا استخدام؛ تفرد على ما يتكرر مشروعًا؛ شرط لا يميز؛ قائمة ناقصة</td></tr>
+    <tr class="hl"><td>قبول</td><td>S3، S4</td><td>تبعيتان صحيحتان بين عمودين وبين جدولين</td></tr>
+  </table>
+  <p class="small mt">الكتالوج المرجعي عشرون قاعدة على العناصر العشرة والأبعاد الستة، ويصلكم بداية مختبر الغد.</p>
+  <aside class="notes"><p>الأحكام في solutions/reference/suggestions_review.csv. الأكثر خطأً عادة S6 (التجديد يكرر المنشأة مشروعًا) وS8 (COND رمز صحيح). اسأل من قبِل S1 لماذا، وناقش الخصوصية.</p></aside>
+</section>
+
+<!-- الجلسة 4 -->
+
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="36">
+  <div class="kicker">الجلسة 4</div>
+  <h1>العتبات والتفاوتات والاستثناءات</h1>
+  <ul class="bullets outcomes"><li>يحسب خط الأساس من تاريخ القاعدة</li><li>يحدد معيار الاجتياز وحد التصعيد بسبب من الاستخدام</li><li>يكتب استثناءً بنطاق ومدة ومالك</li></ul>
+  <div class="sess-no">04</div>
+</section>
+
+<section class="slide" id="two-numbers" data-lo="LO1 LO6" data-n="37" data-session="4">
+  <div class="kicker">العتبة وخط الأساس</div>
+  <h2>المعيار يأتي من الاستخدام، وخط الأساس يقول كم نبعد عنه</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>معيار الاجتياز</h4><p class="small mb0">ما يحتاجه قرار المستهلك ليكون صحيحًا. يعتمده مالك البيانات.</p></div>
+    <div class="card c-navy"><h4>خط الأساس</h4><p class="small mb0">ما تحققه البيانات اليوم، من تاريخ القاعدة. يحسبه المحلل.</p></div>
+  </div>
+  <div class="callout warn mt"><b>الخطأ الشائع.</b> أن يصبح خط الأساس هو المعيار: تنجح القاعدة غدًا، ولا يتحسن شيء.</div>
+  <aside class="notes"><p>الفرق بين الرقمين هو حجم العمل. إذا كان المعيار 98 وخط الأساس 96، فالقاعدة تفشل اليوم، وهذا صحيح: الفشل هو الرسالة.</p></aside>
+</section>
+
+<section class="slide" id="escalation-band" data-lo="LO1 LO6" data-n="38" data-session="4">
+  <div class="kicker">التفاوت المسموح</div>
+  <h2>بين معيار الاجتياز وحد التصعيد منطقة تنبيه</h2>
+  <div class="bars">
+    <div class="row"><span>ناجحة: 98% فأكثر</span><div class="bar c-green" style="--w:100%"></div><span class="val">لا إجراء</span></div>
+    <div class="row"><span>تنبيه: من 95% إلى أقل من 98%</span><div class="bar c-amber" style="--w:96%"></div><span class="val">المشرف يتابع</span></div>
+    <div class="row"><span>تصعيد: أقل من 95%</span><div class="bar c-coral" style="--w:94%"></div><span class="val">المالك فورًا</span></div>
+  </div>
+  <p class="small mt">مثال: اكتمال تاريخ شهادة الإسعافات في سجل التصاريح اليوم <b>96.2%</b> (1452 من 1509): منطقة التنبيه.</p>
+  <aside class="notes"><p>الرقم 96.2% من ملف files/examples/permits.csv بالأمر profile.py (57 خانة فارغة). المعيار 98 والحد 95 مثالان على الشريحة. الضوابط الوطنية تطلب في كل قاعدة حد تصعيد يطلق تنبيهًا، ومثالها: تنبيه حين يقل المملوء عن 90%.</p><p>المصادر: الضوابط الوطنية، المواصفة DQ.2.1 البند 6.</p></aside>
+</section>
+
+<section class="slide" id="baseline-how" data-lo="LO1" data-n="39" data-session="4">
+  <div class="kicker">حساب خط الأساس</div>
+  <h2>اجمع الصفوف على السنة، ثم انظر إلى أسوأ شهر</h2>
+  <pre class="code s" data-file="kit/sql.py"><code>SELECT rule_id,
+       round(100.0 * sum(rows_passed) / sum(rows_checked), 2) AS pooled,
+       round(min(100.0 * rows_passed / rows_checked), 2)      AS worst_month
+FROM 'history.csv' GROUP BY 1;</code></pre>
+  <ul class="bullets small mt">
+    <li>النسبة المجمعة تعطي كل صف وزنه؛ متوسط النسب الشهرية يساوي بين شهر قليل الصفوف وشهر كثيرها</li>
+    <li>أسوأ شهر يقول كم مرة كنت ستصعّد بالحد الذي تختاره</li>
+  </ul>
+  <aside class="notes"><p>اسم الملف هنا عام؛ في المختبر ملف day1/rule_history.csv لست قواعد. إذا اختلف المتوسط الشهري عن النسبة المجمعة كثيرًا، فحجم الصفوف يتغير من شهر لآخر، وهذا بحد ذاته يستحق السؤال.</p></aside>
+</section>
+
+<section class="slide" id="exceptions-register" data-lo="LO1 LO6" data-n="40" data-session="4">
+  <div class="kicker">الاستثناءات</div>
+  <h2>الاستثناء يُكتب بنطاق وسبب وتاريخ انتهاء ومالك</h2>
+  <table class="t small">
+    <tr><th>الحقل</th><th>مثال من سجل التصاريح</th></tr>
+    <tr><td>القاعدة</td><td>اكتمال تاريخ شهادة الإسعافات</td></tr>
+    <tr><td>النطاق</td><td>تصاريح ASSIST الصادرة قبل أن يصبح الشرط إلزاميًا لها</td></tr>
+    <tr><td>السبب</td><td>لم يكن الحقل مطلوبًا لهذا النوع عند الإصدار</td></tr>
+    <tr><td>ينتهي</td><td>عند أول تجديد، وفي كل الأحوال بعد سنة</td></tr>
+    <tr><td>المالك</td><td>مديرة شؤون الكوادر</td></tr>
+  </table>
+  <div class="callout warn mt small"><b>استثناء بلا تاريخ انتهاء</b> قاعدة أُلغيت بصمت.</div>
+  <aside class="notes"><p>الاستثناء ليس تخفيضًا للعتبة: يخرج صفوفًا محددة من النطاق لسبب مشروع، ويبقى المعيار كما هو لبقية الصفوف. يُراجع سجل الاستثناءات كل ربع.</p></aside>
+</section>
+
+<section class="slide" id="who-sets-thresholds" data-lo="LO6" data-n="41" data-session="4">
+  <div class="kicker">من يقرر</div>
+  <h2>المحلل يقترح الرقم، والمالك يعتمده مع المستهلك</h2>
+  <div class="flow">
+    <div class="step c-cyan"><b>المحلل</b>خط الأساس والأثر ومقترح المعيار</div>
+    <div class="arrow">←</div>
+    <div class="step c-teal"><b>المستهلك</b>ما يحتاجه قراره</div>
+    <div class="arrow">←</div>
+    <div class="step c-navy"><b>المالك</b>يعتمد المعيار والحد والاستثناء</div>
+  </div>
+  <p class="small mt">إن اختلف مستهلكان على عنصر واحد، يأخذ المعيار حاجة الاستخدام الأشد، أو يُكتب معياران لنطاقين.</p>
+  <aside class="notes"><p>مثال: تاريخ انتهاء الرخصة يحتاجه التقرير الشهري بدقة اليوم، وتذكير التجديد بدقة الأسبوع. المعيار يأخذ الأشد. الخلاف بين ملاك على الأولوية موضوع اليوم الثالث.</p></aside>
+</section>
+
+<section class="slide" id="check-threshold" data-lo="LO1 LO6" data-n="42" data-session="4">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>ما المعيار الذي تقترحه؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO1 LO6" data-id="check-threshold-q1">
+    <p class="lead">اكتمال تاريخ شهادة الإسعافات اليوم 96.2%، وكان أدنى في بعض الأشهر. مديرة شؤون الكوادر تقول إن كل تصريح كامل بلا شهادة يمنع حسابه في المناوبة. ما المعيار المناسب؟</p>
+    <div class="opts">
+      <div class="opt" data-why="ينسخ خط الأساس معيارًا، فتنجح القاعدة ولا يتغير شيء" data-k="أ">96%، لأنه ما نحققه اليوم</div>
+      <div class="opt" data-ok data-k="ب">100%، واستثناء مؤقت مكتوب لما سبق الإلزام</div>
+      <div class="opt" data-why="يأخذ أدنى ما بلغته البيانات كأنه مقبول، فيجعل الأسوأ هدفًا" data-k="ج">95%، أدنى شهر مر بنا هذه السنة</div>
+      <div class="opt" data-why="يرفع المعيار لكل النطاق دون استثناء لما لم يكن الحقل مطلوبًا له، فتفشل القاعدة على صفوف لا ذنب لها" data-k="د">100% لكل التصاريح بلا استثناء، ومنها ما صدر قبل الإلزام بالحقل</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> القرار سلامة فالمعيار من الحاجة، والصفوف التي لم يكن الحقل مطلوبًا لها تُخرج باستثناء محدد لا بخفض المعيار.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ب. من اختار «د» قريب من الصواب: الفرق أن الاستثناء يعترف بصفوف قديمة مشروعة بدل أن يحولها كلها إلى مشكلات.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-4" data-auto="lab" data-lab="1.4" data-label="المختبر 1.4" data-n="43" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.4 · 35 دقيقة</div><h2>عتبات من خط الأساس</h2><p class="lead small">من نتائج ست قواعد على مدى اثني عشر شهرًا تحسب خط الأساس، وتحدد لكل قاعدة معيار اجتياز وحد تصعيد بسببهما، وتكتب استثناءين في سجل الاستثناءات.</p><a class="nb" href="../labs/D1_4_thresholds.html">D1_4_thresholds.html</a></div><ul class="checklist"><li>احسب خط الأساس لكل قاعدة من سجل الأشهر الاثني عشر <span class="min">8 د</span></li><li>اقرأ حاجة المستهلك لكل قاعدة من المتطلبات <span class="min">5 د</span></li><li>حدد معيار الاجتياز وحد التصعيد لكل قاعدة بسببهما <span class="min">10 د</span></li><li>اكتب استثناءين بنطاق ومدة ومالك <span class="min">7 د</span></li><li>سمِّ القاعدة التي تفشل اليوم بعتبتك وما ستقوله لمالكها <span class="min">5 د</span></li><li class="stretch">✱ إضافي: احسب كم شهرًا من الاثني عشر كان سيطلق تنبيهًا بحد التصعيد الذي اخترته</li></ul></div>
+  <aside class="notes"><p>البداية من day1/rule_history.csv وday1/requirements.csv. القواعد الست غير قواعد الكتالوج: تعمل في الهيئة منذ سنة. راقب من يجعل المعيار مساويًا لخط الأساس، ومن يكتب استثناءً بلا تاريخ انتهاء.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-4" data-label="بعد المختبر 1.4" data-lo="LO1 LO6" data-n="44" data-session="4">
+  <div class="kicker">بعد المختبر 1.4</div>
+  <h2>قاعدة واحدة تفشل اليوم: إدخال الزيارة خلال خمسة أيام</h2>
+  <div class="bars">
+    <div class="row"><span>H1 خط الأساس</span><div class="bar c-coral" style="--w:91.55%"></div><span class="val">91.55%</span></div>
+    <div class="row"><span>H1 المعيار المرجعي</span><div class="bar c-teal" style="--w:95%"></div><span class="val">95%</span></div>
+    <div class="row"><span>H1 حد التصعيد</span><div class="bar c-amber" style="--w:90%"></div><span class="val">90%</span></div>
+  </div>
+  <p class="small mt">كانت تحت حد التصعيد في شهرين من اثني عشر. الاستثناءان المرجعيان: الطلبات المسحوبة من قاعدة المقاعد المطلوبة، وزيارات مكتبين بلا أجهزة لوحية بمهلة سبعة أيام حتى مارس 2027.</p>
+  <aside class="notes"><p>الأرقام من solutions/check.py 1.4. بقية القواعد تنجح بمعاييرها المرجعية: H2 وH3 بنسبة 100، وH4 ‏99.37 أمام 99، وH5 ‏97.26 أمام 95، وH6 ‏99.21 أمام 99.</p><p>ما يقال لبدر الوداعي: تسع زيارات من كل مئة تدخل بعد خمسة أيام، والمعيار من حاجة فريقه لا من أدائنا.</p></aside>
+</section>
+
+<section class="slide" id="wrap-up" data-n="45" data-session="4">
+  <div class="kicker">خلاصة اليوم 1</div>
+  <h2>ثلاثة أمور تبقى معك</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>صالحة لماذا؟</h4><p class="small mb0">الجودة تُقاس مقابل استخدام، والفرق يُحسب بالتعريف المعتمد قبل أن يُفسَّر.</p></div>
+    <div class="card c-coral"><h4>القاعدة شرط</h4><p class="small mb0">نطاق وطريقة ومقياس ومعيار وحد تصعيد وتكرار ومالك، على العناصر الحرجة أولًا.</p></div>
+    <div class="card c-purple"><h4>المعيار من الحاجة</h4><p class="small mb0">خط الأساس يقيس المسافة، والاستثناء محدد ومؤقت.</p></div>
+  </div>
+  <aside class="notes"><p>اطلب من كل مشارك جملة واحدة: ما الذي سيفعله غدًا في جهته بشكل مختلف؟ ثم ذكّرهم أن الكتالوج المرجعي يصلهم بداية الغد، فمن لم يكمل 15 قاعدة لا يتأخر.</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-label="التالي" data-n="46" data-session="4">
+  <div class="kicker">التالي</div>
+  <h2>اليوم 2: التنميط والتنفيذ وبطاقة الأداء</h2>
+  <p class="lead">أول مختبر غدًا دون أي مساعد ذكاء اصطناعي: تنميط أربعة جداول بحثًا عن عيوب مزروعة. راجع دوال التجميع والربط في العمل التحضيري.</p>
+  <aside class="notes"><p>التذكير بسياسة الذكاء الاصطناعي: مختبر التنميط الأول دون مساعد، كما ينص دليل المقررات. من لم يُنهِ العمل التحضيري في SQL ينهيه الليلة؛ الأمر في صفحة المختبرات.</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-18T01:01:43Z","version":"2027.1.0","commit":"1a2a277"},"course":{"id":"lds-dmg-203","code":"LDS-DMG-203","title":"إدارة جودة البيانات","track":"executives","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/lds-dmg-203/","repo":"SDAIAAcademy/lds-dmg-203","home":"../index.html"},"deck":{"id":"day1","kind":"day","day":1,"label":"اليوم 1","title":"من المتطلبات إلى القواعد","prev":null,"next":"day2.html","md":"day1.md","alt":{}},"sessions":[{"n":1,"label":"الجلسة 1","title":"الجودة صلاحية لاستخدام محدد","slide":"s1","outcomes":["يعيد حساب رقم منشور من المصدر بالتعريف المعتمد","يقدّر أثر الفرق في التكلفة والخدمة بأرقام","يفرّق بين الفرق المقيس وسببه الذي لم يُعرف بعد"],"minutes":70,"lab":{"id":"1.1","title":"التقرير أمام المصدر","minutes":35,"href":"../labs/D1_1_report_gap.html"}},{"n":2,"label":"الجلسة 2","title":"عناصر البيانات الحرجة","slide":"s2","outcomes":["يستخرج من المتطلبات العناصر التي يعتمد عليها كل قرار","يختار العناصر الحرجة بمعيار مكتوب","يسمّي لكل عنصر حرج مالكه ومشرفه"],"minutes":70,"lab":{"id":"1.2","title":"عشرة عناصر حرجة","minutes":35,"href":"../labs/D1_2_critical_elements.html"}},{"n":3,"label":"الجلسة 3","title":"قواعد قابلة للقياس","slide":"s3","outcomes":["يكتب قاعدة كاملة الحقول لعنصر حرج","يحوّل متطلبًا مكتوبًا إلى شرط يُفحص صفًا صفًا","يراجع قواعد اقترحها مساعد ويقبل أو يعدّل أو يرفض بسبب"],"minutes":70,"lab":{"id":"1.3","title":"قواعد لخدمة الترخيص","minutes":35,"href":"../labs/D1_3_rules.html"}},{"n":4,"label":"الجلسة 4","title":"العتبات والتفاوتات والاستثناءات","slide":"s4","outcomes":["يحسب خط الأساس من تاريخ القاعدة","يحدد معيار الاجتياز وحد التصعيد بسبب من الاستخدام","يكتب استثناءً بنطاق ومدة ومالك"],"minutes":70,"lab":{"id":"1.4","title":"عتبات من خط الأساس","minutes":35,"href":"../labs/D1_4_thresholds.html"}}],"slides":[{"id":"title","n":1,"title":"من المتطلبات إلى القواعد","kind":"title","session":0,"hash":"5c9bdadf","md":"#### [day1#title] من المتطلبات إلى القواعد\n\n*أكاديمية سدايا · إدارة جودة البيانات*\n\nاليوم 1: تقرير لا يطابق مصدره، والعناصر التي تستحق القياس، وقواعد لها طريقة وعتبة ومالك\n\nمسار التنفيذيين والقادة · 3 أيام تدريبية + يوم للمشروع الختامي · 4 جلسات · 4 مختبرات · LDS-DMG-203","notes":"رحّب بالمشاركين واسألهم: «متى رأيت آخر مرة رقمًا منشورًا في جهتك لا يطابق ما في النظام؟ ماذا فعلتم؟». اسمع إجابتين، ثم قل إن هذا المقرر عن تحويل ذلك الشعور إلى قواعد وقياس وإجراء.\n\nاليوم أربع جلسات من 70 دقيقة: نحو 35 دقيقة للأفكار ونقطة التحقق، ثم مختبر من 35 دقيقة. الاستراحات بزر B.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"من المتطلبات إلى القواعد","kind":"content","session":0,"hash":"5261fb49","md":"#### [day1#agenda] من المتطلبات إلى القواعد\n\n*اليوم*\n\n- **الجلسة 1 · الجودة صلاحية لاستخدام محدد**: الجودة تُقاس مقابل استخدام، والفرق بين رقم منشور ومصدره يُحسب بالتعريف المعتمد ثم يُقدَّر أثره في التكلفة والخدمة\n- **الجلسة 2 · عناصر البيانات الحرجة**: ليس كل عمود حرجًا: العنصر الحرج يخدم قرارات عدة أو قرارًا عالي الأثر، وله مالك، وبه تبدأ خطة الجودة\n- **الجلسة 3 · قواعد قابلة للقياس**: القاعدة تذكر المتطلب والعنصر والبعد والنطاق والطريقة والمقياس ومعيار الاجتياز وحد التصعيد والتكرار والمالك، والقواعد التي يقترحها مساعد تُراجع قاعدةً قاعدة\n- **الجلسة 4 · العتبات والتفاوتات والاستثناءات**: معيار الاجتياز يأتي من حاجة الاستخدام، وخط الأساس يقول كم نبعد عنه، وحد التصعيد يفصل التنبيه عن الإنذار، والاستثناء يُكتب بمدة ومالك","notes":"اليوم الأول من المتطلبات إلى القواعد: نقيس فرق التقرير، ونختار ما يستحق القياس، ونكتب القواعد، ونضع عتباتها. التنميط والتشغيل غدًا، والمشكلات والذكاء الاصطناعي بعد غد، ثم يوم المشروع الختامي.","minutes":null,"lo":[]},{"id":"setup-check","n":3,"title":"أمر واحد يثبت أن أدواتك جاهزة","kind":"content","session":0,"hash":"83282d54","md":"#### [day1#setup-check] أمر واحد يثبت أن أدواتك جاهزة\n\n*قبل أن نبدأ*\n\nمن مجلد `labs` في نسخة المقرر:\n\n```\n# ملف: الطرفية\nuv run kit/sql.py \"SELECT count(*) FROM centres\"\n```\n\nالجواب المنتظر: **1000**. أول تشغيل ينزّل محرك DuckDB ومكتبة واحدة، ولا نموذج.\n\n- جدول بيانات لأوراق القواعد والبطاقة: LibreOffice Calc أو غيره\n- من أنهى العمل التحضيري: `uv run kit/check_prework.py files/prework/sql_drills.sql`\n- لا حساب في أي خدمة، ولا مفتاح، ولا تنزيل نموذج\n\n> **قاعدة المقرر للذكاء الاصطناعي.** جداول الحالة مصنفة «مقيد»: لا تدخل أي أداة ذكاء اصطناعي توليدي. يدخلها ما تكتبه بكلماتك فقط.","notes":"اطلب من الجميع تشغيل الأمر الآن. الأعطال المعتادة: uv غير مثبت (رابط التثبيت في README المختبرات)، أو التشغيل من خارج مجلد labs، أو جهاز يمنع التنزيل: عندها يعمل المشارك مع زميل. البديل دون تثبيت: Google Colab بأمر pip لمكتبتي duckdb وpyyaml ثم الأمر نفسه.\n\nالقاعدة مأخوذة من مبادئ الذكاء الاصطناعي التوليدي للجهات الحكومية: لا شيء مصنف «مقيد» فأعلى في أي أداة ذكاء اصطناعي توليدي.\n\nالمصادر: سدايا، مبادئ الذكاء الاصطناعي التوليدي للجهات الحكومية (2025).","minutes":null,"lo":["LO1"]},{"id":"s1","n":4,"title":"الجودة صلاحية لاستخدام محدد","kind":"section","session":1,"hash":"76a8b51f","md":"#### [day1#s1] الجودة صلاحية لاستخدام محدد\n\n*الجلسة 1*\n\n- يعيد حساب رقم منشور من المصدر بالتعريف المعتمد\n- يقدّر أثر الفرق في التكلفة والخدمة بأرقام\n- يفرّق بين الفرق المقيس وسببه الذي لم يُعرف بعد","notes":"","minutes":null,"lo":["LO1","LO6"]},{"id":"akmam-problem","n":5,"title":"تقرير شهري لا يطابق مصدره، وزيارات تصل إلى المدينة الخطأ","kind":"content","session":1,"hash":"cbe8f4f6","md":"#### [day1#akmam-problem] تقرير شهري لا يطابق مصدره، وزيارات تصل إلى المدينة الخطأ\n\n*هيئة أكمام*\n\n- **ما تفعله الهيئة.** ترخّص مراكز رعاية الأطفال والحضانات المنزلية في خمس مدن، ويزورها مفتشوها كل سنة.\n- **ما يقلقها.** رقم الرخص والمقاعد في التقرير الشهري أعلى مما يجده الموظفون، ويُرصد عليه دعم المقاعد.\n- **دورك.** محلل جودة في مكتب إدارة البيانات: برنامج جودة لمجال الترخيص في ثلاثة أيام.\n\nالهيئة والمدن والأشخاص والبيانات كلها افتراضية.","notes":"قدّم الأشخاص من موجز الحالة (files/case_brief.txt): د. نجلاء المديهيم رئيسة المكتب، ووليد الدغريري مالك بيانات الترخيص، وابتسام الهزازي المشرفة، ومهند الوهيبي المشرف الفني، وخلود العويدي صاحبة التقرير، وبدر الوداعي رئيس التفتيش، ورقية الدخيل الله قائدة برنامج الذكاء الاصطناعي.\n\nالأمثلة على الشرائح من سجل آخر في الهيئة نفسها: تصاريح مقدمي الرعاية. المختبرات على الترخيص، فلا تكشف شريحة جواب مختبر.","minutes":null,"lo":["LO1","LO6"]},{"id":"fitness-for-use","n":6,"title":"الجودة صلاحية البيانات لاستخدام محدد، لا صفة فيها وحدها","kind":"content","session":1,"hash":"867b5deb","md":"#### [day1#fitness-for-use] الجودة صلاحية البيانات لاستخدام محدد، لا صفة فيها وحدها\n\n*ما الجودة*\n\n- **العمود نفسه، استخدامان.** تاريخ انتهاء التصريح صالح لعدّ التصاريح السنوية حتى لو تأخر إدخاله أسبوعًا، وغير صالح لمنع مقدم رعاية من العمل في يوم انتهائه.\n- **كما يقولها المعيار الوطني.** مجال جودة البيانات في الضوابط الوطنية غايته أن تكون البيانات صالحة للغرض بحسب متطلبات من يستهلكها.\n\n> **السؤال الأول دائمًا.** صالحة لماذا، ولمن؟ قبل أن تسأل: هل البيانات جيدة؟","notes":"اسأل القاعة: هل يمكن أن تكون البيانات «جيدة» لقسم و«سيئة» لآخر؟ نعم، والأمثلة تكثر في الجهات. لذلك تبدأ كل قاعدة في هذا المقرر بمتطلب مستهلك.\n\nالمصادر: مكتب إدارة البيانات الوطنية، الضوابط والمواصفات، مجال جودة البيانات (وصف المجال في القسم 9.3).","minutes":null,"lo":["LO1"]},{"id":"six-dimensions-recap","n":7,"title":"ستة أبعاد، ولكل بعد سؤال عن السجل","kind":"content","session":1,"hash":"89c9c117","md":"#### [day1#six-dimensions-recap] ستة أبعاد، ولكل بعد سؤال عن السجل\n\n*تذكير من LDS-DMG-101*\n\n| البعد | السؤال | في سجل التصاريح |\n| --- | --- | --- |\n| الاكتمال | هل القيمة اللازمة موجودة؟ | هل لكل تصريح تاريخ شهادة إسعافات؟ |\n| التفرد | هل يتكرر ما يجب ألا يتكرر؟ | هل سُجل التصريح مرتين؟ |\n| التوقيت | هل القيمة حديثة ومتاحة حين تُطلب؟ | هل أُدخل التصريح يوم صدوره؟ |\n| الصلاحية | هل تطابق الصيغة والنوع والمدى؟ | هل نوع التصريح FULL أو ASSIST؟ |\n| الدقة | هل تطابق الواقع؟ | هل الشهادة صدرت فعلًا في ذلك اليوم؟ |\n| الاتساق | هل تتفق القيمة مع غيرها؟ | هل التصريح «ساري» وتاريخه لم ينته؟ |","notes":"شريحة تذكير واحدة: الأبعاد درسوها في LDS-DMG-101. الأسماء هنا كما يكتبها دليل المقررات (التفرد، التوقيت)؛ النسخة العربية من الضوابط الوطنية تسمي البعدين «الانفراد» و«الجدة»، وسمّى LDS-DMG-101 التوقيت «الآنية»؛ والمعنى واحد.\n\nاسأل: أي بعد أصعب قياسًا؟ الدقة، لأنها تحتاج مرجعًا من خارج الجدول. نعود إليها في الجلسة 3 وفي اليوم الثاني.\n\nالمصادر: الضوابط الوطنية، المواصفة DQ.2.1 (تعريفات الأبعاد الستة).","minutes":null,"lo":["LO1"]},{"id":"recount-by-definition","n":8,"title":"أعد حساب الرقم من المصدر بتعريفه المعتمد، ثم قارن","kind":"content","session":1,"hash":"60d2dd57","md":"#### [day1#recount-by-definition] أعد حساب الرقم من المصدر بتعريفه المعتمد، ثم قارن\n\n*رقم منشور أمام مصدره*\n\n1. **1 · التعريف** من وثيقة المنهجية، لا من الذاكرة\n2. **2 · الشروط** حالة، وتاريخ، ومرة لكل كيان\n3. **3 · إعادة الحساب** استعلام على الجداول المصدر\n4. **4 · الفرق** لكل فئة، بالعدد والنسبة\n\n> **إذا لم توجد منهجية مكتوبة** فهذه أول مشكلة جودة: لا يمكن الحكم على رقم بلا تعريف.","notes":"اشرح أن التعريف يتحول إلى شروط على أعمدة: «ساري» تعني حالة وتاريخًا معًا، و«عدد المراكز» يعني عدًا مميزًا لا عدّ صفوف.\n\nفي المختبر تفعل ذلك بتقرير أكتوبر للترخيص؛ الشريحة التالية مثال من سجل التصاريح.","minutes":null,"lo":["LO1","LO6"]},{"id":"permits-recount","n":9,"title":"التقرير يقول 786 تصريحًا ساريًا، والتعريف يعطي 765","kind":"content","session":1,"hash":"d9e4d41b","md":"#### [day1#permits-recount] التقرير يقول 786 تصريحًا ساريًا، والتعريف يعطي 765\n\n*مثال: سجل التصاريح*\n\n```\n# ملف: kit/sql.py\nSELECT count(*) FILTER (WHERE status = 'ACTIVE') AS report,\n       count(DISTINCT permit_no) FILTER (\n         WHERE status = 'ACTIVE'\n           AND expiry_date >= DATE '2026-10-31') AS by_definition\nFROM 'files/examples/permits.csv';\n```\n\n**21** تصريحًا زائدًا في التقرير، 2.7%\n\nالتقرير يعد كل صف حالته ACTIVE؛ التعريف يشترط ألا ينتهي التاريخ، ويعد التصريح مرة واحدة.","notes":"شغّل الاستعلام أمامهم من مجلد labs: `uv run kit/sql.py -f` مع ملف فيه الاستعلام، أو انسخه في سطر واحد. الأرقام من الملف files/examples/permits.csv (1509 صفوف).\n\nلا تشرح سبب الفرق هنا: الفكرة أن الفرق يُقاس قبل أن يُفسَّر. التفسير عمل التنميط.","minutes":null,"lo":["LO1"]},{"id":"gap-is-not-cause","n":10,"title":"الفرق يقول إن هناك مشكلة، ولا يقول أين","kind":"content","session":1,"hash":"8c1ef1cf","md":"#### [day1#gap-is-not-cause] الفرق يقول إن هناك مشكلة، ولا يقول أين\n\n*الفرق والسبب*\n\n- **ما يغري.** «الفرق 21 إذن هناك 21 تصريحًا مكررًا.» تخمين يُكتب في البريد ويصبح حقيقة.\n- **ما يُكتب.** «الفرق 21 (2.7%) في التصاريح السارية، وسببه لم يُعرف بعد؛ التنميط هذا الأسبوع.»\n\n> **والتعريف لا يحمي من كل شيء.** قد يطابق الرقمُ تعريفه ويبقى خاطئًا: إذا كانت قيمة في المصدر نفسه خاطئة.","notes":"هذه أمانة التقرير التي يطلبها دليل المقررات في الاستخدام المسؤول: لا تذكر سببًا لم تثبته. ستطلب الخطوة الخامسة من المختبر ثلاثة أسطر بهذه الروح.","minutes":null,"lo":["LO1","LO6"]},{"id":"impact-chain","n":11,"title":"ضعف الجودة يكلف حين يصل إلى قرار","kind":"content","session":1,"hash":"054c62be","md":"#### [day1#impact-chain] ضعف الجودة يكلف حين يصل إلى قرار\n\n*التكلفة والخدمة*\n\n1. **القيمة الخاطئة** تصريح منتهٍ يظهر ساريًا\n2. **القرار** جدول المناوبات يحسب مقدم الرعاية\n3. **الأثر** نقص فعلي في الكادر، أو مخالفة في التفتيش\n\n| نوع الأثر | كيف يُقدَّر |\n| --- | --- |\n| مال | الفرق × سعر الوحدة × المدة |\n| خدمة | طلبات أو زيارات تأخرت، وأيام التأخير |\n| ثقة وامتثال | رقم منشور يُصحَّح علنًا، أو مخالفة لضابط |","notes":"اطلب مثالًا من القاعة لكل صف. الأثر المالي أسهل في الإقناع، وأثر الخدمة أقرب إلى الناس. في المختبر تحسب الأثر المالي لفرق المقاعد بدعم المقعد الشهري المذكور في منهجية التقرير.","minutes":null,"lo":["LO6"]},{"id":"check-report-gap","n":12,"title":"ماذا تكتب لمالكة التقرير؟","kind":"quiz","session":1,"hash":"bf3b0e86","md":"#### [day1#check-report-gap] ماذا تكتب لمالكة التقرير؟\n\n*نقطة تحقق*\n\n**سؤال:** أعدت حساب تصاريح مقدمي الرعاية السارية بالتعريف المعتمد فوجدت 765، والتقرير المنشور 786. لم تبحث بعدُ في الصفوف. أي رسالة أصح؟\n\n- أ. في التقرير 21 تصريحًا مكررًا يجب حذفها\n- ب. التقرير أعلى بـ 21 تصريحًا (2.7%)، والسبب قيد التنميط\n- ج. الفرق أقل من 3%، فلا حاجة لإبلاغ أحد\n- د. انشر رقم المصدر 765 مكان رقم التقرير فورًا، وأبلغ القراء بالتصحيح","notes":"الإجابة: ب. من اختار «د» ذكّره بالشريحة السابقة: التعريف لا يحمي من قيمة خاطئة في المصدر نفسه. من اختار «ج»: النسبة الصغيرة قد تكون عشرات الأشخاص في جدول المناوبات.","minutes":null,"lo":["LO1","LO6"]},{"id":"lab-1-1","n":13,"title":"التقرير أمام المصدر","kind":"lab","session":1,"hash":"e37d50e0","md":"#### [day1#lab-1-1] التقرير أمام المصدر\n\nالمختبر 1.1 · 35 دقيقة\n\nتعيد حساب الرخص السارية والمقاعد المرخصة لكل مدينة من الجداول المصدر بتعريف التقرير نفسه، وتقيس الفرق عن تقرير أكتوبر، وتقدّر أثره في دعم المقاعد للربع القادم.\n\n[D1_1_report_gap.html](https://sdaiaacademy.github.io/lds-dmg-203/labs/D1_1_report_gap.html)\n\n- [ ] اقرأ منهجية التقرير وحوّل التعريف إلى شروط (5 د)\n- [ ] أعد حساب الرخص السارية لكل مدينة بالتعريف (10 د)\n- [ ] أعد حساب المقاعد واحسب الفرقين لكل مدينة (8 د)\n- [ ] قدّر أثر فرق المقاعد في دعم الربع القادم (7 د)\n- [ ] اكتب ثلاثة أسطر لرئيسة التقارير (5 د)\n- [ ] ✱ إضافي: سمِّ سببين قد يبقى بهما الرقم خاطئًا حتى لو طابق التقرير التعريف تمامًا","notes":"البداية من day1/report_2026_10.csv وday1/report_method.txt والجداول في data/. راقب من يعد صفوفًا بدل المنشآت ومن ينسى شرط التاريخ. لا تجب عن «لماذا» الفرق: قل «غدًا».\n\nمن يتعثر في SQL: أعطه هيكل الاستعلام في الخطوة 2 من صفحة المختبر، والعمل التحضيري فيه أمثلة ربط وتجميع.","minutes":null,"lo":[]},{"id":"debrief-1-1","n":14,"title":"التقرير أعلى من تعريفه في المدن الخمس","kind":"content","session":1,"hash":"fc70e0ef","md":"#### [day1#debrief-1-1] التقرير أعلى من تعريفه في المدن الخمس\n\n*بعد المختبر 1.1*\n\n- **78** رخصة زائدة: 931 في التقرير، 853 بالتعريف\n- **4,300** مقعد زائد: 58,341 أمام 54,041\n- **4.63** مليون ريال تُرصد زيادةً في الربع\n\n> **اتجاه واحد في كل المدن** يوحي بسبب منهجي لا بخطأ إدخال عشوائي. ما هو؟ غدًا.","notes":"الأرقام من uv run solutions/check.py 1.1. أكبر فرق في الرخص والمقاعد في السرو (24 رخصة و1,878 مقعدًا). الأثر الشهري 1,543,010 ريالات بدعم 350 للمقعد في المدن الكبرى و420 في الشوحط والأثاب.\n\nاسأل عن التمرين الإضافي، ولا تؤكد الإجابات: اكتبها على اللوح لتعودوا إليها بعد التنميط.","minutes":null,"lo":["LO1","LO6"]},{"id":"s2","n":15,"title":"عناصر البيانات الحرجة","kind":"section","session":2,"hash":"8ae76ab4","md":"#### [day1#s2] عناصر البيانات الحرجة\n\n*الجلسة 2*\n\n- يستخرج من المتطلبات العناصر التي يعتمد عليها كل قرار\n- يختار العناصر الحرجة بمعيار مكتوب\n- يسمّي لكل عنصر حرج مالكه ومشرفه","notes":"","minutes":null,"lo":["LO1"]},{"id":"not-every-column","n":16,"title":"لا تقيس كل عمود: ابدأ بما تبنى عليه القرارات","kind":"content","session":2,"hash":"8dda8e25","md":"#### [day1#not-every-column] لا تقيس كل عمود: ابدأ بما تبنى عليه القرارات\n\n*أين نبدأ*\n\n- **35** عمودًا في الجداول الأربعة للترخيص\n- **14** متطلبًا من خمسة مستهلكين\n- **10** عناصر نبدأ بها البرنامج\n\nجهد الجودة محدود: قاعدة لكل عمود تعني تنبيهات لا يقرؤها أحد، وأعمدة مهمة تضيع بين غيرها.","notes":"الأرقام من ملفي day1/data_dictionary.csv وday1/requirements.csv. العشرة اختيار هذا المقرر للبدء، لا حد في المعيار. الضوابط الوطنية تطلب ترتيب البيانات بحسب أهميتها لإدارة الجودة قبل التقييم الأول.","minutes":null,"lo":["LO1"]},{"id":"what-makes-critical","n":17,"title":"العنصر حرج إذا انكسر انكسر معه قرار مهم","kind":"content","session":2,"hash":"c31b4e35","md":"#### [day1#what-makes-critical] العنصر حرج إذا انكسر انكسر معه قرار مهم\n\n*عنصر البيانات الحرج*\n\n- **مستهلكون كثيرون.** يخدم متطلبين أو أكثر من جهات مختلفة.\n- **قرار عالي الأثر.** سلامة الناس، أو مال، أو رقم منشور.\n- **التزام نظامي.** يطلبه نظام أو ضابط أو اتفاقية.\n- **يدخل نموذجًا.** يتعلم منه نظام ذكاء اصطناعي أو يجيب منه.","notes":"عنصر واحد قد يكفيه معيار واحد من الأربعة إذا كان القرار خطيرًا. اكتب معيارك قبل أن تختار، وإلا اخترت ما يسهل قياسه.","minutes":null,"lo":["LO1"]},{"id":"requirement-to-elements","n":18,"title":"المتطلب يُقرأ بسؤال: ما الأعمدة التي لا يتحقق دونها؟","kind":"content","session":2,"hash":"2a79259e","md":"#### [day1#requirement-to-elements] المتطلب يُقرأ بسؤال: ما الأعمدة التي لا يتحقق دونها؟\n\n*من المتطلب إلى العناصر*\n\n- **متطلب في سجل التصاريح.** «لا يعمل مقدم رعاية بتصريح كامل إلا إذا كانت شهادة إسعافاته سارية.»\n  - **permit_type.** أي تصريح هو «كامل»\n  - **status و expiry_date.** هل التصريح يعمل اليوم\n  - **first_aid_date.** متى صدرت الشهادة","notes":"المثال من سجل التصاريح، لا من الترخيص. لاحظ أن المتطلب الواحد يحتاج أربعة أعمدة، ومعها قاعدة ضمنية: الشهادة سارية سنتين.\n\nفي المختبر تفعل هذا لأربعة عشر متطلبًا، ثم تقلب الجدول: لكل عمود كم متطلبًا يخدم.","minutes":null,"lo":["LO1"]},{"id":"element-matrix","n":19,"title":"عدّ المستهلكين لكل عنصر، ثم اسأل عن أخطر قراراته","kind":"content","session":2,"hash":"055ef4f0","md":"#### [day1#element-matrix] عدّ المستهلكين لكل عنصر، ثم اسأل عن أخطر قراراته\n\n*اقلب الجدول*\n\n| العنصر في سجل التصاريح | متطلبات | أخطر قرار | حرج؟ |\n| --- | --- | --- | --- |\n| status | 4 | من يُحسب في المناوبة | نعم |\n| first_aid_date | 2 | سلامة الأطفال | نعم |\n| training_hours | 1 | تقرير التدريب السنوي | لاحقًا |\n| caregiver_id | 3 | ربط التصريح بالشخص | نعم |","notes":"جدول توضيحي لسجل التصاريح: عدد المتطلبات مثال من هذه الشريحة لا من ملف. «لاحقًا» قرار مشروع: العنصر يدخل حين يكبر أثره. اطلب من المشاركين أن يكتبوا معيارًا يفسر الأعمدة الأربعة.","minutes":null,"lo":["LO1"]},{"id":"prioritise-first","n":20,"title":"ترتيب البيانات بحسب أهميتها قبل أول تقييم للجودة","kind":"content","session":2,"hash":"5faa666e","md":"#### [day1#prioritise-first] ترتيب البيانات بحسب أهميتها قبل أول تقييم للجودة\n\n*في الضوابط الوطنية*\n\n- نتيجة الترتيب قائمة مرتبة يتبعها التقييم الأولي\n- الأولوية الأولى تشمل البيانات الرئيسة للجهة على الأقل\n- ثم خطة جودة بخارطة طريق وموارد\n\n- **في هيئة أكمام.** المنشأة والرخصة بيانات رئيسة: تُرجع إليها كل الزيارات والطلبات. عناصرهما تتصدر القائمة.","notes":"هذه إعادة صياغة للمواصفتين DQ.1.1 وDQ.1.2: الترتيب يخرج قائمة مرتبة، وأولويتها الأولى تشمل البيانات الرئيسة على الأقل، وخطة الجودة فيها خارطة طريق وتخصيص للموارد والميزانية.\n\nالمصادر: الضوابط الوطنية، مجال جودة البيانات، الضابط DQ.1 (التخطيط).","minutes":null,"lo":["LO1","LO6"]},{"id":"owner-and-steward","n":21,"title":"المالك يقرر مستوى الجودة، والمشرف يتابعه كل يوم","kind":"content","session":2,"hash":"4074fb02","md":"#### [day1#owner-and-steward] المالك يقرر مستوى الجودة، والمشرف يتابعه كل يوم\n\n*من يملك العنصر*\n\n- **مالك البيانات.** يعتمد العتبة، ويقبل الاستثناء، ويُصعَّد إليه. في التصاريح: مديرة شؤون الكوادر.\n- **مشرف بيانات الأعمال.** يقرأ نتائج الفحص، ويفتح المشكلة، ويتابع إصلاحها.\n\n> **عنصر بلا مالك** لا تُعتمد له عتبة، ولا يتحرك أحد حين يفشل.","notes":"تذكير من LDS-DMG-101 (والتفصيل لمن درس LDS-DMG-201). في الترخيص المالك وليد الدغريري لعناصر الرخص والمنشآت، وبدر الوداعي لعناصر التفتيش، والمشرفة ابتسام الهزازي. «مديرة شؤون الكوادر» في سجل التصاريح دور مثال لا اسم.","minutes":null,"lo":["LO1"]},{"id":"easy-to-measure-trap","n":22,"title":"القائمة التي تختار ما يسهل قياسه تفوّت ما يهم","kind":"content","session":2,"hash":"e695afa1","md":"#### [day1#easy-to-measure-trap] القائمة التي تختار ما يسهل قياسه تفوّت ما يهم\n\n*أين يقع الخطأ*\n\n- **اختيار سهل.**\n  - أعمدة المعرّفات لأن فحصها بسيط\n  - كل عمود فيه فراغات\n  - ما يطلبه أعلى صوت\n- **اختيار بمعيار.**\n  - ما تبنى عليه قرارات كثيرة أو خطيرة\n  - ولو كان قياسه صعبًا، مثل دقة العنوان\n  - مع سطر سبب لكل اختيار","notes":"الدقة مثال جيد: قياسها يحتاج مرجعًا أو زيارة، ولذلك يتجنبها الناس. لكن عنصرًا يوجّه المفتش إلى مدينة لا يُترك لأن قياسه صعب. غدًا نرى كيف تُقاس الدقة بعينة.","minutes":null,"lo":["LO1"]},{"id":"check-critical","n":23,"title":"أي عنصر يدخل القائمة؟","kind":"quiz","session":2,"hash":"45e75b35","md":"#### [day1#check-critical] أي عنصر يدخل القائمة؟\n\n*نقطة تحقق*\n\n**سؤال:** في سجل التصاريح أربعة أعمدة مرشحة، ومكانك لعنصر واحد. أيها أولى بالدخول؟\n\n- أ. ملاحظات المشرف، لأن نصف خاناتها فارغة فهي الأسوأ اكتمالًا\n- ب. رقم التصريح، لأن فحص صيغته أسهل\n- ج. تاريخ شهادة الإسعافات، لأن عليه يقوم قرار سلامة\n- د. ساعات التدريب، لأنها في التقرير السنوي للتدريب","notes":"الإجابة: ج. رقم التصريح مهم أيضًا، وقد يكون العنصر الحادي عشر؛ لكن السؤال عن الأولى بالمكان الواحد، والسبب المذكور معه (سهولة الفحص) خاطئ.","minutes":null,"lo":["LO1"]},{"id":"lab-1-2","n":24,"title":"عشرة عناصر حرجة","kind":"lab","session":2,"hash":"7db76cf8","md":"#### [day1#lab-1-2] عشرة عناصر حرجة\n\nالمختبر 1.2 · 35 دقيقة\n\nمن أربعة عشر متطلبًا لخمسة مستهلكين تختار عشرة عناصر بيانات حرجة في مجال الترخيص، ولكل منها المتطلبات التي يخدمها ومالكه ومشرفه وسبب اختياره.\n\n[D1_2_critical_elements.html](https://sdaiaacademy.github.io/lds-dmg-203/labs/D1_2_critical_elements.html)\n\n- [ ] اقرأ المتطلبات وحدد العناصر التي يحتاجها كل منها (10 د)\n- [ ] عدّ المستهلكين والقرارات لكل عنصر (6 د)\n- [ ] اختر عشرة عناصر حرجة بمعيار مكتوب (9 د)\n- [ ] سمِّ المالك والمشرف لكل عنصر (5 د)\n- [ ] قارن قائمتك بقائمة زميل وسجّل خلافًا واحدًا (5 د)\n- [ ] ✱ إضافي: اختر عنصرًا تركته خارج القائمة واكتب ما الذي يجعله حرجًا في السنة القادمة","notes":"البداية من day1/requirements.csv وday1/data_dictionary.csv. راقب من يعد عناصر لا يحتاجها متطلب، ومن ينسى المالك. المساعد مرشد: يسأله المشارك عن المعايير، لا عن القائمة.","minutes":null,"lo":[]},{"id":"debrief-1-2","n":25,"title":"العشرة المرجعية: أربعة من الرخصة، وأربعة من المنشأة، واثنان من الزيارة","kind":"content","session":2,"hash":"fbb320b0","md":"#### [day1#debrief-1-2] العشرة المرجعية: أربعة من الرخصة، وأربعة من المنشأة، واثنان من الزيارة\n\n*بعد المختبر 1.2*\n\n- **الرخصة.** رقمها، وحالتها، وتاريخ انتهائها، ومقاعدها.\n- **المنشأة.** نوعها، ومدينتها، ورمزها البريدي، وحيّها.\n- **الزيارة.** نتيجتها وتاريخها.\n\nخارجها: تاريخ التقديم والقرار (مؤشر داخلي واحد)، ورمز المالك، ورقم المبنى، ورمز المفتش، والدرجة.","notes":"القائمة في day1/cde_list.csv، وكل عنصر يخدم متطلبين أو أكثر. الخلاف المقبول: من أدخل تاريخ التقديم لأن مدة المعالجة قد تُنشر. اسأل من أدخل عنصرًا آخر عن معياره.","minutes":null,"lo":["LO1"]},{"id":"s3","n":26,"title":"قواعد قابلة للقياس","kind":"section","session":3,"hash":"f47d3b8f","md":"#### [day1#s3] قواعد قابلة للقياس\n\n*الجلسة 3*\n\n- يكتب قاعدة كاملة الحقول لعنصر حرج\n- يحوّل متطلبًا مكتوبًا إلى شرط يُفحص صفًا صفًا\n- يراجع قواعد اقترحها مساعد ويقبل أو يعدّل أو يرفض بسبب","notes":"","minutes":null,"lo":["LO1"]},{"id":"rule-anatomy","n":27,"title":"القاعدة وثيقة لها صاحب، ومتطلب، وبعد، ومقياس، وحد تصعيد","kind":"content","session":3,"hash":"b81a317d","md":"#### [day1#rule-anatomy] القاعدة وثيقة لها صاحب، ومتطلب، وبعد، ومقياس، وحد تصعيد\n\n*ما تطلبه الضوابط الوطنية*\n\n- **صاحب القاعدة:** محلل جودة البيانات الذي عرّفها\n- **وصف الأعمال** للمتطلب الذي تتحقق منه\n- **البعد** من الأبعاد الستة\n- **السمات** التي تفحصها\n\n- **المقياس:** مثل الصفوف المملوءة ÷ كل الصفوف\n- **حد التصعيد** الذي يطلق تنبيهًا، مثل أقل من 90%\n- ونضيف في المقرر: النطاق، ومعيار الاجتياز، والتكرار، ومالك البيانات","notes":"البنود الستة الأولى إعادة صياغة للمواصفة DQ.2.1 (تطوير قواعد جودة البيانات)، ومنها مثال المقياس ومثال حد التصعيد. لاحظ أن «صاحب القاعدة» في المواصفة هو محلل الجودة، وهو غير مالك البيانات: الأول يعرّف القاعدة، والثاني يعتمد مستوى الجودة.\n\nالمصادر: الضوابط الوطنية، المواصفة DQ.2.1.","minutes":null,"lo":["LO1"]},{"id":"wish-vs-condition","n":28,"title":"القاعدة شرط يُفحص صفًا صفًا، لا أمنية","kind":"content","session":3,"hash":"93c0033e","md":"#### [day1#wish-vs-condition] القاعدة شرط يُفحص صفًا صفًا، لا أمنية\n\n*من المتطلب إلى الشرط*\n\n- **أمنية.** «يجب أن تكون شهادات الإسعافات محدثة.»\n- **شرط.** «لكل تصريح FULL ساري: first_aid_date بعد اليوم ناقص سنتين.»\n\n| الحقل | قيمته في المثال |\n| --- | --- |\n| النطاق | التصاريح FULL بحالة ACTIVE |\n| الطريقة | first_aid_date ≥ تاريخ الفحص − 730 يومًا |\n| المقياس | الصفوف الناجحة ÷ صفوف النطاق |\n| معيار الاجتياز · حد التصعيد | 100% · 98% |","notes":"اختبار سريع لكل قاعدة: هل يستطيع شخصان أن يشغّلاها على الملف نفسه فيحصلا على الرقم نفسه؟ إن لم يكن، فهي أمنية.\n\nالعتبة 100% هنا لأن القرار سلامة؛ في الجلسة 4 نرى متى تكون أقل.","minutes":null,"lo":["LO1"]},{"id":"rule-types","n":29,"title":"كل بعد له أشكال قليلة تتكرر","kind":"content","session":3,"hash":"ca823d32","md":"#### [day1#rule-types] كل بعد له أشكال قليلة تتكرر\n\n*أنواع الفحص*\n\n| البعد | شكل الفحص | مثال من سجل التصاريح |\n| --- | --- | --- |\n| الاكتمال | غير فارغ في النطاق | first_aid_date للتصاريح FULL |\n| الصلاحية | من قائمة، أو بصيغة، أو في مدى | permit_type من FULL وASSIST |\n| التفرد | لا يتكرر المفتاح أو التركيب | permit_no مرة واحدة |\n| الاتساق | عمود مع عمود، أو جدول مع جدول | ACTIVE وتاريخ لم ينته |\n| التوقيت | فرق بين تاريخين | إدخال خلال يومي عمل من الإصدار |\n| الدقة | مقابل مرجع أو الواقع | الشهادة في سجل جهة التدريب |","notes":"الأشكال الخمسة الأولى تُكتب على الجدول وحده. الدقة تحتاج شيئًا من خارجه: مرجعًا موثوقًا، أو عينة يُتحقق منها في الميدان. غدًا تقيس دقة مدينة الموقع بعينة.","minutes":null,"lo":["LO1"]},{"id":"accuracy-needs-reference","n":30,"title":"الدقة لا يثبتها الجدول وحده","kind":"content","session":3,"hash":"ece849ce","md":"#### [day1#accuracy-needs-reference] الدقة لا يثبتها الجدول وحده\n\n*أصعب الأبعاد*\n\n- **مرجع موثوق.** قائمة رموز، أو سجل رسمي تملك حق الاطلاع عليه.\n- **دليل غير مباشر.** عمود آخر يلزم أن يتفق معه، مثل بادئة رمز يدل على منطقة.\n- **عينة ميدانية.** زيارة لعدد صغير مختار عشوائيًا، ثم تقدير بمجال ثقة.\n\n> **انتبه للبيانات الشخصية.** المطابقة بسجل جهة أخرى نقل لبيانات شخصية: تحتاج أساسًا نظاميًا واتفاقية، لا قاعدة جودة فقط.","notes":"الخصوصية حين تمس الفحوص بيانات شخصية جزء من الاستخدام المسؤول في هذا المقرر. القاعدة التي تطابق رقم هوية بسجل خارجي ليست قرار محلل الجودة.\n\nالمصادر: الضوابط الوطنية (مجال حماية البيانات الشخصية)، ونظام حماية البيانات الشخصية، كما في LDS-DMG-101.","minutes":null,"lo":["LO1"]},{"id":"ai-suggested-rules","n":31,"title":"المساعد يقترح من أسماء الأعمدة ووصفها، وأنت تراجع كل قاعدة","kind":"content","session":3,"hash":"481ee558","md":"#### [day1#ai-suggested-rules] المساعد يقترح من أسماء الأعمدة ووصفها، وأنت تراجع كل قاعدة\n\n*قواعد يقترحها الذكاء الاصطناعي*\n\n- **ما يدخل المساعد.**\n  - أسماء الأعمدة ووصفها من القاموس\n  - نص المتطلب بكلماتك\n  - مسودة قاعدة كتبتها\n- **ما لا يدخله.**\n  - صفوف الجداول ولو عينة\n  - مخرجات الفحص التي فيها مفاتيح\n  - أي شيء مصنف «مقيد» فأعلى","notes":"في المختبر ثمانية اقتراحات مسجلة سلفًا من مساعد معتمد أُعطي أسماء الأعمدة ووصفها فقط (day1/assistant_note.txt)، فلا يحتاج أحد مساعدًا ليكمل. من يريد أن يجرب مساعدًا معتمدًا في جهته يعطيه القاموس فقط.\n\nالمصادر: سدايا، مبادئ الذكاء الاصطناعي التوليدي للجهات الحكومية.","minutes":null,"lo":["LO1"]},{"id":"review-checklist","n":32,"title":"أربعة أسئلة تقرر: قبول، أو تعديل، أو رفض","kind":"content","session":3,"hash":"f5aeb4e4","md":"#### [day1#review-checklist] أربعة أسئلة تقرر: قبول، أو تعديل، أو رفض\n\n*مراجعة الاقتراح*\n\n1. **1 · يُقاس؟** شرط وصفوف ومقياس\n2. **2 · في النطاق؟** عنصر حرج ومتطلب\n3. **3 · يحترم الخصوصية؟** لا نقل ولا كشف بلا حاجة\n4. **4 · عتبته من الاستخدام؟** لا 100% لكل شيء\n\nمثال من سجل التصاريح: «لا يتكرر caregiver_id» تبدو قاعدة تفرد، لكن مقدم الرعاية قد يحمل تصريحين لمركزين. التعديل: «تصريح ساري واحد لكل مقدم رعاية في المركز الواحد».","notes":"اقتراحات المساعدات تبدو معقولة لأنها مكتوبة بثقة. أكثر ما يفوت المراجِع: قاعدة تفرد على عمود يتكرر مشروعًا، وقائمة رموز ناقصة، وعتبة 100% بلا سبب.","minutes":null,"lo":["LO1"]},{"id":"check-rule","n":33,"title":"أي صياغة قاعدة قابلة للتشغيل؟","kind":"quiz","session":3,"hash":"41180591","md":"#### [day1#check-rule] أي صياغة قاعدة قابلة للتشغيل؟\n\n*نقطة تحقق*\n\n**سؤال:** متطلب مديرة شؤون الكوادر: «لا يُحسب في المناوبة إلا من تصريحه ساري.» أي صياغة قاعدة يمكن تشغيلها كما هي؟\n\n- أ. بيانات التصاريح دقيقة ومحدثة دائمًا\n- ب. عمود status في جدول التصاريح يُراجع شهريًا\n- ج. نسبة التصاريح السارية في السجل لا تقل عن 95%\n- د. التصاريح بحالة ACTIVE تاريخ انتهائها لا يسبق يوم الفحص؛ الاجتياز 100% يوميًا","notes":"الإجابة: د. انتبه إلى «ج»: نسبة السارية ليست قاعدة جودة أصلًا، بل وصف للسجل؛ قد تكون 40% وكل الصفوف صحيحة.","minutes":null,"lo":["LO1"]},{"id":"lab-1-3","n":34,"title":"قواعد لخدمة الترخيص","kind":"lab","session":3,"hash":"ebfad632","md":"#### [day1#lab-1-3] قواعد لخدمة الترخيص\n\nالمختبر 1.3 · 35 دقيقة\n\nتكتب كتالوجًا من 15 قاعدة أو أكثر للعناصر العشرة، لكل منها معيار اجتياز ومالك، وتراجع ثماني قواعد اقترحها مساعد معتمد من أسماء الأعمدة ووصفها فقط.\n\n[D1_3_rules.html](https://sdaiaacademy.github.io/lds-dmg-203/labs/D1_3_rules.html)\n\n- [ ] اكتب عشر قواعد بنفسك لخمسة عناصر (12 د)\n- [ ] راجع اقتراحات المساعد الثمانية: قبول أو تعديل أو رفض بسبب (10 د)\n- [ ] أضف ما قبلته وأكمل الكتالوج إلى 15 قاعدة (8 د)\n- [ ] تحقق أن لكل قاعدة معيار اجتياز ومالكًا وتكرارًا (5 د)\n- [ ] ✱ إضافي: اكتب لثلاث من قواعدك شرطها بلغة SQL كما سيكتبها محرك الفحص","notes":"البداية من day1/cde_list.csv (القائمة المرجعية، فلا يعتمد أحد على المختبر 1.2) وday1/rules_template.csv وday1/assistant_suggestions.csv. المساعد مرشد: يسأله المشارك عن صياغة قاعدته، ويعطيه وصف العمود فقط.\n\nراقب الكتالوجات التي تكثر من الاكتمال وتنسى الاتساق، والقواعد بلا معيار اجتياز. هذا الكتالوج دليل LO1.","minutes":null,"lo":[]},{"id":"debrief-1-3","n":35,"title":"من ثمانية اقتراحات: اثنان قُبلا، وأربعة عُدّلت، واثنان رُفضا","kind":"content","session":3,"hash":"c8992b2a","md":"#### [day1#debrief-1-3] من ثمانية اقتراحات: اثنان قُبلا، وأربعة عُدّلت، واثنان رُفضا\n\n*بعد المختبر 1.3*\n\n| الحكم | الاقتراحات | السبب الغالب |\n| --- | --- | --- |\n| رفض | S1، S2 | بيانات شخصية تُنقل خارج النطاق؛ وأمنية لا تُقاس |\n| تعديل | S5، S6، S7، S8 | عتبة بلا استخدام؛ تفرد على ما يتكرر مشروعًا؛ شرط لا يميز؛ قائمة ناقصة |\n| قبول | S3، S4 | تبعيتان صحيحتان بين عمودين وبين جدولين |\n\nالكتالوج المرجعي عشرون قاعدة على العناصر العشرة والأبعاد الستة، ويصلكم بداية مختبر الغد.","notes":"الأحكام في solutions/reference/suggestions_review.csv. الأكثر خطأً عادة S6 (التجديد يكرر المنشأة مشروعًا) وS8 (COND رمز صحيح). اسأل من قبِل S1 لماذا، وناقش الخصوصية.","minutes":null,"lo":["LO1"]},{"id":"s4","n":36,"title":"العتبات والتفاوتات والاستثناءات","kind":"section","session":4,"hash":"d7fb4e09","md":"#### [day1#s4] العتبات والتفاوتات والاستثناءات\n\n*الجلسة 4*\n\n- يحسب خط الأساس من تاريخ القاعدة\n- يحدد معيار الاجتياز وحد التصعيد بسبب من الاستخدام\n- يكتب استثناءً بنطاق ومدة ومالك","notes":"","minutes":null,"lo":["LO1","LO6"]},{"id":"two-numbers","n":37,"title":"المعيار يأتي من الاستخدام، وخط الأساس يقول كم نبعد عنه","kind":"content","session":4,"hash":"30d9f48c","md":"#### [day1#two-numbers] المعيار يأتي من الاستخدام، وخط الأساس يقول كم نبعد عنه\n\n*العتبة وخط الأساس*\n\n- **معيار الاجتياز.** ما يحتاجه قرار المستهلك ليكون صحيحًا. يعتمده مالك البيانات.\n- **خط الأساس.** ما تحققه البيانات اليوم، من تاريخ القاعدة. يحسبه المحلل.\n\n> **الخطأ الشائع.** أن يصبح خط الأساس هو المعيار: تنجح القاعدة غدًا، ولا يتحسن شيء.","notes":"الفرق بين الرقمين هو حجم العمل. إذا كان المعيار 98 وخط الأساس 96، فالقاعدة تفشل اليوم، وهذا صحيح: الفشل هو الرسالة.","minutes":null,"lo":["LO1","LO6"]},{"id":"escalation-band","n":38,"title":"بين معيار الاجتياز وحد التصعيد منطقة تنبيه","kind":"content","session":4,"hash":"102f97b9","md":"#### [day1#escalation-band] بين معيار الاجتياز وحد التصعيد منطقة تنبيه\n\n*التفاوت المسموح*\n\n| البند | القيمة |\n| --- | --- |\n| ناجحة: 98% فأكثر | لا إجراء |\n| تنبيه: من 95% إلى أقل من 98% | المشرف يتابع |\n| تصعيد: أقل من 95% | المالك فورًا |\n\nمثال: اكتمال تاريخ شهادة الإسعافات في سجل التصاريح اليوم **96.2%** (1452 من 1509): منطقة التنبيه.","notes":"الرقم 96.2% من ملف files/examples/permits.csv بالأمر profile.py (57 خانة فارغة). المعيار 98 والحد 95 مثالان على الشريحة. الضوابط الوطنية تطلب في كل قاعدة حد تصعيد يطلق تنبيهًا، ومثالها: تنبيه حين يقل المملوء عن 90%.\n\nالمصادر: الضوابط الوطنية، المواصفة DQ.2.1 البند 6.","minutes":null,"lo":["LO1","LO6"]},{"id":"baseline-how","n":39,"title":"اجمع الصفوف على السنة، ثم انظر إلى أسوأ شهر","kind":"content","session":4,"hash":"6ac1e06b","md":"#### [day1#baseline-how] اجمع الصفوف على السنة، ثم انظر إلى أسوأ شهر\n\n*حساب خط الأساس*\n\n```\n# ملف: kit/sql.py\nSELECT rule_id,\n       round(100.0 * sum(rows_passed) / sum(rows_checked), 2) AS pooled,\n       round(min(100.0 * rows_passed / rows_checked), 2)      AS worst_month\nFROM 'history.csv' GROUP BY 1;\n```\n\n- النسبة المجمعة تعطي كل صف وزنه؛ متوسط النسب الشهرية يساوي بين شهر قليل الصفوف وشهر كثيرها\n- أسوأ شهر يقول كم مرة كنت ستصعّد بالحد الذي تختاره","notes":"اسم الملف هنا عام؛ في المختبر ملف day1/rule_history.csv لست قواعد. إذا اختلف المتوسط الشهري عن النسبة المجمعة كثيرًا، فحجم الصفوف يتغير من شهر لآخر، وهذا بحد ذاته يستحق السؤال.","minutes":null,"lo":["LO1"]},{"id":"exceptions-register","n":40,"title":"الاستثناء يُكتب بنطاق وسبب وتاريخ انتهاء ومالك","kind":"content","session":4,"hash":"b9b7844a","md":"#### [day1#exceptions-register] الاستثناء يُكتب بنطاق وسبب وتاريخ انتهاء ومالك\n\n*الاستثناءات*\n\n| الحقل | مثال من سجل التصاريح |\n| --- | --- |\n| القاعدة | اكتمال تاريخ شهادة الإسعافات |\n| النطاق | تصاريح ASSIST الصادرة قبل أن يصبح الشرط إلزاميًا لها |\n| السبب | لم يكن الحقل مطلوبًا لهذا النوع عند الإصدار |\n| ينتهي | عند أول تجديد، وفي كل الأحوال بعد سنة |\n| المالك | مديرة شؤون الكوادر |\n\n> **استثناء بلا تاريخ انتهاء** قاعدة أُلغيت بصمت.","notes":"الاستثناء ليس تخفيضًا للعتبة: يخرج صفوفًا محددة من النطاق لسبب مشروع، ويبقى المعيار كما هو لبقية الصفوف. يُراجع سجل الاستثناءات كل ربع.","minutes":null,"lo":["LO1","LO6"]},{"id":"who-sets-thresholds","n":41,"title":"المحلل يقترح الرقم، والمالك يعتمده مع المستهلك","kind":"content","session":4,"hash":"ac9e89a1","md":"#### [day1#who-sets-thresholds] المحلل يقترح الرقم، والمالك يعتمده مع المستهلك\n\n*من يقرر*\n\n1. **المحلل** خط الأساس والأثر ومقترح المعيار\n2. **المستهلك** ما يحتاجه قراره\n3. **المالك** يعتمد المعيار والحد والاستثناء\n\nإن اختلف مستهلكان على عنصر واحد، يأخذ المعيار حاجة الاستخدام الأشد، أو يُكتب معياران لنطاقين.","notes":"مثال: تاريخ انتهاء الرخصة يحتاجه التقرير الشهري بدقة اليوم، وتذكير التجديد بدقة الأسبوع. المعيار يأخذ الأشد. الخلاف بين ملاك على الأولوية موضوع اليوم الثالث.","minutes":null,"lo":["LO6"]},{"id":"check-threshold","n":42,"title":"ما المعيار الذي تقترحه؟","kind":"quiz","session":4,"hash":"6f7d5293","md":"#### [day1#check-threshold] ما المعيار الذي تقترحه؟\n\n*نقطة تحقق*\n\n**سؤال:** اكتمال تاريخ شهادة الإسعافات اليوم 96.2%، وكان أدنى في بعض الأشهر. مديرة شؤون الكوادر تقول إن كل تصريح كامل بلا شهادة يمنع حسابه في المناوبة. ما المعيار المناسب؟\n\n- أ. 96%، لأنه ما نحققه اليوم\n- ب. 100%، واستثناء مؤقت مكتوب لما سبق الإلزام\n- ج. 95%، أدنى شهر مر بنا هذه السنة\n- د. 100% لكل التصاريح بلا استثناء، ومنها ما صدر قبل الإلزام بالحقل","notes":"الإجابة: ب. من اختار «د» قريب من الصواب: الفرق أن الاستثناء يعترف بصفوف قديمة مشروعة بدل أن يحولها كلها إلى مشكلات.","minutes":null,"lo":["LO1","LO6"]},{"id":"lab-1-4","n":43,"title":"عتبات من خط الأساس","kind":"lab","session":4,"hash":"4f714c1e","md":"#### [day1#lab-1-4] عتبات من خط الأساس\n\nالمختبر 1.4 · 35 دقيقة\n\nمن نتائج ست قواعد على مدى اثني عشر شهرًا تحسب خط الأساس، وتحدد لكل قاعدة معيار اجتياز وحد تصعيد بسببهما، وتكتب استثناءين في سجل الاستثناءات.\n\n[D1_4_thresholds.html](https://sdaiaacademy.github.io/lds-dmg-203/labs/D1_4_thresholds.html)\n\n- [ ] احسب خط الأساس لكل قاعدة من سجل الأشهر الاثني عشر (8 د)\n- [ ] اقرأ حاجة المستهلك لكل قاعدة من المتطلبات (5 د)\n- [ ] حدد معيار الاجتياز وحد التصعيد لكل قاعدة بسببهما (10 د)\n- [ ] اكتب استثناءين بنطاق ومدة ومالك (7 د)\n- [ ] سمِّ القاعدة التي تفشل اليوم بعتبتك وما ستقوله لمالكها (5 د)\n- [ ] ✱ إضافي: احسب كم شهرًا من الاثني عشر كان سيطلق تنبيهًا بحد التصعيد الذي اخترته","notes":"البداية من day1/rule_history.csv وday1/requirements.csv. القواعد الست غير قواعد الكتالوج: تعمل في الهيئة منذ سنة. راقب من يجعل المعيار مساويًا لخط الأساس، ومن يكتب استثناءً بلا تاريخ انتهاء.","minutes":null,"lo":[]},{"id":"debrief-1-4","n":44,"title":"قاعدة واحدة تفشل اليوم: إدخال الزيارة خلال خمسة أيام","kind":"content","session":4,"hash":"bb3c41ce","md":"#### [day1#debrief-1-4] قاعدة واحدة تفشل اليوم: إدخال الزيارة خلال خمسة أيام\n\n*بعد المختبر 1.4*\n\n| البند | القيمة |\n| --- | --- |\n| H1 خط الأساس | 91.55% |\n| H1 المعيار المرجعي | 95% |\n| H1 حد التصعيد | 90% |\n\nكانت تحت حد التصعيد في شهرين من اثني عشر. الاستثناءان المرجعيان: الطلبات المسحوبة من قاعدة المقاعد المطلوبة، وزيارات مكتبين بلا أجهزة لوحية بمهلة سبعة أيام حتى مارس 2027.","notes":"الأرقام من solutions/check.py 1.4. بقية القواعد تنجح بمعاييرها المرجعية: H2 وH3 بنسبة 100، وH4 ‏99.37 أمام 99، وH5 ‏97.26 أمام 95، وH6 ‏99.21 أمام 99.\n\nما يقال لبدر الوداعي: تسع زيارات من كل مئة تدخل بعد خمسة أيام، والمعيار من حاجة فريقه لا من أدائنا.","minutes":null,"lo":["LO1","LO6"]},{"id":"wrap-up","n":45,"title":"ثلاثة أمور تبقى معك","kind":"content","session":4,"hash":"6153722b","md":"#### [day1#wrap-up] ثلاثة أمور تبقى معك\n\n*خلاصة اليوم 1*\n\n- **صالحة لماذا؟** الجودة تُقاس مقابل استخدام، والفرق يُحسب بالتعريف المعتمد قبل أن يُفسَّر.\n- **القاعدة شرط.** نطاق وطريقة ومقياس ومعيار وحد تصعيد وتكرار ومالك، على العناصر الحرجة أولًا.\n- **المعيار من الحاجة.** خط الأساس يقيس المسافة، والاستثناء محدد ومؤقت.","notes":"اطلب من كل مشارك جملة واحدة: ما الذي سيفعله غدًا في جهته بشكل مختلف؟ ثم ذكّرهم أن الكتالوج المرجعي يصلهم بداية الغد، فمن لم يكمل 15 قاعدة لا يتأخر.","minutes":null,"lo":[]},{"id":"next","n":46,"title":"اليوم 2: التنميط والتنفيذ وبطاقة الأداء","kind":"content","session":4,"hash":"91c7ae87","md":"#### [day1#next] اليوم 2: التنميط والتنفيذ وبطاقة الأداء\n\n*التالي*\n\nأول مختبر غدًا دون أي مساعد ذكاء اصطناعي: تنميط أربعة جداول بحثًا عن عيوب مزروعة. راجع دوال التجميع والربط في العمل التحضيري.","notes":"التذكير بسياسة الذكاء الاصطناعي: مختبر التنميط الأول دون مساعد، كما ينص دليل المقررات. من لم يُنهِ العمل التحضيري في SQL ينهيه الليلة؛ الأمر في صفحة المختبرات.","minutes":null,"lo":[]}],"activities":[{"id":"check-report-gap-q1","slide":"check-report-gap","type":"single","prompt":"أعدت حساب تصاريح مقدمي الرعاية السارية بالتعريف المعتمد فوجدت 765، والتقرير المنشور 786. لم تبحث بعدُ في الصفوف. أي رسالة أصح؟","options":[{"key":"أ","text":"في التقرير 21 تصريحًا مكررًا يجب حذفها"},{"key":"ب","text":"التقرير أعلى بـ 21 تصريحًا (2.7%)، والسبب قيد التنميط"},{"key":"ج","text":"الفرق أقل من 3%، فلا حاجة لإبلاغ أحد"},{"key":"د","text":"انشر رقم المصدر 765 مكان رقم التقرير فورًا، وأبلغ القراء بالتصحيح"}],"correct":[1],"explanation":"الرسالة تذكر الفرق بالعدد والنسبة وتقول بأمانة ما لم يُعرف بعد. السبب يُكتب حين يثبته استعلام.","misconceptions":["يقدّم سببًا لم يُثبت باستعلام، فيصبح التخمين حقيقة في البريد","","يرى الفرق صغيرًا فيُسقطه، مع أن الرقم يقود جدول المناوبات","يفترض أن المصدر صحيح دائمًا، والمصدر قد يحمل الخطأ نفسه"],"lo":["LO1","LO6"]},{"id":"check-critical-q1","slide":"check-critical","type":"single","prompt":"في سجل التصاريح أربعة أعمدة مرشحة، ومكانك لعنصر واحد. أيها أولى بالدخول؟","options":[{"key":"أ","text":"ملاحظات المشرف، لأن نصف خاناتها فارغة فهي الأسوأ اكتمالًا"},{"key":"ب","text":"رقم التصريح، لأن فحص صيغته أسهل"},{"key":"ج","text":"تاريخ شهادة الإسعافات، لأن عليه يقوم قرار سلامة"},{"key":"د","text":"ساعات التدريب، لأنها في التقرير السنوي للتدريب"}],"correct":[2],"explanation":"العنصر يُختار بأثر القرار المبني عليه: هنا هل يعمل مقدم الرعاية مع الأطفال اليوم.","misconceptions":["يختار ما يكثر فيه الفراغ، والفراغ وحده لا يجعل العنصر حرجًا","يختار ما يسهل فحصه، لا ما يقوم عليه قرار","","يخلط الاستخدام الداخلي الواحد بالأثر الكبير"],"lo":["LO1"]},{"id":"check-rule-q1","slide":"check-rule","type":"single","prompt":"متطلب مديرة شؤون الكوادر: «لا يُحسب في المناوبة إلا من تصريحه ساري.» أي صياغة قاعدة يمكن تشغيلها كما هي؟","options":[{"key":"أ","text":"بيانات التصاريح دقيقة ومحدثة دائمًا"},{"key":"ب","text":"عمود status في جدول التصاريح يُراجع شهريًا"},{"key":"ج","text":"نسبة التصاريح السارية في السجل لا تقل عن 95%"},{"key":"د","text":"التصاريح بحالة ACTIVE تاريخ انتهائها لا يسبق يوم الفحص؛ الاجتياز 100% يوميًا"}],"correct":[3],"explanation":"فيها نطاق وشرط على أعمدة ومعيار اجتياز وتكرار، فيشغّلها اثنان ويحصلان على الرقم نفسه.","misconceptions":["يكتب الغاية لا الشرط، فلا يعرف المحرك ما يفحصه","يذكر العمود دون شرط ولا عتبة، فكل قيمة تمر","يضع عتبة دون شرط يُفحص، والرقم وحده لا يقول ما يُعد ناجحًا",""],"lo":["LO1"]},{"id":"check-threshold-q1","slide":"check-threshold","type":"single","prompt":"اكتمال تاريخ شهادة الإسعافات اليوم 96.2%، وكان أدنى في بعض الأشهر. مديرة شؤون الكوادر تقول إن كل تصريح كامل بلا شهادة يمنع حسابه في المناوبة. ما المعيار المناسب؟","options":[{"key":"أ","text":"96%، لأنه ما نحققه اليوم"},{"key":"ب","text":"100%، واستثناء مؤقت مكتوب لما سبق الإلزام"},{"key":"ج","text":"95%، أدنى شهر مر بنا هذه السنة"},{"key":"د","text":"100% لكل التصاريح بلا استثناء، ومنها ما صدر قبل الإلزام بالحقل"}],"correct":[1],"explanation":"القرار سلامة فالمعيار من الحاجة، والصفوف التي لم يكن الحقل مطلوبًا لها تُخرج باستثناء محدد لا بخفض المعيار.","misconceptions":["ينسخ خط الأساس معيارًا، فتنجح القاعدة ولا يتغير شيء","","يأخذ أدنى ما بلغته البيانات كأنه مقبول، فيجعل الأسوأ هدفًا","يرفع المعيار لكل النطاق دون استثناء لما لم يكن الحقل مطلوبًا له، فتفشل القاعدة على صفوف لا ذنب لها"],"lo":["LO1","LO6"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day1.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

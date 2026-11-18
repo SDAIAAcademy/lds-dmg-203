@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="executives">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 2.1 · تنميط الأعمدة في أربعة جداول · إدارة جودة البيانات</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D2_1_column_profiling.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day2.html#lab-2-1">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 2.1</span>
+<h1>تنميط الأعمدة في أربعة جداول</h1>
+<p>دون أي مساعد ذكاء اصطناعي: تنمّط أعمدة الطلبات والمنشآت والرخص والزيارات، وتسجل كل عيب تجده مع الاستعلام الذي يُظهره وعدد صفوفه وبعده.</p>
+<div class="meta"><span>35 دقيقة</span><span>اليوم 2</span><span>الجلسة 1: تنميط الأعمدة</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="2.1">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>سجل عيوب لأعمدة الجداول الأربعة: لكل عيب الجدول والعمود وما تراه وعدد الصفوف والبعد، والاستعلام الذي يُظهره.</li>
+    <li>عادة أن تثبت كل شك باستعلام يعدّ صفوفه قبل أن تكتبه.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/data/applications.csv" download><b>data/</b><span>الجداول الأربعة: applications وcentres وlicences وinspections، وقوائم الرموز cities وdistricts وcodes_outcome.</span></a>
+  <a href="files/day2/defect_log_template.csv" download><b>day2/defect_log_template.csv</b><span>سجل العيوب الفارغ.</span></a>
+  <a href="files/day1/data_dictionary.csv" download><b>day1/data_dictionary.csv</b><span>ما يجب أن يكون في كل عمود.</span></a>
+</div>
+<div class="callout warn"><b>دون أي مساعد ذكاء اصطناعي.</b> هذا أول مختبر للتنميط، ودليل مهارته جزء من التقييم. في الجداول عشرة عيوب مزروعة، بعضها في عمود واحد (هذا المختبر) وبعضها بين الأعمدة والجداول (المختبر 2.2).</div>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · التنميط <span class="min">6 د</span></h3>
+  <p>شغّل التنميط على كل جدول واقرأه عمودًا عمودًا: الفراغ، والتميز، والأدنى والأعلى، والأكثر شيوعًا، والأشكال.</p>
+  <pre class="code"><code>uv run kit/profile.py applications
+uv run kit/profile.py centres
+uv run kit/profile.py licences
+uv run kit/profile.py inspections</code></pre>
+</div>
+
+<div class="step">
+  <h3>2 · ما يثير الشك <span class="min">8 د</span></h3>
+  <p>سجّل في سجل العيوب كل ما لا يطابق قاموس البيانات: قيمة بديلة، أو شكل مختلف، أو رمز خارج القائمة، أو تاريخ لا يُعقل، أو نص يحل محل الفراغ.</p>
+</div>
+
+<div class="step">
+  <h3>3 · استعلام لكل شك <span class="min">14 د</span></h3>
+  <p>اكتب لكل سطر استعلامًا يعدّ الصفوف التي فيها العيب، وانسخه في عمود <code>query</code>. شك بلا استعلام لا يُعد عيبًا.</p>
+  <pre class="code"><code>uv run kit/sql.py "SELECT training_hours, count(*) FROM 'files/examples/permits.csv' GROUP BY 1 ORDER BY 1 LIMIT 5"</code></pre>
+  <p class="small">مثال من سجل التصاريح لا من جداول المختبر: الشكل لا الجواب.</p>
+</div>
+
+<div class="step">
+  <h3>4 · البعد <span class="min">4 د</span></h3>
+  <p>أسند كل عيب إلى بعد: اكتمال، أو صلاحية، أو تفرد، أو اتساق، أو توقيت، أو دقة. نص يملأ خانة رمز ليس عيب صلاحية فقط: اسأل ماذا يخفي.</p>
+</div>
+
+<div class="step">
+  <h3>5 · مراجعة السجل <span class="min">3 د</span></h3>
+  <p>هل لكل سطر استعلام وعدد صفوف؟ هل كتبت ما تراه لا ما تظنه سببًا؟</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>ابحث عن عمود تبدو قيمه سليمة في التنميط لكنها تخالف ما يقوله قاموس البيانات أو عمود آخر.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>كم عيبًا في عمود واحد وجدت، وفي أي جداول؟</li>
+  <li>أي عيب لم يكن ليظهر لو عددت الفراغات فقط؟</li>
+  <li>أي قاعدة من الكتالوج المرجعي (تصلكم في المختبر 2.3) كانت ستلتقط كل عيب؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب</summary>
+  <ul>
+    <li>المرجع: <code>solutions/reference/defect_log_reference.csv</code> و<code>solutions/D2_1_column_profiling.md</code>. التحقق: <code>uv run solutions/check.py 2.1</code>.</li>
+    <li>العيوب الخمسة في عمود واحد: المقاعد 999 (14 رخصة)، والرمز البريدي من خمسة أرقام (31 منشأة)، وكلمات بدل رموز النتيجة (306 زيارات)، وتاريخ التقديم 1900-01-01 (9 طلبات)، و«غير محدد» بدل رمز الحي (26 منشأة).</li>
+    <li>لا مساعد في هذا المختبر. إن رأيت أداة ذكاء اصطناعي مفتوحة فذكّر بالسياسة. الفخ الأكبر: الاكتفاء بعدّ الفراغات، فيظهر العمودان «مكتملين».</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D1_4_thresholds.html" rel="prev">→ المختبر السابق</a><a href="D2_2_relationships.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار التنفيذيين والقادة · إدارة جودة البيانات<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-18⁩ · الإيداع 1a2a277</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-18T01:01:43Z","version":"2027.1.0","commit":"1a2a277"},"course":{"id":"lds-dmg-203","code":"LDS-DMG-203","title":"إدارة جودة البيانات","track":"executives","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/lds-dmg-203/","repo":"SDAIAAcademy/lds-dmg-203","home":"../index.html"},"lab":{"id":"2.1","title":"تنميط الأعمدة في أربعة جداول","summary":"دون أي مساعد ذكاء اصطناعي: تنمّط أعمدة الطلبات والمنشآت والرخص والزيارات، وتسجل كل عيب تجده مع الاستعلام الذي يُظهره وعدد صفوفه وبعده.","minutes":35,"day":2,"unit":"اليوم 2","session":1,"deck":"../slides/day2.html#lab-2-1","prev":"D1_4_thresholds.html","next":"D2_2_relationships.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

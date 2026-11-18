@@ -1,0 +1,36 @@
+table,column,description
+applications,application_id,رقم الطلب
+applications,centre_id,المنشأة التي يخصها الطلب؛ فارغ للطلبات المرفوضة أو المسحوبة قبل إنشاء منشأة
+applications,app_type,NEW لأول ترخيص وRENEWAL للتجديد
+applications,channel,قناة التقديم: PORTAL البوابة أو COUNTER مكتب الخدمة أو APP التطبيق
+applications,form_version,إصدار نموذج البوابة (v2 أو v3)؛ فارغ لغير البوابة
+applications,premises_same_as_owner,إجابة المتقدم في البوابة: هل عنوان المنشأة هو عنوان المالك المسجل (Y أو N)
+applications,submitted_at,تاريخ تقديم الطلب
+applications,decision,APPROVED أو REJECTED أو WITHDRAWN أو PENDING
+applications,decision_date,تاريخ القرار
+applications,capacity_requested,المقاعد التي طلبها المتقدم
+centres,centre_id,رقم المنشأة
+centres,centre_type,CENTRE مركز رعاية أو HOME حضانة منزلية
+centres,city_code,رمز مدينة الموقع كما سجّله آخر طلب معتمد
+centres,district_code,رمز الحي كما سجّله آخر طلب معتمد
+centres,building_no,رقم المبنى (أربعة أرقام)
+centres,postal_code,الرمز البريدي (ستة أرقام)
+centres,owner_id,رمز داخلي للمالك
+centres,opened_date,تاريخ بدء التشغيل
+licences,licence_no,رقم الرخصة
+licences,application_id,الطلب الذي صدرت به الرخصة
+licences,centre_id,المنشأة
+licences,issue_date,تاريخ الإصدار
+licences,expiry_date,تاريخ الانتهاء
+licences,status,ACTIVE أو EXPIRED أو RENEWED (حلّت محلها رخصة أحدث) أو SUSPENDED أو CANCELLED
+licences,capacity_licensed,المقاعد المرخصة
+inspections,inspection_id,رقم الزيارة
+inspections,licence_no,الرخصة التي زيرت المنشأة بموجبها
+inspections,inspection_date,تاريخ الزيارة
+inspections,entered_at,تاريخ إدخال النتيجة في النظام
+inspections,inspector_id,رمز المفتش
+inspections,office_city,المكتب الذي نفّذ الزيارة
+inspections,reassigned,Y إذا أحيلت الزيارة من مكتب إلى آخر
+inspections,outcome,نتيجة الزيارة من قائمة codes_outcome
+inspections,score,درجة الزيارة من 100
+inspections,followup_scheduled,Y إذا جُدولت زيارة متابعة

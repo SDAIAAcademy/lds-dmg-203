@@ -1,0 +1,11 @@
+defect_no,lab,table,column,what_you_see,rows_affected,dimension,query
+D1,2.1,licences,capacity_licensed,قيمة 999 لا تكون مقاعد حقيقية: قيمة بديلة,14,الصلاحية,SELECT count(*) FROM licences WHERE capacity_licensed = 999
+D2,2.1,centres,postal_code,رموز بريدية من خمسة أرقام سقط صفرها الأول,31,الصلاحية,SELECT count(*) FROM centres WHERE length(postal_code) <> 6
+D3,2.1,inspections,outcome,كلمات compliant وconditional وnon_compliant بدل الرموز,306,الصلاحية,SELECT count(*) FROM inspections WHERE outcome NOT IN (SELECT code FROM codes_outcome)
+D4,2.1,applications,submitted_at,تاريخ تقديم 1900-01-01 (قيمة افتراضية من ترحيل),9,الصلاحية,SELECT count(*) FROM applications WHERE submitted_at < DATE '2000-01-01'
+D5,2.1,centres,district_code,«غير محدد» بدل رمز الحي: فراغ متنكر,26,الاكتمال,SELECT count(*) FROM centres WHERE district_code NOT IN (SELECT district_code FROM districts)
+D6,2.2,inspections,licence_no,زيارات لرقم رخصة غير موجود,17,الاتساق,SELECT count(*) FROM inspections i WHERE NOT EXISTS (SELECT 1 FROM licences l WHERE l.licence_no = i.licence_no)
+D7,2.2,licences,application_id,طلب واحد صدرت له رخصتان ساريتان,37,التفرد,SELECT count(*) - count(DISTINCT application_id) FROM licences WHERE status = 'ACTIVE'
+D8,2.2,licences,status + expiry_date,رخص حالتها ACTIVE وانتهى تاريخها,41,الاتساق,SELECT count(*) FROM licences WHERE status = 'ACTIVE' AND expiry_date < DATE '2026-10-31'
+D9,2.2,centres,city_code + postal_code,مدينة مسجلة لا تطابقها بادئة الرمز البريدي,56,الدقة,"SELECT count(*) FROM centres c JOIN cities ci USING (city_code) WHERE length(c.postal_code) = 6 AND substr(c.postal_code, 1, 2) <> ci.postal_prefix"
+D10,2.2,licences + centres,capacity_licensed + centre_type,حضانة منزلية مرخصة لأكثر من عشرة مقاعد,12,الاتساق,SELECT count(*) FROM licences l JOIN centres c USING (centre_id) WHERE c.centre_type = 'HOME' AND l.capacity_licensed > 10 AND l.capacity_licensed <> 999

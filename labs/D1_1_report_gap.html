@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="executives">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 1.1 · التقرير أمام المصدر · إدارة جودة البيانات</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D1_1_report_gap.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day1.html#lab-1-1">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 1.1</span>
+<h1>التقرير أمام المصدر</h1>
+<p>تعيد حساب الرخص السارية والمقاعد المرخصة لكل مدينة من الجداول المصدر بتعريف التقرير نفسه، وتقيس الفرق عن تقرير أكتوبر، وتقدّر أثره في دعم المقاعد للربع القادم.</p>
+<div class="meta"><span>35 دقيقة</span><span>اليوم 1</span><span>الجلسة 1: الجودة صلاحية لاستخدام محدد</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="1.1">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>جدول لكل مدينة: الرخص السارية والمقاعد في تقرير أكتوبر، والرقمان نفساهما محسوبين من المصدر بتعريف التقرير، والفرق.</li>
+    <li>تقدير لأثر فرق المقاعد في دعم الربع القادم، وثلاثة أسطر لرئيسة التقارير.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/day1/report_2026_10.csv" download><b>day1/report_2026_10.csv</b><span>تقرير أكتوبر كما نُشر: الرخص السارية والمقاعد في كل مدينة.</span></a>
+  <a href="files/day1/report_method.txt"><b>day1/report_method.txt</b><span>تعريف التقرير، وقيمة دعم المقعد في كل مدينة.</span></a>
+  <a href="files/data/licences.csv" download><b>data/</b><span>الجداول المصدر. وصف أعمدتها في <code>day1/data_dictionary.csv</code>.</span></a>
+</div>
+<p class="small">تعمل من مجلد <code>labs</code> بالأمر <code>uv run kit/sql.py "…"</code>، أو في أي محرك SQL يقرأ ملفات CSV. المساعد الذكي غير مطلوب هنا؛ إن استعملته فاسأله عن صياغة SQL بكلماتك، ولا تُدخله صفوف الجداول.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · التعريف شروطًا <span class="min">5 د</span></h3>
+  <p>اقرأ <code>report_method.txt</code> واكتب التعريف شروطًا على الأعمدة: أي حالة، وأي تاريخ مقابل أي تاريخ، وكم مرة تُعد المنشأة، ومن أين تأتي المدينة.</p>
+</div>
+
+<div class="step">
+  <h3>2 · الرخص السارية بالتعريف <span class="min">10 د</span></h3>
+  <p>اربط <code>licences</code> مع <code>centres</code>، وطبّق شروطك، وعدّ المنشآت لكل مدينة.</p>
+  <pre class="code"><code>uv run kit/sql.py "SELECT c.city_code, count(DISTINCT l.centre_id) FROM licences l JOIN centres c USING (centre_id) WHERE … GROUP BY 1 ORDER BY 1"</code></pre>
+</div>
+
+<div class="step">
+  <h3>3 · المقاعد والفرقان <span class="min">8 د</span></h3>
+  <p>احسب المقاعد لكل مدينة بالتعريف نفسه (منشأة واحدة، رخصة واحدة)، ثم ضع أرقامك بجانب التقرير واحسب الفرقين. يقرأ المحرك ملف التقرير مباشرة: <code>FROM 'files/day1/report_2026_10.csv'</code>.</p>
+</div>
+
+<div class="step">
+  <h3>4 · الأثر بالريال <span class="min">7 د</span></h3>
+  <p>اضرب فرق المقاعد في كل مدينة في دعم المقعد الشهري لتلك المدينة، ثم في ثلاثة أشهر. هذا ما سيُرصد زيادةً إن بقي التقرير كما هو.</p>
+</div>
+
+<div class="step">
+  <h3>5 · ثلاثة أسطر لخلود العويدي <span class="min">5 د</span></h3>
+  <p>السطر الأول: الفرق بالأرقام. الثاني: أثره. الثالث: ما لا تعرفه بعد. لا تذكر سببًا لم تثبته باستعلام.</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>سمِّ سببين قد يبقى بهما الرقم خاطئًا حتى لو طابق التقرير التعريف تمامًا، وما الذي تحتاجه لتختبر كلًا منهما.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>كم رخصة سارية في التقرير، وكم بالتعريف؟ في أي مدينة أكبر فرق؟</li>
+  <li>هل يزيد التقرير أم ينقص في كل المدن؟ ماذا يقول لك الاتجاه الواحد؟</li>
+  <li>كم يُرصد زيادةً في الربع القادم؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب</summary>
+  <ul>
+    <li>المرجع: <code>solutions/D1_1_report_gap.md</code>. التحقق: <code>uv run solutions/check.py 1.1</code>.</li>
+    <li>الأرقام: التقرير 931 رخصة و58,341 مقعدًا؛ بالتعريف 853 و54,041؛ الفرق 78 رخصة و4,300 مقعد، والتقرير أعلى في كل المدن. الأثر 1,543,010 ريالات في الشهر و4,629,030 في الربع.</li>
+    <li>الفخاخ: نسيان شرط تاريخ الانتهاء، وعدّ الصفوف بدل المنشآت، وجمع المقاعد من كل الصفوف. لا تكشف الأسباب اليوم: هي عمل اليوم الثاني.</li>
+    <li>جواب التمرين الإضافي: المدينة نفسها قد تكون خاطئة في <code>centres</code>، والمقاعد قد تحمل قيمة غير معقولة؛ التعريف لا يحمي منهما.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><span></span><a href="D1_2_critical_elements.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار التنفيذيين والقادة · إدارة جودة البيانات<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-18⁩ · الإيداع 1a2a277</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-18T01:01:43Z","version":"2027.1.0","commit":"1a2a277"},"course":{"id":"lds-dmg-203","code":"LDS-DMG-203","title":"إدارة جودة البيانات","track":"executives","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/lds-dmg-203/","repo":"SDAIAAcademy/lds-dmg-203","home":"../index.html"},"lab":{"id":"1.1","title":"التقرير أمام المصدر","summary":"تعيد حساب الرخص السارية والمقاعد المرخصة لكل مدينة من الجداول المصدر بتعريف التقرير نفسه، وتقيس الفرق عن تقرير أكتوبر، وتقدّر أثره في دعم المقاعد للربع القادم.","minutes":35,"day":1,"unit":"اليوم 1","session":1,"deck":"../slides/day1.html#lab-1-1","prev":null,"next":"D1_2_critical_elements.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="deck" data-track="executives">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>اليوم 3 · المشكلات والتشغيل والذكاء الاصطناعي · إدارة جودة البيانات</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day3.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<div class="deck" data-course="إدارة جودة البيانات" data-track="executives" data-day="اليوم 3">
+<section class="slide title" id="title" data-auto="title" data-label="الترحيب" data-n="1">
+  <div class="kicker">أكاديمية سدايا · إدارة جودة البيانات</div>
+  <h1>المشكلات والتشغيل والذكاء الاصطناعي</h1>
+  <p class="lead mt">اليوم 3: مشكلة تُدار حتى سببها، وجودة قبل النشر وفي الاتفاقيات، وبيانات يُحكم عليها قبل أن يتعلم منها نموذج</p>
+  <div class="meta"><span class="track">مسار التنفيذيين والقادة</span><span>3 أيام تدريبية + يوم للمشروع الختامي</span><span>4 جلسات · 4 مختبرات</span><span>LDS-DMG-203</span></div>
+  <aside class="notes"><p>رحّب بالمشاركين واسأل: «أمس وجدنا العيوب وعددناها. من يتوقع أن تعود إن صححنا الصفوف اليوم؟». اسمع الإجابات.</p><p>اليوم من العيب إلى سببه وإلى التشغيل: سجل المشكلات، والسبب الجذري، والجودة قبل النشر وفي الاتفاقيات، ثم البيانات التي يتعلم منها الذكاء الاصطناعي. وفي آخر اليوم نطلق المشروع الختامي.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="جدول اليوم" data-n="2">
+  <div class="kicker">اليوم</div>
+  <h2>المشكلات والتشغيل والذكاء الاصطناعي</h2>
+  <div class="agenda"><div class="item"><div><b>الجلسة 1 · دورة حياة المشكلة</b><small>المشكلة تُفرز بخطورة من الأثر والامتداد، ولها مالك ومدة وتصعيد، وتُغلق حين يثبت القياس أن السبب عولج</small></div></div><div class="item"><div><b>الجلسة 2 · السبب الجذري والوقاية</b><small>الأسئلة الخمسة ومخطط السبب والنتيجة حتى المنشأ، والوقاية عند الإدخال، ومقياس تكرار يثبت الإصلاح</small></div></div><div class="item"><div><b>الجلسة 3 · الجودة في التشغيل</b><small>بوابة قبل النشر، وبنود جودة في اتفاقية المشاركة، وخلاف الأولوية يُحسم بالأرقام ثم بالتصعيد</small></div></div><div class="item"><div><b>الجلسة 4 · بيانات يستخدمها الذكاء الاصطناعي</b><small>التمثيل والتسميات والتكرار والتسرب في الجداول، والحداثة والتعارض في الوثائق، ثم قرار بالأرقام</small></div></div></div>
+  <aside class="notes"><p>أربع جلسات من 70 دقيقة. المختبر 3.2 فيه مرشد ذكاء اصطناعي يسألك أسئلة السبب الجذري، وفي المختبر 3.4 لا نموذج: نقيس البيانات قبل أن يتعلم منها أي نموذج.</p></aside>
+</section>
+
+<section class="slide" id="review-day2" data-lo="LO2 LO3" data-n="3">
+  <div class="kicker">مراجعة من اليوم 2</div>
+  <h2>أي استنتاج يسنده سجل التشغيل؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO2 LO3" data-id="review-day2-q1">
+    <p class="lead">سجل تشغيل التصاريح: قاعدة «التصريح الساري لم ينته تاريخه» تفشل في 18 من 786. أي جملة يسندها هذا السجل وحده؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يقدّم سببًا لا يعرفه السجل؛ السجل يقول ماذا لا لماذا" data-k="أ">موظفو التصاريح ينسون تحديث الحالة</div>
+      <div class="opt" data-why="يخلط الحالة المخزنة بالواقع: قد يكون التصريح جُدد ولم يُسجَّل التجديد" data-k="ب">18 مقدم رعاية يعملون اليوم بلا تصريح</div>
+      <div class="opt" data-why="العدد صغير لكن القاعدة عتبتها 100؛ الحكم بالعتبة لا بالانطباع" data-k="ج">القاعدة ناجحة عمليًا: 18 من 786 أقل من 3%، والعتبة 100 تُقرأ تقريبًا</div>
+      <div class="opt" data-ok data-k="د">18 تصريحًا حالتها ساري وتاريخها انتهى، ويلزم بحث في السبب</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> سجل التشغيل يعدّ صفوفًا تخالف شرطًا. السبب والأثر الفعلي يحتاجان دليلًا آخر، وهذا عمل اليوم.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: د. من اختار «ب» قفز من البيانات إلى الواقع: قد يكون التجديد في ملف آخر. هذا بالضبط ما تسأله الأسئلة الخمسة.</p></aside>
+</section>
+
+<!-- الجلسة 1 -->
+
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="4">
+  <div class="kicker">الجلسة 1</div>
+  <h1>دورة حياة المشكلة</h1>
+  <ul class="bullets outcomes"><li>يفرز المشكلات بخطورة من الأثر والامتداد</li><li>يسند لكل مشكلة مالكًا ومدة خدمة ومسار تصعيد</li><li>يقيس أداء معالجة المشكلات بمؤشرين</li></ul>
+  <div class="sess-no">01</div>
+</section>
+
+<section class="slide" id="issue-lifecycle" data-lo="LO4 LO6" data-n="5" data-session="1">
+  <div class="kicker">دورة حياة المشكلة</div>
+  <h2>المشكلة تُسجَّل وتُفرز وتُسند، وتُغلق بالقياس</h2>
+  <div class="flow">
+    <div class="step c-navy"><b>1 · التسجيل</b>بلاغ أو فحص آلي</div>
+    <div class="arrow">←</div>
+    <div class="step c-teal"><b>2 · الفرز</b>مكرر؟ خطورة؟</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>3 · الإسناد</b>مالك ومدة</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>4 · الإصلاح</b>تصحيح ووقاية</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>5 · الإغلاق</b>قياس يثبت</div>
+  </div>
+  <div class="callout note mt small"><b>الضوابط الوطنية</b> تطلب مسارًا واضحًا لحل المشكلات: خطة معالجة فيها السبب الجذري والأثر، ومراجعة تتحقق من الحل، ومددًا وتصعيدًا في اتفاقية مستوى الخدمة.</div>
+  <aside class="notes"><p>اسأل: أين تُسجَّل مشكلات البيانات في جهاتكم؟ في البريد غالبًا، فلا يُعرف كم منها مفتوح. السجل يجعل المشكلة مرئية ومقيسة.</p><p>المصادر: الضوابط الوطنية، DQ.2.3 (خطة المعالجة) وDQ.2.4 (اتفاقيات مستوى الخدمة).</p></aside>
+</section>
+
+<section class="slide" id="severity-matrix" data-lo="LO4 LO6" data-n="6" data-session="1">
+  <div class="kicker">الخطورة</div>
+  <h2>الخطورة من الأثر والامتداد، لا من صوت المبلّغ</h2>
+  <div class="cols cols-21">
+    <table class="t small">
+      <tr><th>الأثر \ الامتداد</th><th>واسع</th><th>محدود</th></tr>
+      <tr><td>عالٍ: سلامة، رقم منشور، قرار مع أشخاص</td><td>حرجة</td><td>عالية</td></tr>
+      <tr><td>متوسط: عمل داخلي يتعطل أو مال</td><td>عالية</td><td>متوسطة</td></tr>
+      <tr><td>منخفض: إزعاج دون قرار خاطئ</td><td>متوسطة</td><td>منخفضة</td></tr>
+    </table>
+    <div class="card c-teal"><h4>في التصاريح</h4><p class="small mb0">18 تصريحًا «ساريًا» منتهيًا يحسبها جدول المناوبات: أثر عالٍ (قرار مع أشخاص)، وامتداد واسع (18 من 786، أي 2.3%، فوق 1%). <b>حرجة.</b></p></div>
+  </div>
+  <aside class="notes"><p>الامتداد يُقاس: نسبة الصفوف من سجل التشغيل، أو هل يتكرر. ثلاثة بلاغات عن الشيء نفسه لا تجعله أوسع من فحص آلي يعدّ 300 صف.</p><p>الدليل في المختبر هو هذا الجدول نفسه، مع مدد الخدمة.</p></aside>
+</section>
+
+<section class="slide" id="sla-escalation" data-lo="LO4 LO6" data-n="7" data-session="1">
+  <div class="kicker">المدد والتصعيد</div>
+  <h2>لكل خطورة مدة خطة ومدة تنفيذ، ولكل تأخير درجة تصعيد</h2>
+  <div class="cols cols-2">
+    <table class="t small">
+      <tr><th>الخطورة</th><th>الخطة</th><th>التنفيذ</th></tr>
+      <tr><td>حرجة</td><td>يوما عمل</td><td>10 أيام عمل</td></tr>
+      <tr><td>عالية</td><td>5 أيام</td><td>20 يومًا</td></tr>
+      <tr><td>متوسطة</td><td>10 أيام</td><td>في الربع</td></tr>
+    </table>
+    <div class="flow">
+      <div class="step c-teal"><b>المشرف</b>يقبل ويسمّي</div>
+      <div class="arrow">←</div>
+      <div class="step c-amber"><b>المالك</b>فاتت الخطة</div>
+      <div class="arrow">←</div>
+      <div class="step c-coral"><b>رئيس المكتب</b>خلاف أو تأخير</div>
+    </div>
+  </div>
+  <aside class="notes"><p>الأدوار من LDS-DMG-101: المشرف يدير، والمالك يقرر، ومكتب البيانات يحكم؛ ومن درس LDS-DMG-201 رأى سلم التصعيد كاملًا. هنا نضيف المدد. المدد في المختبر من دليل الهيئة الافتراضي.</p><p>المصادر: الضوابط الوطنية، DQ.2.4.</p></aside>
+</section>
+
+<section class="slide" id="close-by-measure" data-lo="LO4" data-n="8" data-session="1">
+  <div class="kicker">الإغلاق</div>
+  <h2>المشكلة لا تُغلق حين تُصحَّح الصفوف</h2>
+  <div class="cols cols-2">
+    <div class="card flat c-coral"><h4>إغلاق مبكر</h4><p class="small mb0">صُححت 57 شهادة فارغة يدويًا، وأُغلقت المشكلة. بعد شهر: 12 فارغة جديدة، لأن النموذج ما زال يقبل الفراغ.</p></div>
+    <div class="card flat c-teal"><h4>إغلاق بالقياس</h4><p class="small mb0">القاعدة تُشغَّل أسبوعيًا بعد إصلاح النموذج، وتبقى عند عتبتها أربعة أسابيع: الآن تُغلق.</p></div>
+  </div>
+  <div class="callout warn mt small"><b>أو يقبلها المالك كتابة</b> مع سببه. القبول قرار يُسجَّل، لا صمت.</div>
+  <aside class="notes"><p>المثال افتراضي (الـ 12 الجديدة ليست في الملف). الفكرة: تصحيح الصفوف علاج للعرض، والإغلاق يحتاج دليلًا على أن السبب عولج.</p><p>اسأل: كم مشكلة «مغلقة» في جهتكم عادت؟</p></aside>
+</section>
+
+<section class="slide" id="issue-kpis" data-lo="LO4 LO6" data-n="9" data-session="1">
+  <div class="kicker">قياس المعالجة</div>
+  <h2>مؤشرات تقيس المعالجة، لا عدد البلاغات</h2>
+  <table class="t small">
+    <tr><th>المؤشر</th><th>المقام</th><th>ما يكشفه</th></tr>
+    <tr><td>المغلق بدليل</td><td>المشكلات الأصلية</td><td>هل نعالج أم نؤجل؟</td></tr>
+    <tr><td>المفتوح الذي فاتت مدة خطته</td><td>المفتوح</td><td>هل المدد واقعية، ومن يتأخر؟</td></tr>
+    <tr><td>المعاد فتحه</td><td>المغلق</td><td>هل نغلق مبكرًا؟</td></tr>
+    <tr><td>زمن الخطة الوسيط</td><td>بحسب الخطورة</td><td>هل الحرجة تُعامل كحرجة؟</td></tr>
+  </table>
+  <div class="callout tip mt small"><b>المكرر يُربط بأصله</b> ولا يُعد في المقام، وإلا تضخم السجل وانخفضت النسب.</div>
+  <aside class="notes"><p>عدد البلاغات يرتفع حين يثق الناس بالسجل، فلا يُقرأ وحده سوءًا. المؤشرات هنا على المعالجة.</p><p>تطلب الضوابط الوطنية في DQ.3.2 أربعة مؤشرات على الأقل: المحلول مقابل المبلّغ، والمحلول بعد موعده، وزمن إعداد خطة المعالجة، وزمن الحل. «المعاد فتحه» إضافة من المقرر.</p><p>المصادر: الضوابط الوطنية، DQ.3.2.</p></aside>
+</section>
+
+<section class="slide" id="check-triage" data-lo="LO4 LO6" data-n="10" data-session="1">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>ما خطورتها؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO4 LO6" data-id="check-triage-q1">
+    <p class="lead">سجل التشغيل: 22 تصريحًا من 1,509 بساعات تدريب صفر (1.5%). الحقل تستعمله خطة التدريب السنوية الداخلية فقط، ولا يدخل قرار إصدار التصريح ولا المناوبات. وصل بلاغ واحد من إدارة التدريب. ما الخطورة بحسب الدليل؟</p>
+    <div class="opts">
+      <div class="opt" data-why="الخطة تُبنى على رقم خاطئ فيتعطل عمل داخلي؛ هذا أثر متوسط لا إزعاج دون قرار" data-k="أ">منخفضة: لا قرار خاطئ عن أي شخص</div>
+      <div class="opt" data-why="يقدّر الامتداد بعدد البلاغات، والامتداد المقيس 1.5% فوق حد 1% في الدليل" data-k="ب">متوسطة: أثر متوسط، وبلاغ واحد فالامتداد محدود</div>
+      <div class="opt" data-ok data-k="ج">عالية: أثر متوسط وامتداد واسع (1.5%)</div>
+      <div class="opt" data-why="يجعل كل ما يمس مقدمي الرعاية عالي الأثر، والحقل هنا لا يدخل قرارًا عن طفل أو شخص" data-k="د">حرجة: كل ما يتعلق بمقدمي الرعاية يمس السلامة</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الأثر متوسط: خطة داخلية تُبنى على رقم خاطئ، دون قرار عن أشخاص. والامتداد من سجل التشغيل (1.5% أكبر من 1%) لا من عدد البلاغات. متوسط × واسع = عالية.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ج. المثال على ملف التصاريح (22 صفًا بساعات صفر)؛ استعمال الحقل في خطة التدريب وحدها افتراض للسؤال. من اختار «ب» قرأ عدد البلاغات بدل سجل التشغيل.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-1" data-auto="lab" data-lab="3.1" data-label="المختبر 3.1" data-n="11" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 3.1 · 35 دقيقة</div><h2>فرز سجل المشكلات</h2><p class="lead small">اثنتا عشرة مشكلة وصلت إلى مكتب البيانات: تربط المكرر منها بأصله، وتعطي كل مشكلة خطورتها ومالكها ومدتها ومسار تصعيدها، وتحسب مؤشرين لأداء المعالجة.</p><a class="nb" href="../labs/D3_1_issue_triage.html">D3_1_issue_triage.html</a></div><ul class="checklist"><li>اقرأ دليل الخطورة وسجل المشكلات <span class="min">5 د</span></li><li>اربط المشكلات المكررة بمشكلة أصلية <span class="min">6 د</span></li><li>قدّر الأثر والامتداد والخطورة لكل مشكلة <span class="min">10 د</span></li><li>سمِّ المالك ومدة الخطة والتنفيذ ومسار التصعيد <span class="min">8 د</span></li><li>احسب مؤشرين لأداء المعالجة <span class="min">6 د</span></li><li class="stretch">✱ إضافي: اكتب لكل مشكلة مغلقة في السجل الدليل الذي كان يجب أن يُطلب قبل إغلاقها</li></ul></div>
+  <aside class="notes"><p>البداية من day3/issue_log.csv وday3/severity_guide.txt. راقب من يعد المكررات مشكلات مستقلة، ومن يقبل الإغلاقين دون سؤال.</p><p>من يتعثر في الامتداد: ذكّره بسجل التشغيل المرجعي من أمس، فيه عدد الصفوف لكل قاعدة.</p></aside>
+</section>
+
+<section class="slide" id="debrief-3-1" data-label="بعد المختبر 3.1" data-lo="LO4 LO6" data-n="12" data-session="1">
+  <div class="kicker">بعد المختبر 3.1</div>
+  <h2>تسع مشكلات أصلية، وإغلاق واحد بحق</h2>
+  <div class="cols cols-3">
+    <div class="stat center"><div class="big">3</div><div class="lbl">مكررات لمشكلة المدينة ISS-101</div></div>
+    <div class="stat center"><div class="big">1 من 9</div><div class="lbl">مغلقة بدليل</div></div>
+    <div class="stat center"><div class="big">7 من 8</div><div class="lbl">مفتوحة فاتت مدة خطتها</div></div>
+  </div>
+  <ul class="bullets small mt">
+    <li>ISS-104 أُغلقت بتصحيح رخصة واحدة، ووراءها 41 رخصة: تُعاد فتحها</li>
+    <li>ISS-112 عناوين منازل أُرسلت لشريك: حادثة بيانات شخصية، إلى مسؤول حماية البيانات</li>
+  </ul>
+  <aside class="notes"><p>الأرقام من <code>uv run solutions/check.py 3.1</code>. الحرجة خمس: ISS-101 وISS-102 وISS-104 وISS-108 وISS-112.</p><p>انتقل إلى الجلسة التالية بسؤال: ISS-101 تتكرر كل أسبوع في ثلاثة مكاتب. لماذا؟</p></aside>
+</section>
+
+<!-- الجلسة 2 -->
+
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="13">
+  <div class="kicker">الجلسة 2</div>
+  <h1>السبب الجذري والوقاية</h1>
+  <ul class="bullets outcomes"><li>يعزل خطأً متكررًا بتقسيم البيانات حتى يظهر منشؤه</li><li>يكتب تحليل الأسئلة الخمسة ومخطط السبب والنتيجة</li><li>يحدد إجراءات تصحيحية ووقائية بملاكها ومقياس تكرار</li></ul>
+  <div class="sess-no">02</div>
+</section>
+
+<section class="slide" id="symptom-cause" data-lo="LO4" data-n="14" data-session="2">
+  <div class="kicker">العرض والسبب</div>
+  <h2>تصحيح الصفوف يعالج العرض، والسبب يعيده</h2>
+  <div class="cols cols-3">
+    <div class="card c-coral"><h4>العرض</h4><p class="small mb0">ما يراه المستهلك: رقم خاطئ، زيارة متأخرة.</p></div>
+    <div class="card c-amber"><h4>السبب المباشر</h4><p class="small mb0">ما أنتج القيمة الخاطئة: حقل، مهمة، شخص.</p></div>
+    <div class="card c-navy"><h4>المنشأ</h4><p class="small mb0">القرار أو التصميم الذي سمح بذلك، ويمكن تغييره.</p></div>
+  </div>
+  <div class="callout warn mt small"><b>«خطأ إدخال بشري»</b> سبب مباشر لا منشأ. السؤال التالي: لماذا سمح النظام بالخطأ؟</div>
+  <aside class="notes"><p>اسأل القاعة عن آخر تحليل سبب جذري انتهى بـ«تدريب الموظفين». كم مرة نجح؟ التدريب لا يغير تصميمًا يدفع إلى الخطأ.</p><p>المصادر: الضوابط الوطنية، DQ.2.3 (خطة المعالجة تبدأ بالسبب الجذري).</p></aside>
+</section>
+
+<section class="slide" id="isolate-by-slicing" data-lo="LO4" data-n="15" data-session="2">
+  <div class="kicker">العزل</div>
+  <h2>قسّم الصفوف الخاطئة حتى يبقى قسم واحد</h2>
+  <table class="t small">
+    <tr><th>التقسيم</th><th>القيم</th><th>الشهادات الفارغة</th></tr>
+    <tr><td>نوع التصريح</td><td>كامل · مساعد</td><td>موزعة: لا شيء هنا</td></tr>
+    <tr><td>سنة الإصدار</td><td>2023 إلى 2026</td><td>موزعة: لا شيء هنا</td></tr>
+    <tr><td>قناة التقديم</td><td>مكتب · بوابة · ترحيل</td><td>كلها تقريبًا من دفعة ترحيل</td></tr>
+  </table>
+  <p class="small mt">تقسيم لا يغيّر النسبة يُسقط فرضية. تقسيم يركّز الخطأ يقرّبك من المنشأ.</p>
+  <p class="small muted">مثال افتراضي: ملف التصاريح لا يحمل عمود القناة.</p>
+  <aside class="notes"><p>الصفان الأولان حقيقيان في ملف التصاريح: الشهادات الفارغة موزعة على الأنواع والسنوات. الصف الثالث افتراضي لتوضيح الطريقة.</p><p>في المختبر تقسم بالقناة ثم الإصدار ثم إجابة سؤال في النموذج ثم النوع. لا تقل أين يتركز.</p></aside>
+</section>
+
+<section class="slide" id="five-whys" data-lo="LO4" data-n="16" data-session="2">
+  <div class="kicker">الأسئلة الخمسة</div>
+  <h2>اسأل «لماذا؟» حتى تصل إلى ما يمكن تغييره</h2>
+  <div class="flow">
+    <div class="step c-coral"><b>لماذا استُبعد؟</b>الشهادة فارغة</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>لماذا فارغة؟</b>الترحيل لم ينقلها</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>لماذا؟</b>الحقل في النظام القديم باسم آخر</div>
+    <div class="arrow">←</div>
+    <div class="step c-navy"><b>لماذا لم يُكتشف؟</b>لا فحص بعد الترحيل</div>
+  </div>
+  <div class="callout tip mt small"><b>كل جواب بدليل:</b> تقسيم، أو وثيقة، أو مسار. جواب بلا دليل فرضية تُختبر.</div>
+  <aside class="notes"><p>المثال افتراضي ويكمل الشريحة السابقة. ليست خمسة بالضبط: تتوقف حين تصل إلى قرار أو تصميم يمكن تغييره. هنا: فحص مقارنة بعد كل ترحيل.</p></aside>
+</section>
+
+<section class="slide" id="fishbone" data-lo="LO4" data-n="17" data-session="2">
+  <div class="kicker">مخطط السبب والنتيجة</div>
+  <h2>المخطط يمنعك من التوقف عند أول سبب</h2>
+  <div class="cols cols-3">
+    <div class="card tint c-navy"><h4>النموذج والنظام</h4><p class="small mb0">حقول، وقيم افتراضية، وتحقق</p></div>
+    <div class="card tint c-teal"><h4>التكامل</h4><p class="small mb0">ترحيل، ومهام ليلية، وكتابة فوق</p></div>
+    <div class="card tint c-purple"><h4>القواعد</h4><p class="small mb0">ما لا يُفحص</p></div>
+    <div class="card tint c-amber"><h4>الناس</h4><p class="small mb0">ما يرونه وما لا يرونه</p></div>
+    <div class="card tint c-cyan"><h4>القياس</h4><p class="small mb0">ما قيس عند الإطلاق</p></div>
+    <div class="card tint c-coral"><h4>النتيجة</h4><p class="small mb0">العرض كما يراه المستهلك</p></div>
+  </div>
+  <aside class="notes"><p>مخطط إيشيكاوا بفروع تناسب البيانات. املأه مع الفريق: المشرف الفني يعرف التكامل، والمشرفة تعرف الناس والنموذج.</p><p>وتتبع أصل البيانات يقول أين تمر القيمة: درسوه في LDS-DMG-101، وفي المختبر يُعطى جاهزًا.</p></aside>
+</section>
+
+<section class="slide" id="prevent-where" data-lo="LO4" data-n="18" data-session="2">
+  <div class="kicker">الوقاية</div>
+  <h2>كلما اقتربت الوقاية من نقطة الإدخال قلّت كلفتها</h2>
+  <div class="bars">
+    <div class="row"><span>عند الإدخال: تحقق في النموذج</span><div class="bar c-teal" style="--w:20%"></div><span class="val">أرخص</span></div>
+    <div class="row"><span>في التكامل: رفض أو تعليق</span><div class="bar c-amber" style="--w:45%"></div><span class="val"></span></div>
+    <div class="row"><span>في الفحص الدوري: قاعدة تنبّه</span><div class="bar c-amber" style="--w:70%"></div><span class="val"></span></div>
+    <div class="row"><span>عند المستهلك: زيارة خاطئة</span><div class="bar c-coral" style="--w:100%"></div><span class="val">أغلى</span></div>
+  </div>
+  <p class="small mt">الأشرطة توضيح للترتيب، لا قياس. خطة جيدة: تصحيح للحالي، ووقاية عند الإدخال، وحاجز في التكامل.</p>
+  <aside class="notes"><p>الضوابط الوطنية تطلب أن يجري مشرفو البيانات من الأعمال والتقنية مراجعات جودة ضمن دورة تطوير الأنظمة، وأن تُعالج المشكلات المكتشفة قبل الانتقال إلى الإنتاج. إصدار جديد من نموذج إدخال تغيير من هذا النوع.</p><p>المصادر: الضوابط الوطنية، DQ.4.1.</p></aside>
+</section>
+
+<section class="slide" id="recurrence-measure" data-lo="LO4" data-n="19" data-session="2">
+  <div class="kicker">مقياس التكرار</div>
+  <h2>الإصلاح ينجح حين يثبته رقم أسبوعي</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>عرّفه</h4><p class="small mb0">البسط: الصفوف الجديدة بالخطأ هذا الأسبوع. المقام: الصفوف الجديدة كلها. لا الرصيد القديم.</p></div>
+    <div class="card c-navy"><h4>واربطه بالإغلاق</h4><p class="small mb0">الهدف وعدد الأسابيع التي يبقى فيها عنده، ثم تُغلق المشكلة.</p></div>
+  </div>
+  <div class="callout note mt small"><b>قسه قبل الإصلاح أيضًا</b> لتعرف خط الأساس، وإلا لا تعرف إن تغير شيء.</div>
+  <aside class="notes"><p>الرصيد القديم يتناقص بالتصحيح ولو لم يُعالج السبب، فيخدع. المقياس على الجديد فقط يقول إن السبب توقف.</p></aside>
+</section>
+
+<section class="slide" id="check-root-cause" data-lo="LO4" data-n="20" data-session="2">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>أين تتوقف الأسئلة؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO4" data-id="check-root-cause-q1">
+    <p class="lead">تحليل لساعات تدريب صفرية في تصاريح جديدة انتهى عند: «الموظف لا يكتب الساعات لأن الحقل اختياري ويقبل الصفر افتراضيًا». ما الإجراء الوقائي الأنسب؟</p>
+    <div class="opts">
+      <div class="opt" data-why="تدريب الناس لا يغير تصميمًا يدفعهم إلى الخطأ، فيعود الخطأ مع كل موظف جديد" data-k="أ">تدريب الموظفين على أهمية الحقل</div>
+      <div class="opt" data-ok data-k="ب">الحقل إلزامي بلا قيمة افتراضية، والتحقق يرفض ما دون الحد</div>
+      <div class="opt" data-why="تصحيح للصفوف الحالية، لا وقاية: الصفوف الجديدة تأتي بالصفر نفسه" data-k="ج">تصحيح التصاريح الـ 22 يدويًا من ملفات التدريب</div>
+      <div class="opt" data-why="الفحص يكتشف بعد الحدوث؛ مفيد حاجزًا ثانيًا لكنه ليس الأقرب إلى المنشأ" data-k="د">قاعدة أسبوعية تنبّه على كل صفر جديد في السجل، ويصححه المشرف خلال يوم</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> المنشأ تصميم الحقل، فالوقاية تغيّر التصميم عند الإدخال. التصحيح والقاعدة الأسبوعية مكمّلان لا بديلان.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ب. المثال افتراضي على ملف التصاريح. من اختار «د»: صحيح أنه مفيد، والخطة الجيدة تحمل الاثنين، لكن السؤال عن الأقرب إلى المنشأ.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-2" data-auto="lab" data-lab="3.2" data-label="المختبر 3.2" data-n="21" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 3.2 · 35 دقيقة</div><h2>خطأ العناوين حتى نموذج الإدخال</h2><p class="lead small">تتبع خطأً متكررًا في مدينة موقع المراكز من سجل المشكلات عبر مسار البيانات حتى نموذج البوابة، وتكتب المنشأ والإجراءات التصحيحية والوقائية وملاكها ومقياسًا أسبوعيًا للتكرار.</p><a class="nb" href="../labs/D3_2_root_cause.html">D3_2_root_cause.html</a></div><ul class="checklist"><li>اعزل الخطأ: قسّم المراكز المخالفة بالقناة والإصدار وإجابة المربع <span class="min">10 د</span></li><li>اقرأ المسار والمواصفة وارسم مخطط السبب والنتيجة <span class="min">7 د</span></li><li>اكتب الأسئلة الخمسة حتى المنشأ <span class="min">6 د</span></li><li>اكتب إجراءً تصحيحيًا وإجراءين وقائيين بملاكهم <span class="min">7 د</span></li><li>عرّف مقياس التكرار وهدفه من الملف الأسبوعي <span class="min">5 د</span></li><li class="stretch">✱ إضافي: قدّر كم زيارة أحيلت بسبب هذا الخطأ منذ إطلاق الإصدار <span class="ltr" dir="ltr">v3</span></li></ul></div>
+  <aside class="notes"><p>البداية من day3/lineage.txt وday3/form_spec.txt وday3/address_weekly.csv وجدول applications. المرشد مسموح ليسأل المشارك أسئلة السبب الجذري دون صفوف.</p><p>الفخ: التوقف عند «المتقدم لم ينتبه». اسأل: لماذا كان يمكن ألا ينتبه؟ لا تقل أين يتركز الخطأ قبل أن يقسّموا.</p></aside>
+</section>
+
+<section class="slide" id="debrief-3-2" data-label="بعد المختبر 3.2" data-lo="LO4" data-n="22" data-session="2">
+  <div class="kicker">بعد المختبر 3.2</div>
+  <h2>المنشأ في تصميم النموذج: مربع مؤشَّر افتراضيًا</h2>
+  <div class="cols cols-3">
+    <div class="stat center"><div class="big">56</div><div class="lbl">مخالفة كلها: بوابة، v3، المربع مؤشَّر، مركز</div></div>
+    <div class="stat center"><div class="big">0.0% ← 8.1%</div><div class="lbl">نسبة المخالفات الأسبوعية قبل v3 وبعده</div></div>
+    <div class="stat center"><div class="big">66</div><div class="lbl">زيارة أحيلت إلى مكتب آخر</div></div>
+  </div>
+  <p class="small mt">مربع «عنوان المنشأة هو عنوان المالك» صُمم للحضانات المنزلية، ويفتح مؤشَّرًا لكل الأنواع ويقفل المدينة. والتكامل ينسخ دون تحقق.</p>
+  <aside class="notes"><p>الأرقام من <code>uv run solutions/check.py 3.2</code>. الوقاية المرجعية: المربع غير مؤشَّر ويظهر للحضانات المنزلية فقط، وتحقق من بادئة الرمز في النموذج وفي التكامل.</p><p>لاحظ ملاحظة فريق البوابة: «انخفض زمن التعبئة إلى النصف». قاسوا ما أرادوا تحسينه، ولم يقيسوا ما قد يسوء.</p></aside>
+</section>
+
+<!-- الجلسة 3 -->
+
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="23">
+  <div class="kicker">الجلسة 3</div>
+  <h1>الجودة في التشغيل</h1>
+  <ul class="bullets outcomes"><li>يشغّل فحوص ما قبل النشر ويقرر النشر أو الإيقاف</li><li>يكتب بنود جودة في اتفاقية مشاركة</li><li>يحسم خلافًا على الأولوية بين مالكين بمعايير مقيسة</li></ul>
+  <div class="sess-no">03</div>
+</section>
+
+<section class="slide" id="prerelease-gate" data-lo="LO6" data-n="24" data-session="3">
+  <div class="kicker">قبل النشر</div>
+  <h2>فحص ما قبل النشر بوابة مستقلة عن قواعد المصدر</h2>
+  <div class="cols cols-2">
+    <div class="card c-navy"><h4>قواعد المصدر</h4><p class="small mb0">هل السجل صالح لعمل الهيئة؟</p></div>
+    <div class="card c-coral"><h4>فحص ما قبل النشر</h4><p class="small mb0">هل هذا الملف صالح لمن سيقرؤه خارج الهيئة؟ بيانات شخصية؟ أعداد صغيرة تكشف أفرادًا؟ أرقام تناقض المنشور؟</p></div>
+  </div>
+  <div class="callout warn mt small"><b>القرار ثلاثة:</b> انشر، أو أوقف، أو انشر بعد إصلاح محدد. «انشر مع ملاحظة» يصلح لعيب جودة، لا لبيانات شخصية.</div>
+  <aside class="notes"><p>البيانات المفتوحة رقم منشور لا يُسحب بسهولة. البوابة تمر على الملف النهائي بعد التجميع والتحويل، لأن الخطأ قد يدخل هناك.</p><p>خطوط النقل وعقود البيانات ومراقبتها موضوع DEV-DAT-204؛ هنا نكتفي بقرار المحلل.</p></aside>
+</section>
+
+<section class="slide" id="prerelease-example" data-lo="LO6" data-n="25" data-session="3">
+  <div class="kicker">مثال: مستخرج التصاريح</div>
+  <h2>ستة أسئلة قبل نشر عدد التصاريح بحسب المركز</h2>
+  <table class="t small">
+    <tr><th>الفحص</th><th>لماذا</th></tr>
+    <tr><td>لا أسماء ولا أرقام هوية</td><td>بيانات شخصية</td></tr>
+    <tr><td>لا مركز فيه أقل من ثلاثة مقدمي رعاية</td><td>العدد الصغير يكشف أشخاصًا</td></tr>
+    <tr><td>لا تصريح منتهٍ يُعد ساريًا</td><td>يناقض الرقم المنشور</td></tr>
+    <tr><td>لا تصريح مكرر</td><td>يضخم العدد</td></tr>
+    <tr><td>كل مركز في قائمة المراكز المرخصة</td><td>مراكز مغلقة تظهر</td></tr>
+    <tr><td>المجموع يطابق التقرير الشهري</td><td>رقمان رسميان مختلفان</td></tr>
+  </table>
+  <aside class="notes"><p>اطلب من القاعة أن تختار الفحص الذي يوقف النشر وحده: الأول. الباقي قد يُنشر بعد إصلاح.</p><p>الضوابط الوطنية في مجال البيانات المفتوحة تطلب أن تُنشر البيانات بجودة عالية مع استبعاد أي بيانات مقيدة (OD.3.1)، وأن يُقيَّم هل يكشف دمجها مع بيانات عامة أخرى معلومات شخصية (OD.3.2). الأعداد الصغيرة من هذا الباب.</p><p>المصادر: الضوابط الوطنية، OD.3.1 وOD.3.2.</p></aside>
+</section>
+
+<section class="slide" id="quality-clauses" data-lo="LO6" data-n="26" data-session="3">
+  <div class="kicker">اتفاقية المشاركة</div>
+  <h2>الاتفاقية تنقل البيانات، وبنود الجودة تنقل الثقة</h2>
+  <div class="cols cols-2">
+    <ul class="bullets small">
+      <li><b>ما يُضمن:</b> العناصر والعتبات، ومتى يُقاس</li>
+      <li><b>ما يُرفق:</b> القاموس، وتاريخ الاستخراج، والعيوب المعروفة</li>
+      <li><b>الإبلاغ والتصحيح:</b> القناة، والمدة، وأين يُسجَّل</li>
+      <li><b>فحص الاستلام:</b> ما يفحصه المستفيد، ومتى يرفض</li>
+    </ul>
+    <div class="card c-teal"><h4>في التصاريح</h4><p class="small mb0">ملف شهري لجهة تدريب: «التصاريح فيه سارية في تاريخ الاستخراج 100%، وتاريخ الشهادة مكتمل 95% على الأقل، والنسبة الفعلية مرفقة.»</p></div>
+  </div>
+  <aside class="notes"><p>الحد الأدنى لاتفاقية المشاركة الخارجية في الضوابط الوطنية: الغرض، والجهتان، والأساس النظامي، وتفاصيل المشاركة (التاريخ والمدة)، وأحكام المسؤولية (DSI.7.2). لا يذكر الجودة، فبنودها إضافة تتفق عليها الجهتان. بند الإبلاغ يجعل المستفيد عينًا إضافية على الجودة.</p><p>المصادر: الضوابط الوطنية، DSI.7.2 (اتفاقيات مشاركة البيانات الخارجية).</p></aside>
+</section>
+
+<section class="slide" id="priority-dispute" data-lo="LO6" data-n="27" data-session="3">
+  <div class="kicker">خلاف الأولوية</div>
+  <h2>حين يطلب مالكان الإصلاح نفسه أولًا، احكم بجدول</h2>
+  <table class="t small">
+    <tr><th>المعيار</th><th>الخيار أ</th><th>الخيار ب</th></tr>
+    <tr><td>السلامة</td><td></td><td></td></tr>
+    <tr><td>رقم منشور أو مال</td><td></td><td></td></tr>
+    <tr><td>الامتداد والتكرار</td><td></td><td></td></tr>
+    <tr><td>الجهد</td><td></td><td></td></tr>
+    <tr><td>يعالج السبب؟</td><td></td><td></td></tr>
+  </table>
+  <div class="callout tip mt small"><b>املأه بأرقام من القياس،</b> لا بكلمات الرسائل. ثم: إصلاح كبير وآخر صغير، أو تصعيد.</div>
+  <aside class="notes"><p>الجدول يحوّل الخلاف من «من أعلى صوتًا» إلى «أي الأرقام أثقل». قد يبقى الخلاف، فيُصعَّد بالجدول نفسه إلى رئيس المكتب.</p><p>في المختبر رسالتان حقيقيتان في الحالة الافتراضية، وطاقة الفريق محدودة.</p></aside>
+</section>
+
+<section class="slide" id="escalate-well" data-lo="LO6" data-n="28" data-session="3">
+  <div class="kicker">التصعيد</div>
+  <h2>التصعيد الجيد ورقة واحدة: الخيارات، والأرقام، والتوصية، والموعد</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>المحلل</b>يجهز الجدول</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>المالكان</b>يومان للقبول</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>رئيس المكتب</b>يقرر</div>
+    <div class="arrow">←</div>
+    <div class="step c-navy"><b>لجنة البيانات</b>إن لزم</div>
+  </div>
+  <aside class="notes"><p>التصعيد ليس شكوى. هو طلب قرار ممن يملكه، بموعد. بلا موعد يتحول إلى تأجيل.</p></aside>
+</section>
+
+<section class="slide" id="check-operations" data-lo="LO6" data-n="29" data-session="3">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>انشر أم أوقف؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO6" data-id="check-operations-q1">
+    <p class="lead">مستخرج التصاريح للنشر: فحص التكرار يجد 9 صفوف، وفحص المراكز الصغيرة يجد 4 مراكز فيها مقدم رعاية واحد أو اثنان، والبقية تنجح. الموعد غدًا. ما القرار؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يعامل كشف الأفراد كأنه عيب جودة يكفيه تنبيه، وهو خصوصية" data-k="أ">انشر في الموعد مع ملاحظة عن العيبين</div>
+      <div class="opt" data-why="يوقف كل شيء لعيبين يُصلحان في ساعة، فيفوّت الموعد دون داع" data-k="ب">أوقف النشر حتى المراجعة الربعية</div>
+      <div class="opt" data-why="يصلح التكرار ويترك المراكز الصغيرة التي تكشف أشخاصًا" data-k="ج">احذف الصفوف المكررة التسعة وانشر كما هو</div>
+      <div class="opt" data-ok data-k="د">انشر بعد حذف المكرر وجمع المراكز الأربعة الصغيرة على مستوى أعلى</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> المراكز الصغيرة تكشف أفرادًا، فلا تُنشر كما هي. وكلا العيبين يُصلح سريعًا، فالإيقاف الطويل لا يلزم.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: د، وهي أطول الخيارات. مثال افتراضي: العدد 9 من ملف التصاريح، والمراكز الأربعة الصغيرة افتراضية.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-3" data-auto="lab" data-lab="3.3" data-label="المختبر 3.3" data-n="30" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 3.3 · 35 دقيقة</div><h2>قبل النشر وفي الاتفاقية وعند الخلاف</h2><p class="lead small">تشغّل فحوص ما قبل النشر على مستخرج البيانات المفتوحة وتقرر، وتضيف بنود الجودة إلى مسودة اتفاقية مشاركة، وتحكم في خلاف بين مالكين على أول إصلاح.</p><a class="nb" href="../labs/D3_3_operations.html">D3_3_operations.html</a></div><ul class="checklist"><li>شغّل فحوص ما قبل النشر واكتب قرار النشر <span class="min">10 د</span></li><li>أضف أربعة بنود جودة إلى مسودة الاتفاقية <span class="min">10 د</span></li><li>احكم في خلاف الأولوية بجدول معايير وأرقام <span class="min">10 د</span></li><li>اكتب سطر التصعيد إن لم يقبل أحد المالكين <span class="min">5 د</span></li><li class="stretch">✱ إضافي: اكتب ما يجب أن يتغير في المستخرج حتى ينشر، وأعد تشغيل الفحوص على نسختك</li></ul></div>
+  <aside class="notes"><p>البداية من day3/open_data_extract.csv وday3/sharing_agreement_draft.txt وday3/priority_dispute.txt. مرشد الذكاء الاصطناعي مسموح ليراجع البنود والحكم بعد كتابتها، لا ليكتبها، ودون صفوف.</p><p>راقب من ينشر مع ملاحظة رغم فحص البيانات الشخصية، ومن يحكم في الخلاف دون جدول.</p></aside>
+</section>
+
+<section class="slide" id="debrief-3-3" data-label="بعد المختبر 3.3" data-lo="LO6" data-n="31" data-session="3">
+  <div class="kicker">بعد المختبر 3.3</div>
+  <h2>أربعة فحوص تفشل، وواحد منها يوقف النشر وحده</h2>
+  <table class="t small">
+    <tr><th>الفحص</th><th>الصفوف</th></tr>
+    <tr><td>P1 عنوان منزل في صف حضانة منزلية</td><td>321</td></tr>
+    <tr><td>P2 رخصة منتهية تظهر سارية</td><td>41</td></tr>
+    <tr><td>P4 مقاعد غير معقولة</td><td>5</td></tr>
+    <tr><td>P6 المدينة لا يطابقها الرمز البريدي</td><td>57</td></tr>
+  </table>
+  <p class="small mt">الحكم المرجعي في الخلاف: العناوين إصلاحًا كبيرًا (سلامة، وتكرار أسبوعي، ومنشأ معروف)، ومهمة ليلية للرخص المنتهية إصلاحًا صغيرًا (41 من فرق 78 قبل التقرير الربعي).</p>
+  <aside class="notes"><p>الأرقام من <code>uv run solutions/check.py 3.3</code>. يُقبل حكم معاكس إن سُند بالجدول ولم يتجاهل السلامة.</p><p>P1 هي ISS-112 نفسها من صباح اليوم: المشكلة نفسها تظهر في مكانين.</p></aside>
+</section>
+
+<!-- الجلسة 4 -->
+
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="32">
+  <div class="kicker">الجلسة 4</div>
+  <h1>بيانات يستخدمها الذكاء الاصطناعي</h1>
+  <ul class="bullets outcomes"><li>يقيس تمثيل الفئات وضوضاء التسميات والتكرار والتسرب في جدول تدريب</li><li>يقيس الحداثة والتعارض والتكرار في مجموعة وثائق</li><li>يقرر الاستخدام أو الإصلاح أو الرفض ويسمّي أثر الفجوات على الفئات</li></ul>
+  <div class="sess-no">04</div>
+</section>
+
+<section class="slide" id="ai-two-uses" data-lo="LO5" data-n="33" data-session="4">
+  <div class="kicker">بيانات يستخدمها الذكاء الاصطناعي</div>
+  <h2>استخدامان، وأسئلة جودة مختلفة لكل منهما</h2>
+  <div class="cols cols-2">
+    <div class="card c-navy"><h4>جدول يتعلم منه نموذج</h4><p class="small mb0">هل يمثّل الفئات؟ هل التسميات متسقة؟ هل فيه تكرار؟ هل فيه عمود يعرف النتيجة مسبقًا؟</p></div>
+    <div class="card c-teal"><h4>وثائق يجيب منها مساعد</h4><p class="small mb0">هل هي حديثة؟ هل فيها إصدارات ملغاة؟ هل تتعارض؟ هل فيها بيانات شخصية؟</p></div>
+  </div>
+  <p class="small mt">سلسلة ISO/IEC 5259 (2024–2025) تخص جودة البيانات للتحليلات وتعلم الآلة: الأجزاء 1 إلى 5، من المفاهيم والمقاييس إلى إطار العمليات وإطار الحوكمة.</p>
+  <aside class="notes"><p>لا نقتبس تعريفات المعيار: نصوصه غير متاحة مجانًا، ونذكر عنوان السلسلة وأجزاءها فقط. القياسات هنا شائعة في الممارسة.</p><p>هل يحق استخدام البيانات للتدريب أصلًا؟ سؤال الأهلية والصلاحيات في LDS-DMG-301. هنا نقيس الصلاحية فقط.</p><p>المصادر: ISO/IEC 5259-1 إلى 5259-5؛ سدايا، مبادئ أخلاقيات الذكاء الاصطناعي.</p></aside>
+</section>
+
+<section class="slide" id="representativeness" data-lo="LO5" data-n="34" data-session="4">
+  <div class="kicker">التمثيل</div>
+  <h2>فئة قليلة في التدريب يتعلم النموذج عنها أقل</h2>
+  <div class="bars">
+    <div class="row"><span>التصاريح المساعدة في السجل</span><div class="bar c-navy" style="--w:65%"></div><span class="val">32.5%</span></div>
+    <div class="row"><span>في جدول تدريب مقترح</span><div class="bar c-coral" style="--w:18%"></div><span class="val">9.0%</span></div>
+  </div>
+  <p class="small mt">النسبة 0.28: التدريب فيه ربع حصتها في الواقع تقريبًا. قارن حصة كل فئة في التدريب بحصتها في المجتمع، لا العدد وحده.</p>
+  <p class="small muted">32.5% من ملف التصاريح (491 من 1,509). جدول التدريب افتراضي. الأشرطة بمقياس 50%.</p>
+  <aside class="notes"><p>مبادئ أخلاقيات الذكاء الاصطناعي من سدايا تطلب العدالة: ألا يعامل النظام فئة أسوأ. التمثيل الناقص أول طريق إلى ذلك.</p><p>اسأل: من يتضرر إن أخطأ نموذج في ترتيب أصحاب التصاريح المساعدة للتدريب الإضافي؟</p></aside>
+</section>
+
+<section class="slide" id="label-agreement" data-lo="LO5" data-n="35" data-session="4">
+  <div class="kicker">ضوضاء التسميات</div>
+  <h2>90% اتفاق قد يكون اتفاقًا متوسطًا فقط</h2>
+  <div class="cols cols-21 mid">
+    <table class="t small">
+      <tr><th>100 ملف تصريح</th><th>المراجع ب: ناقص</th><th>ب: مكتمل</th></tr>
+      <tr><td>المراجع أ: ناقص</td><td>6</td><td>4</td></tr>
+      <tr><td>أ: مكتمل</td><td>6</td><td>84</td></tr>
+    </table>
+    <div class="stat center"><div class="big">0.49</div><div class="lbl">كابا كوهين، مع اتفاق 90%</div></div>
+  </div>
+  <p class="small mt">حين تكون فئة نادرة، يتفق المراجعان كثيرًا بالصدفة. كابا تطرح اتفاق الصدفة. المثال افتراضي.</p>
+  <aside class="notes"><p>الحساب: الاتفاق 0.90، واتفاق الصدفة 0.10 × 0.12 + 0.90 × 0.88 = 0.804، وكابا (0.90 − 0.804) ÷ (1 − 0.804) = 0.49. السكربت في ملفات العمل.</p><p>إن كان المراجعان يختلفان، فالنموذج يتعلم الاختلاف. العلاج: معيار تقييم مكتوب، ومراجعة الحالات المختلف عليها.</p></aside>
+</section>
+
+<section class="slide" id="duplication-leakage" data-lo="LO5" data-n="36" data-session="4">
+  <div class="kicker">التكرار والتسرب</div>
+  <h2>نموذج يبدو ممتازًا في الاختبار ويفشل في الاستخدام</h2>
+  <div class="cols cols-2">
+    <div class="card flat c-amber"><h4>التكرار</h4><p class="small mb0">الصف نفسه في التدريب والاختبار: النموذج يتذكره لا يتعلمه.</p></div>
+    <div class="card flat c-coral"><h4>التسرب</h4><p class="small mb0">عمود يُسجَّل بعد النتيجة: «أُحيل إلى تدريب إضافي» يعرف أن الشهادة كانت ناقصة. عند الاستخدام لا يكون موجودًا بعد.</p></div>
+  </div>
+  <div class="callout tip mt small"><b>اسأل لكل عمود:</b> هل يُعرف قبل اللحظة التي سيقرر فيها النموذج؟</div>
+  <aside class="notes"><p>علامة التسرب: عمود يفصل النتيجة فصلًا شبه تام. حين ترى نسبة 0% في قيمة و80% في أخرى، اسأل متى يُسجَّل.</p></aside>
+</section>
+
+<section class="slide" id="docs-for-retrieval" data-lo="LO5" data-n="37" data-session="4">
+  <div class="kicker">وثائق للمساعد</div>
+  <h2>المساعد يجيب بثقة من أقدم وثيقة يجدها</h2>
+  <table class="t small">
+    <tr><th>القياس</th><th>مثال في تعاميم التصاريح</th></tr>
+    <tr><td>إصدار ملغى ما زال في المجموعة</td><td>تعميم ساعات التدريب 2023 بجانب تعميم 2025</td></tr>
+    <tr><td>تعارض</td><td>دليل يقول 8 ساعات، وأسئلة شائعة تقول 6</td></tr>
+    <tr><td>حداثة</td><td>لا تاريخ سريان، أو لم تُراجع منذ سنة</td></tr>
+    <tr><td>تكرار</td><td>نسختان من الوثيقة نفسها</td></tr>
+    <tr><td>بيانات شخصية</td><td>رسالة متقدم أرفقت بالخطأ</td></tr>
+  </table>
+  <div class="callout warn mt small"><b>الأداة تنبّه، وأنت تحكم.</b> رقمان مختلفان في موضوع واحد قد يكونان عن شيئين مختلفين.</div>
+  <aside class="notes"><p>الأمثلة افتراضية عن التصاريح. التنبيه الآلي يجد المرشحين، وقراءة الوثيقتين تقرر. في المختبر بعض التنبيهات كاذبة عمدًا.</p></aside>
+</section>
+
+<section class="slide" id="use-fix-reject" data-lo="LO5 LO6" data-n="38" data-session="4">
+  <div class="kicker">القرار</div>
+  <h2>استخدام، أو إصلاح ثم استخدام، أو رفض، بالأرقام</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>استخدام</h4><p class="small mb0">لا فجوة تمس فئة أو قرارًا.</p></div>
+    <div class="card c-amber"><h4>إصلاح</h4><p class="small mb0">الفجوات معروفة وقابلة للإصلاح، ويبقى بعدها ما يكفي.</p></div>
+    <div class="card c-coral"><h4>رفض</h4><p class="small mb0">ما يبقى بعد الإصلاح لا يكفي، أو الفجوة لا تُصلح.</p></div>
+  </div>
+  <p class="small mt">الحكم يُكتب في ثلاثة أسطر: الرقم، والأثر على الفئات، وما يُصلح أولًا. وتبقى قاعدة شهرية بعد الإصلاح.</p>
+  <aside class="notes"><p>هذا القرار لمكتب البيانات مع قائد برنامج الذكاء الاصطناعي، لا لفريق النموذج وحده. في الحالة: رقية الدخيل الله.</p></aside>
+</section>
+
+<section class="slide" id="check-ai-fitness" data-lo="LO5" data-n="39" data-session="4">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>ما الذي يُفعل بهذا العمود؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-ai-fitness-q1">
+    <p class="lead">جدول لتدريب نموذج يتنبأ بمن سيرسب في اختبار الإسعافات. عمود <code>retake_booked</code> (حُجز موعد إعادة): «نعم» يرسب منهم 92%، و«لا» يرسب 0%. ما الصواب؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يرى قوة الفصل ميزة، وهي علامة أن العمود يعرف النتيجة" data-k="أ">إبقاؤه، فهو أقوى عمود في الجدول</div>
+      <div class="opt" data-ok data-k="ب">استبعاده قبل التدريب</div>
+      <div class="opt" data-why="الوزن لا يحل المشكلة: العمود غير موجود لحظة التنبؤ" data-k="ج">إبقاؤه بوزن أقل في النموذج</div>
+      <div class="opt" data-why="التكرار مشكلة أخرى؛ حذف المكرر لا يزيل عمودًا متسربًا" data-k="د">حذف الصفوف المكررة ثم إبقاؤه</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الإعادة تُحجز بعد الرسوب. لحظة التنبؤ لا يكون العمود معروفًا، فيفشل النموذج في الاستخدام.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ب، وهي أقصر الخيارات. المثال افتراضي. اربطه بالمختبر: ابحث عن عمود يُسجَّل بعد الزيارة.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-4" data-auto="lab" data-lab="3.4" data-label="المختبر 3.4" data-n="40" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 3.4 · 35 دقيقة</div><h2>صلاحية مجموعتين للذكاء الاصطناعي</h2><p class="lead small">تقيس جدول تاريخ التفتيش الذي يريد برنامج الذكاء الاصطناعي تدريب نموذج خطر عليه، ومجموعة 24 وثيقة يريد أن يجيب منها مساعد المتقدمين، وتحكم على كل منهما بالأرقام.</p><a class="nb" href="../labs/D3_4_ai_fitness.html">D3_4_ai_fitness.html</a></div><ul class="checklist"><li>شغّل قياسات جدول التفتيش واقرأ كل رقم <span class="min">7 د</span></li><li>اكتب لكل فجوة أثرها على الفئات وما تفعله بها <span class="min">9 د</span></li><li>شغّل قياسات الوثائق وافرز التنبيهات الحقيقية <span class="min">8 د</span></li><li>احكم على كل مجموعة: استخدام أو إصلاح أو رفض <span class="min">7 د</span></li><li>اختر أولوية مشروعك الختامي الأولى <span class="min">4 د</span></li><li class="stretch">✱ إضافي: اقترح قاعدة جودة تُشغَّل كل شهر على جدول التدريب بعد إصلاحه، بعتبتها ومالكها</li></ul></div>
+  <aside class="notes"><p>البداية من ملفات day3/ai/ والوثائق في day3/ai/docs/. لا نموذج يُدرَّب ولا يُستدعى. راقب من يقبل كل تنبيهات الوثائق دون فتحها، ومن يرى عمود المتابعة ميزة.</p><p>الخطوة الخامسة تمهد للمشروع الختامي: لا تؤخرها.</p></aside>
+</section>
+
+<section class="slide" id="debrief-3-4" data-label="بعد المختبر 3.4" data-lo="LO5 LO6" data-n="41" data-session="4">
+  <div class="kicker">بعد المختبر 3.4</div>
+  <h2>المجموعتان: إصلاح ثم استخدام</h2>
+  <div class="cols cols-2">
+    <table class="t small">
+      <tr><th>جدول التفتيش</th><th></th></tr>
+      <tr><td>حضانات الشوحط المنزلية</td><td>1.1% أمام 7.4%</td></tr>
+      <tr><td>مكرر</td><td>140 (6.0%)</td></tr>
+      <tr><td>اتفاق التسميات</td><td>82.5%، كابا 0.60</td></tr>
+      <tr><td>تسرب: المتابعة</td><td>81.5% أمام 0.0%</td></tr>
+      <tr><td>قائمة 2019 الملغاة</td><td>926 (39.9%)</td></tr>
+    </table>
+    <table class="t small">
+      <tr><th>الوثائق</th><th></th></tr>
+      <tr><td>متطابقتان</td><td>DOC-04 وDOC-05</td></tr>
+      <tr><td>إصدارات ملغاة</td><td>4</td></tr>
+      <tr><td>تعارض حقيقي</td><td>نسبة مقدمي الرعاية: 6 أم 8</td></tr>
+      <tr><td>تنبيهات حداثة</td><td>9</td></tr>
+      <tr><td>بيانات شخصية</td><td>DOC-19</td></tr>
+    </table>
+  </div>
+  <aside class="notes"><p>الأرقام من <code>uv run solutions/check.py 3.4</code>. التنبيهات الكاذبة: التفتيش (90 يومًا و42 بندًا)، والتجديد (مهلتان)، والمساحة (سنة لا قياس).</p><p>اسأل: ماذا يقول المساعد اليوم لمتقدم يسأل عن نسبة مقدمي الرعاية؟ قد يقول «ثمانية» من أسئلة شائعة لم تُحدَّث.</p></aside>
+</section>
+
+<section class="slide" id="capstone-kickoff" data-lo="LO6" data-n="42" data-session="4">
+  <div class="kicker">المشروع الختامي</div>
+  <h2>خطة جودة لمجال الترخيص، تدافع عنها أمام لجنة</h2>
+  <div class="cols cols-2">
+    <ul class="bullets small">
+      <li>الأولويات والعناصر الحرجة بمستهلكيها وملاكها</li>
+      <li>كتالوج من 15 قاعدة أو أكثر، وملف فحوص، وسجل تشغيل</li>
+      <li>بطاقة أداء، وسجل مشكلات ومسار عملها</li>
+      <li>تحليل سبب جذري، والمراقبة والتصعيد</li>
+    </ul>
+    <div class="stack">
+      <div class="card c-teal"><h4>المناقشة</h4><p class="small mb0">10 دقائق عرض و10 مع اللجنة. تعترض اللجنة على أولوية، ويزرع المقيّم عيبًا جديدًا تشغّل فحوصك عليه أمامها.</p></div>
+      <div class="card c-navy"><h4>الذكاء الاصطناعي</h4><p class="small mb0">مسموح في القواعد الإضافية وصياغة الخطة، بسطر تبرير لكل اقتراح. لا صفوف ولا مخرجات فيها مفاتيح.</p></div>
+    </div>
+  </div>
+  <p class="small mt">الموجز في <code>files/capstone/capstone_brief.txt</code>. التسليم رابط مجلد Google Drive قبل أول مناقشة.</p>
+  <aside class="notes"><p>وزّع الموجز واقرأ معهم المعايير ونسبها من صفحة المقرر. يوم المشروع يبدأ بالاختبار العملي الموجّه (60 دقيقة، دون ذكاء اصطناعي)، ثم 30 دقيقة للتحضير الأخير، ثم المناقشات.</p><p>ما بنوه في المختبرات مواد خام: الكتالوج والبطاقة وتحليل السبب. المطلوب خطة متماسكة، لا ملف لكل مختبر.</p></aside>
+</section>
+
+<section class="slide" id="wrap-up" data-n="43" data-session="4">
+  <div class="kicker">خلاصة اليوم 3</div>
+  <h2>ثلاثة أمور تبقى معك</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>تُغلق بالقياس</h4><p class="small mb0">المشكلة تُفرز بالأثر والامتداد، وتُغلق حين يثبت رقم أن السبب عولج.</p></div>
+    <div class="card c-coral"><h4>المنشأ تصميم</h4><p class="small mb0">قسّم حتى يظهر، واسأل حتى تصل إلى ما يُغيَّر، وقِ عند الإدخال.</p></div>
+    <div class="card c-purple"><h4>قِس قبل أن يتعلم</h4><p class="small mb0">التمثيل والتسميات والتسرب والحداثة أرقام تُحكم بها البيانات.</p></div>
+  </div>
+  <aside class="notes"><p>اطلب من كل مشارك أن يقول أولويته الأولى في المشروع الختامي بجملة. اسمع ثلاثًا أو أربعًا، ولا تحكم: اللجنة غدًا تفعل.</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-label="التالي" data-n="44" data-session="4">
+  <div class="kicker">التالي</div>
+  <h2>يوم المشروع الختامي</h2>
+  <p class="lead">اختبار عملي موجّه دون ذكاء اصطناعي، ثم تحضير أخير، ثم مناقشة كل خطة أمام اللجنة الصورية، ثم مراجعة جماعية.</p>
+  <aside class="notes"><p>ذكّر بموعد التسليم ورابط المجلد، وبأن الاختبار العملي في أول اليوم: قواعد لخمسة عناصر وتنميط واحد، دون أي مساعد.</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-18T01:01:43Z","version":"2027.1.0","commit":"1a2a277"},"course":{"id":"lds-dmg-203","code":"LDS-DMG-203","title":"إدارة جودة البيانات","track":"executives","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/lds-dmg-203/","repo":"SDAIAAcademy/lds-dmg-203","home":"../index.html"},"deck":{"id":"day3","kind":"day","day":3,"label":"اليوم 3","title":"المشكلات والتشغيل والذكاء الاصطناعي","prev":"day2.html","next":"capstone.html","md":"day3.md","alt":{}},"sessions":[{"n":1,"label":"الجلسة 1","title":"دورة حياة المشكلة","slide":"s1","outcomes":["يفرز المشكلات بخطورة من الأثر والامتداد","يسند لكل مشكلة مالكًا ومدة خدمة ومسار تصعيد","يقيس أداء معالجة المشكلات بمؤشرين"],"minutes":70,"lab":{"id":"3.1","title":"فرز سجل المشكلات","minutes":35,"href":"../labs/D3_1_issue_triage.html"}},{"n":2,"label":"الجلسة 2","title":"السبب الجذري والوقاية","slide":"s2","outcomes":["يعزل خطأً متكررًا بتقسيم البيانات حتى يظهر منشؤه","يكتب تحليل الأسئلة الخمسة ومخطط السبب والنتيجة","يحدد إجراءات تصحيحية ووقائية بملاكها ومقياس تكرار"],"minutes":70,"lab":{"id":"3.2","title":"خطأ العناوين حتى نموذج الإدخال","minutes":35,"href":"../labs/D3_2_root_cause.html"}},{"n":3,"label":"الجلسة 3","title":"الجودة في التشغيل","slide":"s3","outcomes":["يشغّل فحوص ما قبل النشر ويقرر النشر أو الإيقاف","يكتب بنود جودة في اتفاقية مشاركة","يحسم خلافًا على الأولوية بين مالكين بمعايير مقيسة"],"minutes":70,"lab":{"id":"3.3","title":"قبل النشر وفي الاتفاقية وعند الخلاف","minutes":35,"href":"../labs/D3_3_operations.html"}},{"n":4,"label":"الجلسة 4","title":"بيانات يستخدمها الذكاء الاصطناعي","slide":"s4","outcomes":["يقيس تمثيل الفئات وضوضاء التسميات والتكرار والتسرب في جدول تدريب","يقيس الحداثة والتعارض والتكرار في مجموعة وثائق","يقرر الاستخدام أو الإصلاح أو الرفض ويسمّي أثر الفجوات على الفئات"],"minutes":70,"lab":{"id":"3.4","title":"صلاحية مجموعتين للذكاء الاصطناعي","minutes":35,"href":"../labs/D3_4_ai_fitness.html"}}],"slides":[{"id":"title","n":1,"title":"المشكلات والتشغيل والذكاء الاصطناعي","kind":"title","session":0,"hash":"ae68046f","md":"#### [day3#title] المشكلات والتشغيل والذكاء الاصطناعي\n\n*أكاديمية سدايا · إدارة جودة البيانات*\n\nاليوم 3: مشكلة تُدار حتى سببها، وجودة قبل النشر وفي الاتفاقيات، وبيانات يُحكم عليها قبل أن يتعلم منها نموذج\n\nمسار التنفيذيين والقادة · 3 أيام تدريبية + يوم للمشروع الختامي · 4 جلسات · 4 مختبرات · LDS-DMG-203","notes":"رحّب بالمشاركين واسأل: «أمس وجدنا العيوب وعددناها. من يتوقع أن تعود إن صححنا الصفوف اليوم؟». اسمع الإجابات.\n\nاليوم من العيب إلى سببه وإلى التشغيل: سجل المشكلات، والسبب الجذري، والجودة قبل النشر وفي الاتفاقيات، ثم البيانات التي يتعلم منها الذكاء الاصطناعي. وفي آخر اليوم نطلق المشروع الختامي.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"المشكلات والتشغيل والذكاء الاصطناعي","kind":"content","session":0,"hash":"ca5eab86","md":"#### [day3#agenda] المشكلات والتشغيل والذكاء الاصطناعي\n\n*اليوم*\n\n- **الجلسة 1 · دورة حياة المشكلة**: المشكلة تُفرز بخطورة من الأثر والامتداد، ولها مالك ومدة وتصعيد، وتُغلق حين يثبت القياس أن السبب عولج\n- **الجلسة 2 · السبب الجذري والوقاية**: الأسئلة الخمسة ومخطط السبب والنتيجة حتى المنشأ، والوقاية عند الإدخال، ومقياس تكرار يثبت الإصلاح\n- **الجلسة 3 · الجودة في التشغيل**: بوابة قبل النشر، وبنود جودة في اتفاقية المشاركة، وخلاف الأولوية يُحسم بالأرقام ثم بالتصعيد\n- **الجلسة 4 · بيانات يستخدمها الذكاء الاصطناعي**: التمثيل والتسميات والتكرار والتسرب في الجداول، والحداثة والتعارض في الوثائق، ثم قرار بالأرقام","notes":"أربع جلسات من 70 دقيقة. المختبر 3.2 فيه مرشد ذكاء اصطناعي يسألك أسئلة السبب الجذري، وفي المختبر 3.4 لا نموذج: نقيس البيانات قبل أن يتعلم منها أي نموذج.","minutes":null,"lo":[]},{"id":"review-day2","n":3,"title":"أي استنتاج يسنده سجل التشغيل؟","kind":"quiz","session":0,"hash":"c0d390bd","md":"#### [day3#review-day2] أي استنتاج يسنده سجل التشغيل؟\n\n*مراجعة من اليوم 2*\n\n**سؤال:** سجل تشغيل التصاريح: قاعدة «التصريح الساري لم ينته تاريخه» تفشل في 18 من 786. أي جملة يسندها هذا السجل وحده؟\n\n- أ. موظفو التصاريح ينسون تحديث الحالة\n- ب. 18 مقدم رعاية يعملون اليوم بلا تصريح\n- ج. القاعدة ناجحة عمليًا: 18 من 786 أقل من 3%، والعتبة 100 تُقرأ تقريبًا\n- د. 18 تصريحًا حالتها ساري وتاريخها انتهى، ويلزم بحث في السبب","notes":"الإجابة: د. من اختار «ب» قفز من البيانات إلى الواقع: قد يكون التجديد في ملف آخر. هذا بالضبط ما تسأله الأسئلة الخمسة.","minutes":null,"lo":["LO2","LO3"]},{"id":"s1","n":4,"title":"دورة حياة المشكلة","kind":"section","session":1,"hash":"40e680e9","md":"#### [day3#s1] دورة حياة المشكلة\n\n*الجلسة 1*\n\n- يفرز المشكلات بخطورة من الأثر والامتداد\n- يسند لكل مشكلة مالكًا ومدة خدمة ومسار تصعيد\n- يقيس أداء معالجة المشكلات بمؤشرين","notes":"","minutes":null,"lo":["LO4","LO6"]},{"id":"issue-lifecycle","n":5,"title":"المشكلة تُسجَّل وتُفرز وتُسند، وتُغلق بالقياس","kind":"content","session":1,"hash":"8ff28aa0","md":"#### [day3#issue-lifecycle] المشكلة تُسجَّل وتُفرز وتُسند، وتُغلق بالقياس\n\n*دورة حياة المشكلة*\n\n1. **1 · التسجيل** بلاغ أو فحص آلي\n2. **2 · الفرز** مكرر؟ خطورة؟\n3. **3 · الإسناد** مالك ومدة\n4. **4 · الإصلاح** تصحيح ووقاية\n5. **5 · الإغلاق** قياس يثبت\n\n> **الضوابط الوطنية** تطلب مسارًا واضحًا لحل المشكلات: خطة معالجة فيها السبب الجذري والأثر، ومراجعة تتحقق من الحل، ومددًا وتصعيدًا في اتفاقية مستوى الخدمة.","notes":"اسأل: أين تُسجَّل مشكلات البيانات في جهاتكم؟ في البريد غالبًا، فلا يُعرف كم منها مفتوح. السجل يجعل المشكلة مرئية ومقيسة.\n\nالمصادر: الضوابط الوطنية، DQ.2.3 (خطة المعالجة) وDQ.2.4 (اتفاقيات مستوى الخدمة).","minutes":null,"lo":["LO4","LO6"]},{"id":"severity-matrix","n":6,"title":"الخطورة من الأثر والامتداد، لا من صوت المبلّغ","kind":"content","session":1,"hash":"8f8bc07d","md":"#### [day3#severity-matrix] الخطورة من الأثر والامتداد، لا من صوت المبلّغ\n\n*الخطورة*\n\n| الأثر \\ الامتداد | واسع | محدود |\n| --- | --- | --- |\n| عالٍ: سلامة، رقم منشور، قرار مع أشخاص | حرجة | عالية |\n| متوسط: عمل داخلي يتعطل أو مال | عالية | متوسطة |\n| منخفض: إزعاج دون قرار خاطئ | متوسطة | منخفضة |\n\n- **في التصاريح.** 18 تصريحًا «ساريًا» منتهيًا يحسبها جدول المناوبات: أثر عالٍ (قرار مع أشخاص)، وامتداد واسع (18 من 786، أي 2.3%، فوق 1%). **حرجة.**","notes":"الامتداد يُقاس: نسبة الصفوف من سجل التشغيل، أو هل يتكرر. ثلاثة بلاغات عن الشيء نفسه لا تجعله أوسع من فحص آلي يعدّ 300 صف.\n\nالدليل في المختبر هو هذا الجدول نفسه، مع مدد الخدمة.","minutes":null,"lo":["LO4","LO6"]},{"id":"sla-escalation","n":7,"title":"لكل خطورة مدة خطة ومدة تنفيذ، ولكل تأخير درجة تصعيد","kind":"content","session":1,"hash":"fdf71baf","md":"#### [day3#sla-escalation] لكل خطورة مدة خطة ومدة تنفيذ، ولكل تأخير درجة تصعيد\n\n*المدد والتصعيد*\n\n| الخطورة | الخطة | التنفيذ |\n| --- | --- | --- |\n| حرجة | يوما عمل | 10 أيام عمل |\n| عالية | 5 أيام | 20 يومًا |\n| متوسطة | 10 أيام | في الربع |\n\n**المشرف** يقبل ويسمّي ← **المالك** فاتت الخطة ← **رئيس المكتب** خلاف أو تأخير","notes":"الأدوار من LDS-DMG-101: المشرف يدير، والمالك يقرر، ومكتب البيانات يحكم؛ ومن درس LDS-DMG-201 رأى سلم التصعيد كاملًا. هنا نضيف المدد. المدد في المختبر من دليل الهيئة الافتراضي.\n\nالمصادر: الضوابط الوطنية، DQ.2.4.","minutes":null,"lo":["LO4","LO6"]},{"id":"close-by-measure","n":8,"title":"المشكلة لا تُغلق حين تُصحَّح الصفوف","kind":"content","session":1,"hash":"c665b96b","md":"#### [day3#close-by-measure] المشكلة لا تُغلق حين تُصحَّح الصفوف\n\n*الإغلاق*\n\n- **إغلاق مبكر.** صُححت 57 شهادة فارغة يدويًا، وأُغلقت المشكلة. بعد شهر: 12 فارغة جديدة، لأن النموذج ما زال يقبل الفراغ.\n- **إغلاق بالقياس.** القاعدة تُشغَّل أسبوعيًا بعد إصلاح النموذج، وتبقى عند عتبتها أربعة أسابيع: الآن تُغلق.\n\n> **أو يقبلها المالك كتابة** مع سببه. القبول قرار يُسجَّل، لا صمت.","notes":"المثال افتراضي (الـ 12 الجديدة ليست في الملف). الفكرة: تصحيح الصفوف علاج للعرض، والإغلاق يحتاج دليلًا على أن السبب عولج.\n\nاسأل: كم مشكلة «مغلقة» في جهتكم عادت؟","minutes":null,"lo":["LO4"]},{"id":"issue-kpis","n":9,"title":"مؤشرات تقيس المعالجة، لا عدد البلاغات","kind":"content","session":1,"hash":"b6d69c8c","md":"#### [day3#issue-kpis] مؤشرات تقيس المعالجة، لا عدد البلاغات\n\n*قياس المعالجة*\n\n| المؤشر | المقام | ما يكشفه |\n| --- | --- | --- |\n| المغلق بدليل | المشكلات الأصلية | هل نعالج أم نؤجل؟ |\n| المفتوح الذي فاتت مدة خطته | المفتوح | هل المدد واقعية، ومن يتأخر؟ |\n| المعاد فتحه | المغلق | هل نغلق مبكرًا؟ |\n| زمن الخطة الوسيط | بحسب الخطورة | هل الحرجة تُعامل كحرجة؟ |\n\n> **المكرر يُربط بأصله** ولا يُعد في المقام، وإلا تضخم السجل وانخفضت النسب.","notes":"عدد البلاغات يرتفع حين يثق الناس بالسجل، فلا يُقرأ وحده سوءًا. المؤشرات هنا على المعالجة.\n\nتطلب الضوابط الوطنية في DQ.3.2 أربعة مؤشرات على الأقل: المحلول مقابل المبلّغ، والمحلول بعد موعده، وزمن إعداد خطة المعالجة، وزمن الحل. «المعاد فتحه» إضافة من المقرر.\n\nالمصادر: الضوابط الوطنية، DQ.3.2.","minutes":null,"lo":["LO4","LO6"]},{"id":"check-triage","n":10,"title":"ما خطورتها؟","kind":"quiz","session":1,"hash":"b1b0bd0a","md":"#### [day3#check-triage] ما خطورتها؟\n\n*نقطة تحقق*\n\n**سؤال:** سجل التشغيل: 22 تصريحًا من 1,509 بساعات تدريب صفر (1.5%). الحقل تستعمله خطة التدريب السنوية الداخلية فقط، ولا يدخل قرار إصدار التصريح ولا المناوبات. وصل بلاغ واحد من إدارة التدريب. ما الخطورة بحسب الدليل؟\n\n- أ. منخفضة: لا قرار خاطئ عن أي شخص\n- ب. متوسطة: أثر متوسط، وبلاغ واحد فالامتداد محدود\n- ج. عالية: أثر متوسط وامتداد واسع (1.5%)\n- د. حرجة: كل ما يتعلق بمقدمي الرعاية يمس السلامة","notes":"الإجابة: ج. المثال على ملف التصاريح (22 صفًا بساعات صفر)؛ استعمال الحقل في خطة التدريب وحدها افتراض للسؤال. من اختار «ب» قرأ عدد البلاغات بدل سجل التشغيل.","minutes":null,"lo":["LO4","LO6"]},{"id":"lab-3-1","n":11,"title":"فرز سجل المشكلات","kind":"lab","session":1,"hash":"892ad2d2","md":"#### [day3#lab-3-1] فرز سجل المشكلات\n\nالمختبر 3.1 · 35 دقيقة\n\nاثنتا عشرة مشكلة وصلت إلى مكتب البيانات: تربط المكرر منها بأصله، وتعطي كل مشكلة خطورتها ومالكها ومدتها ومسار تصعيدها، وتحسب مؤشرين لأداء المعالجة.\n\n[D3_1_issue_triage.html](https://sdaiaacademy.github.io/lds-dmg-203/labs/D3_1_issue_triage.html)\n\n- [ ] اقرأ دليل الخطورة وسجل المشكلات (5 د)\n- [ ] اربط المشكلات المكررة بمشكلة أصلية (6 د)\n- [ ] قدّر الأثر والامتداد والخطورة لكل مشكلة (10 د)\n- [ ] سمِّ المالك ومدة الخطة والتنفيذ ومسار التصعيد (8 د)\n- [ ] احسب مؤشرين لأداء المعالجة (6 د)\n- [ ] ✱ إضافي: اكتب لكل مشكلة مغلقة في السجل الدليل الذي كان يجب أن يُطلب قبل إغلاقها","notes":"البداية من day3/issue_log.csv وday3/severity_guide.txt. راقب من يعد المكررات مشكلات مستقلة، ومن يقبل الإغلاقين دون سؤال.\n\nمن يتعثر في الامتداد: ذكّره بسجل التشغيل المرجعي من أمس، فيه عدد الصفوف لكل قاعدة.","minutes":null,"lo":[]},{"id":"debrief-3-1","n":12,"title":"تسع مشكلات أصلية، وإغلاق واحد بحق","kind":"content","session":1,"hash":"a5d175f5","md":"#### [day3#debrief-3-1] تسع مشكلات أصلية، وإغلاق واحد بحق\n\n*بعد المختبر 3.1*\n\n- **3** مكررات لمشكلة المدينة ISS-101\n- **1 من 9** مغلقة بدليل\n- **7 من 8** مفتوحة فاتت مدة خطتها\n\n- ISS-104 أُغلقت بتصحيح رخصة واحدة، ووراءها 41 رخصة: تُعاد فتحها\n- ISS-112 عناوين منازل أُرسلت لشريك: حادثة بيانات شخصية، إلى مسؤول حماية البيانات","notes":"الأرقام من `uv run solutions/check.py 3.1`. الحرجة خمس: ISS-101 وISS-102 وISS-104 وISS-108 وISS-112.\n\nانتقل إلى الجلسة التالية بسؤال: ISS-101 تتكرر كل أسبوع في ثلاثة مكاتب. لماذا؟","minutes":null,"lo":["LO4","LO6"]},{"id":"s2","n":13,"title":"السبب الجذري والوقاية","kind":"section","session":2,"hash":"4067061d","md":"#### [day3#s2] السبب الجذري والوقاية\n\n*الجلسة 2*\n\n- يعزل خطأً متكررًا بتقسيم البيانات حتى يظهر منشؤه\n- يكتب تحليل الأسئلة الخمسة ومخطط السبب والنتيجة\n- يحدد إجراءات تصحيحية ووقائية بملاكها ومقياس تكرار","notes":"","minutes":null,"lo":["LO4"]},{"id":"symptom-cause","n":14,"title":"تصحيح الصفوف يعالج العرض، والسبب يعيده","kind":"content","session":2,"hash":"c9579df1","md":"#### [day3#symptom-cause] تصحيح الصفوف يعالج العرض، والسبب يعيده\n\n*العرض والسبب*\n\n- **العرض.** ما يراه المستهلك: رقم خاطئ، زيارة متأخرة.\n- **السبب المباشر.** ما أنتج القيمة الخاطئة: حقل، مهمة، شخص.\n- **المنشأ.** القرار أو التصميم الذي سمح بذلك، ويمكن تغييره.\n\n> **«خطأ إدخال بشري»** سبب مباشر لا منشأ. السؤال التالي: لماذا سمح النظام بالخطأ؟","notes":"اسأل القاعة عن آخر تحليل سبب جذري انتهى بـ«تدريب الموظفين». كم مرة نجح؟ التدريب لا يغير تصميمًا يدفع إلى الخطأ.\n\nالمصادر: الضوابط الوطنية، DQ.2.3 (خطة المعالجة تبدأ بالسبب الجذري).","minutes":null,"lo":["LO4"]},{"id":"isolate-by-slicing","n":15,"title":"قسّم الصفوف الخاطئة حتى يبقى قسم واحد","kind":"content","session":2,"hash":"6395d3ca","md":"#### [day3#isolate-by-slicing] قسّم الصفوف الخاطئة حتى يبقى قسم واحد\n\n*العزل*\n\n| التقسيم | القيم | الشهادات الفارغة |\n| --- | --- | --- |\n| نوع التصريح | كامل · مساعد | موزعة: لا شيء هنا |\n| سنة الإصدار | 2023 إلى 2026 | موزعة: لا شيء هنا |\n| قناة التقديم | مكتب · بوابة · ترحيل | كلها تقريبًا من دفعة ترحيل |\n\nتقسيم لا يغيّر النسبة يُسقط فرضية. تقسيم يركّز الخطأ يقرّبك من المنشأ.\n\nمثال افتراضي: ملف التصاريح لا يحمل عمود القناة.","notes":"الصفان الأولان حقيقيان في ملف التصاريح: الشهادات الفارغة موزعة على الأنواع والسنوات. الصف الثالث افتراضي لتوضيح الطريقة.\n\nفي المختبر تقسم بالقناة ثم الإصدار ثم إجابة سؤال في النموذج ثم النوع. لا تقل أين يتركز.","minutes":null,"lo":["LO4"]},{"id":"five-whys","n":16,"title":"اسأل «لماذا؟» حتى تصل إلى ما يمكن تغييره","kind":"content","session":2,"hash":"fcd8c56a","md":"#### [day3#five-whys] اسأل «لماذا؟» حتى تصل إلى ما يمكن تغييره\n\n*الأسئلة الخمسة*\n\n1. **لماذا استُبعد؟** الشهادة فارغة\n2. **لماذا فارغة؟** الترحيل لم ينقلها\n3. **لماذا؟** الحقل في النظام القديم باسم آخر\n4. **لماذا لم يُكتشف؟** لا فحص بعد الترحيل\n\n> **كل جواب بدليل:** تقسيم، أو وثيقة، أو مسار. جواب بلا دليل فرضية تُختبر.","notes":"المثال افتراضي ويكمل الشريحة السابقة. ليست خمسة بالضبط: تتوقف حين تصل إلى قرار أو تصميم يمكن تغييره. هنا: فحص مقارنة بعد كل ترحيل.","minutes":null,"lo":["LO4"]},{"id":"fishbone","n":17,"title":"المخطط يمنعك من التوقف عند أول سبب","kind":"content","session":2,"hash":"398e6b93","md":"#### [day3#fishbone] المخطط يمنعك من التوقف عند أول سبب\n\n*مخطط السبب والنتيجة*\n\n- **النموذج والنظام.** حقول، وقيم افتراضية، وتحقق\n- **التكامل.** ترحيل، ومهام ليلية، وكتابة فوق\n- **القواعد.** ما لا يُفحص\n- **الناس.** ما يرونه وما لا يرونه\n- **القياس.** ما قيس عند الإطلاق\n- **النتيجة.** العرض كما يراه المستهلك","notes":"مخطط إيشيكاوا بفروع تناسب البيانات. املأه مع الفريق: المشرف الفني يعرف التكامل، والمشرفة تعرف الناس والنموذج.\n\nوتتبع أصل البيانات يقول أين تمر القيمة: درسوه في LDS-DMG-101، وفي المختبر يُعطى جاهزًا.","minutes":null,"lo":["LO4"]},{"id":"prevent-where","n":18,"title":"كلما اقتربت الوقاية من نقطة الإدخال قلّت كلفتها","kind":"content","session":2,"hash":"e03b6ca5","md":"#### [day3#prevent-where] كلما اقتربت الوقاية من نقطة الإدخال قلّت كلفتها\n\n*الوقاية*\n\n| البند | القيمة |\n| --- | --- |\n| عند الإدخال: تحقق في النموذج | أرخص |\n| في التكامل: رفض أو تعليق |  |\n| في الفحص الدوري: قاعدة تنبّه |  |\n| عند المستهلك: زيارة خاطئة | أغلى |\n\nالأشرطة توضيح للترتيب، لا قياس. خطة جيدة: تصحيح للحالي، ووقاية عند الإدخال، وحاجز في التكامل.","notes":"الضوابط الوطنية تطلب أن يجري مشرفو البيانات من الأعمال والتقنية مراجعات جودة ضمن دورة تطوير الأنظمة، وأن تُعالج المشكلات المكتشفة قبل الانتقال إلى الإنتاج. إصدار جديد من نموذج إدخال تغيير من هذا النوع.\n\nالمصادر: الضوابط الوطنية، DQ.4.1.","minutes":null,"lo":["LO4"]},{"id":"recurrence-measure","n":19,"title":"الإصلاح ينجح حين يثبته رقم أسبوعي","kind":"content","session":2,"hash":"89b93427","md":"#### [day3#recurrence-measure] الإصلاح ينجح حين يثبته رقم أسبوعي\n\n*مقياس التكرار*\n\n- **عرّفه.** البسط: الصفوف الجديدة بالخطأ هذا الأسبوع. المقام: الصفوف الجديدة كلها. لا الرصيد القديم.\n- **واربطه بالإغلاق.** الهدف وعدد الأسابيع التي يبقى فيها عنده، ثم تُغلق المشكلة.\n\n> **قسه قبل الإصلاح أيضًا** لتعرف خط الأساس، وإلا لا تعرف إن تغير شيء.","notes":"الرصيد القديم يتناقص بالتصحيح ولو لم يُعالج السبب، فيخدع. المقياس على الجديد فقط يقول إن السبب توقف.","minutes":null,"lo":["LO4"]},{"id":"check-root-cause","n":20,"title":"أين تتوقف الأسئلة؟","kind":"quiz","session":2,"hash":"45e0c31b","md":"#### [day3#check-root-cause] أين تتوقف الأسئلة؟\n\n*نقطة تحقق*\n\n**سؤال:** تحليل لساعات تدريب صفرية في تصاريح جديدة انتهى عند: «الموظف لا يكتب الساعات لأن الحقل اختياري ويقبل الصفر افتراضيًا». ما الإجراء الوقائي الأنسب؟\n\n- أ. تدريب الموظفين على أهمية الحقل\n- ب. الحقل إلزامي بلا قيمة افتراضية، والتحقق يرفض ما دون الحد\n- ج. تصحيح التصاريح الـ 22 يدويًا من ملفات التدريب\n- د. قاعدة أسبوعية تنبّه على كل صفر جديد في السجل، ويصححه المشرف خلال يوم","notes":"الإجابة: ب. المثال افتراضي على ملف التصاريح. من اختار «د»: صحيح أنه مفيد، والخطة الجيدة تحمل الاثنين، لكن السؤال عن الأقرب إلى المنشأ.","minutes":null,"lo":["LO4"]},{"id":"lab-3-2","n":21,"title":"خطأ العناوين حتى نموذج الإدخال","kind":"lab","session":2,"hash":"fd01b8a7","md":"#### [day3#lab-3-2] خطأ العناوين حتى نموذج الإدخال\n\nالمختبر 3.2 · 35 دقيقة\n\nتتبع خطأً متكررًا في مدينة موقع المراكز من سجل المشكلات عبر مسار البيانات حتى نموذج البوابة، وتكتب المنشأ والإجراءات التصحيحية والوقائية وملاكها ومقياسًا أسبوعيًا للتكرار.\n\n[D3_2_root_cause.html](https://sdaiaacademy.github.io/lds-dmg-203/labs/D3_2_root_cause.html)\n\n- [ ] اعزل الخطأ: قسّم المراكز المخالفة بالقناة والإصدار وإجابة المربع (10 د)\n- [ ] اقرأ المسار والمواصفة وارسم مخطط السبب والنتيجة (7 د)\n- [ ] اكتب الأسئلة الخمسة حتى المنشأ (6 د)\n- [ ] اكتب إجراءً تصحيحيًا وإجراءين وقائيين بملاكهم (7 د)\n- [ ] عرّف مقياس التكرار وهدفه من الملف الأسبوعي (5 د)\n- [ ] ✱ إضافي: قدّر كم زيارة أحيلت بسبب هذا الخطأ منذ إطلاق الإصدار v3","notes":"البداية من day3/lineage.txt وday3/form_spec.txt وday3/address_weekly.csv وجدول applications. المرشد مسموح ليسأل المشارك أسئلة السبب الجذري دون صفوف.\n\nالفخ: التوقف عند «المتقدم لم ينتبه». اسأل: لماذا كان يمكن ألا ينتبه؟ لا تقل أين يتركز الخطأ قبل أن يقسّموا.","minutes":null,"lo":[]},{"id":"debrief-3-2","n":22,"title":"المنشأ في تصميم النموذج: مربع مؤشَّر افتراضيًا","kind":"content","session":2,"hash":"d33b8e26","md":"#### [day3#debrief-3-2] المنشأ في تصميم النموذج: مربع مؤشَّر افتراضيًا\n\n*بعد المختبر 3.2*\n\n- **56** مخالفة كلها: بوابة، v3، المربع مؤشَّر، مركز\n- **0.0% ← 8.1%** نسبة المخالفات الأسبوعية قبل v3 وبعده\n- **66** زيارة أحيلت إلى مكتب آخر\n\nمربع «عنوان المنشأة هو عنوان المالك» صُمم للحضانات المنزلية، ويفتح مؤشَّرًا لكل الأنواع ويقفل المدينة. والتكامل ينسخ دون تحقق.","notes":"الأرقام من `uv run solutions/check.py 3.2`. الوقاية المرجعية: المربع غير مؤشَّر ويظهر للحضانات المنزلية فقط، وتحقق من بادئة الرمز في النموذج وفي التكامل.\n\nلاحظ ملاحظة فريق البوابة: «انخفض زمن التعبئة إلى النصف». قاسوا ما أرادوا تحسينه، ولم يقيسوا ما قد يسوء.","minutes":null,"lo":["LO4"]},{"id":"s3","n":23,"title":"الجودة في التشغيل","kind":"section","session":3,"hash":"4b9183b0","md":"#### [day3#s3] الجودة في التشغيل\n\n*الجلسة 3*\n\n- يشغّل فحوص ما قبل النشر ويقرر النشر أو الإيقاف\n- يكتب بنود جودة في اتفاقية مشاركة\n- يحسم خلافًا على الأولوية بين مالكين بمعايير مقيسة","notes":"","minutes":null,"lo":["LO6"]},{"id":"prerelease-gate","n":24,"title":"فحص ما قبل النشر بوابة مستقلة عن قواعد المصدر","kind":"content","session":3,"hash":"7a8768c6","md":"#### [day3#prerelease-gate] فحص ما قبل النشر بوابة مستقلة عن قواعد المصدر\n\n*قبل النشر*\n\n- **قواعد المصدر.** هل السجل صالح لعمل الهيئة؟\n- **فحص ما قبل النشر.** هل هذا الملف صالح لمن سيقرؤه خارج الهيئة؟ بيانات شخصية؟ أعداد صغيرة تكشف أفرادًا؟ أرقام تناقض المنشور؟\n\n> **القرار ثلاثة:** انشر، أو أوقف، أو انشر بعد إصلاح محدد. «انشر مع ملاحظة» يصلح لعيب جودة، لا لبيانات شخصية.","notes":"البيانات المفتوحة رقم منشور لا يُسحب بسهولة. البوابة تمر على الملف النهائي بعد التجميع والتحويل، لأن الخطأ قد يدخل هناك.\n\nخطوط النقل وعقود البيانات ومراقبتها موضوع DEV-DAT-204؛ هنا نكتفي بقرار المحلل.","minutes":null,"lo":["LO6"]},{"id":"prerelease-example","n":25,"title":"ستة أسئلة قبل نشر عدد التصاريح بحسب المركز","kind":"content","session":3,"hash":"78f622ac","md":"#### [day3#prerelease-example] ستة أسئلة قبل نشر عدد التصاريح بحسب المركز\n\n*مثال: مستخرج التصاريح*\n\n| الفحص | لماذا |\n| --- | --- |\n| لا أسماء ولا أرقام هوية | بيانات شخصية |\n| لا مركز فيه أقل من ثلاثة مقدمي رعاية | العدد الصغير يكشف أشخاصًا |\n| لا تصريح منتهٍ يُعد ساريًا | يناقض الرقم المنشور |\n| لا تصريح مكرر | يضخم العدد |\n| كل مركز في قائمة المراكز المرخصة | مراكز مغلقة تظهر |\n| المجموع يطابق التقرير الشهري | رقمان رسميان مختلفان |","notes":"اطلب من القاعة أن تختار الفحص الذي يوقف النشر وحده: الأول. الباقي قد يُنشر بعد إصلاح.\n\nالضوابط الوطنية في مجال البيانات المفتوحة تطلب أن تُنشر البيانات بجودة عالية مع استبعاد أي بيانات مقيدة (OD.3.1)، وأن يُقيَّم هل يكشف دمجها مع بيانات عامة أخرى معلومات شخصية (OD.3.2). الأعداد الصغيرة من هذا الباب.\n\nالمصادر: الضوابط الوطنية، OD.3.1 وOD.3.2.","minutes":null,"lo":["LO6"]},{"id":"quality-clauses","n":26,"title":"الاتفاقية تنقل البيانات، وبنود الجودة تنقل الثقة","kind":"content","session":3,"hash":"3d4b98d3","md":"#### [day3#quality-clauses] الاتفاقية تنقل البيانات، وبنود الجودة تنقل الثقة\n\n*اتفاقية المشاركة*\n\n- **ما يُضمن:** العناصر والعتبات، ومتى يُقاس\n- **ما يُرفق:** القاموس، وتاريخ الاستخراج، والعيوب المعروفة\n- **الإبلاغ والتصحيح:** القناة، والمدة، وأين يُسجَّل\n- **فحص الاستلام:** ما يفحصه المستفيد، ومتى يرفض\n\n- **في التصاريح.** ملف شهري لجهة تدريب: «التصاريح فيه سارية في تاريخ الاستخراج 100%، وتاريخ الشهادة مكتمل 95% على الأقل، والنسبة الفعلية مرفقة.»","notes":"الحد الأدنى لاتفاقية المشاركة الخارجية في الضوابط الوطنية: الغرض، والجهتان، والأساس النظامي، وتفاصيل المشاركة (التاريخ والمدة)، وأحكام المسؤولية (DSI.7.2). لا يذكر الجودة، فبنودها إضافة تتفق عليها الجهتان. بند الإبلاغ يجعل المستفيد عينًا إضافية على الجودة.\n\nالمصادر: الضوابط الوطنية، DSI.7.2 (اتفاقيات مشاركة البيانات الخارجية).","minutes":null,"lo":["LO6"]},{"id":"priority-dispute","n":27,"title":"حين يطلب مالكان الإصلاح نفسه أولًا، احكم بجدول","kind":"content","session":3,"hash":"1020f2de","md":"#### [day3#priority-dispute] حين يطلب مالكان الإصلاح نفسه أولًا، احكم بجدول\n\n*خلاف الأولوية*\n\n| المعيار | الخيار أ | الخيار ب |\n| --- | --- | --- |\n| السلامة |  |  |\n| رقم منشور أو مال |  |  |\n| الامتداد والتكرار |  |  |\n| الجهد |  |  |\n| يعالج السبب؟ |  |  |\n\n> **املأه بأرقام من القياس،** لا بكلمات الرسائل. ثم: إصلاح كبير وآخر صغير، أو تصعيد.","notes":"الجدول يحوّل الخلاف من «من أعلى صوتًا» إلى «أي الأرقام أثقل». قد يبقى الخلاف، فيُصعَّد بالجدول نفسه إلى رئيس المكتب.\n\nفي المختبر رسالتان حقيقيتان في الحالة الافتراضية، وطاقة الفريق محدودة.","minutes":null,"lo":["LO6"]},{"id":"escalate-well","n":28,"title":"التصعيد الجيد ورقة واحدة: الخيارات، والأرقام، والتوصية، والموعد","kind":"content","session":3,"hash":"6c2f9f6f","md":"#### [day3#escalate-well] التصعيد الجيد ورقة واحدة: الخيارات، والأرقام، والتوصية، والموعد\n\n*التصعيد*\n\n**المحلل** يجهز الجدول ← **المالكان** يومان للقبول ← **رئيس المكتب** يقرر ← **لجنة البيانات** إن لزم","notes":"التصعيد ليس شكوى. هو طلب قرار ممن يملكه، بموعد. بلا موعد يتحول إلى تأجيل.","minutes":null,"lo":["LO6"]},{"id":"check-operations","n":29,"title":"انشر أم أوقف؟","kind":"quiz","session":3,"hash":"4e09bc2c","md":"#### [day3#check-operations] انشر أم أوقف؟\n\n*نقطة تحقق*\n\n**سؤال:** مستخرج التصاريح للنشر: فحص التكرار يجد 9 صفوف، وفحص المراكز الصغيرة يجد 4 مراكز فيها مقدم رعاية واحد أو اثنان، والبقية تنجح. الموعد غدًا. ما القرار؟\n\n- أ. انشر في الموعد مع ملاحظة عن العيبين\n- ب. أوقف النشر حتى المراجعة الربعية\n- ج. احذف الصفوف المكررة التسعة وانشر كما هو\n- د. انشر بعد حذف المكرر وجمع المراكز الأربعة الصغيرة على مستوى أعلى","notes":"الإجابة: د، وهي أطول الخيارات. مثال افتراضي: العدد 9 من ملف التصاريح، والمراكز الأربعة الصغيرة افتراضية.","minutes":null,"lo":["LO6"]},{"id":"lab-3-3","n":30,"title":"قبل النشر وفي الاتفاقية وعند الخلاف","kind":"lab","session":3,"hash":"7b08a5ab","md":"#### [day3#lab-3-3] قبل النشر وفي الاتفاقية وعند الخلاف\n\nالمختبر 3.3 · 35 دقيقة\n\nتشغّل فحوص ما قبل النشر على مستخرج البيانات المفتوحة وتقرر، وتضيف بنود الجودة إلى مسودة اتفاقية مشاركة، وتحكم في خلاف بين مالكين على أول إصلاح.\n\n[D3_3_operations.html](https://sdaiaacademy.github.io/lds-dmg-203/labs/D3_3_operations.html)\n\n- [ ] شغّل فحوص ما قبل النشر واكتب قرار النشر (10 د)\n- [ ] أضف أربعة بنود جودة إلى مسودة الاتفاقية (10 د)\n- [ ] احكم في خلاف الأولوية بجدول معايير وأرقام (10 د)\n- [ ] اكتب سطر التصعيد إن لم يقبل أحد المالكين (5 د)\n- [ ] ✱ إضافي: اكتب ما يجب أن يتغير في المستخرج حتى ينشر، وأعد تشغيل الفحوص على نسختك","notes":"البداية من day3/open_data_extract.csv وday3/sharing_agreement_draft.txt وday3/priority_dispute.txt. مرشد الذكاء الاصطناعي مسموح ليراجع البنود والحكم بعد كتابتها، لا ليكتبها، ودون صفوف.\n\nراقب من ينشر مع ملاحظة رغم فحص البيانات الشخصية، ومن يحكم في الخلاف دون جدول.","minutes":null,"lo":[]},{"id":"debrief-3-3","n":31,"title":"أربعة فحوص تفشل، وواحد منها يوقف النشر وحده","kind":"content","session":3,"hash":"4eb19f23","md":"#### [day3#debrief-3-3] أربعة فحوص تفشل، وواحد منها يوقف النشر وحده\n\n*بعد المختبر 3.3*\n\n| الفحص | الصفوف |\n| --- | --- |\n| P1 عنوان منزل في صف حضانة منزلية | 321 |\n| P2 رخصة منتهية تظهر سارية | 41 |\n| P4 مقاعد غير معقولة | 5 |\n| P6 المدينة لا يطابقها الرمز البريدي | 57 |\n\nالحكم المرجعي في الخلاف: العناوين إصلاحًا كبيرًا (سلامة، وتكرار أسبوعي، ومنشأ معروف)، ومهمة ليلية للرخص المنتهية إصلاحًا صغيرًا (41 من فرق 78 قبل التقرير الربعي).","notes":"الأرقام من `uv run solutions/check.py 3.3`. يُقبل حكم معاكس إن سُند بالجدول ولم يتجاهل السلامة.\n\nP1 هي ISS-112 نفسها من صباح اليوم: المشكلة نفسها تظهر في مكانين.","minutes":null,"lo":["LO6"]},{"id":"s4","n":32,"title":"بيانات يستخدمها الذكاء الاصطناعي","kind":"section","session":4,"hash":"947eb20a","md":"#### [day3#s4] بيانات يستخدمها الذكاء الاصطناعي\n\n*الجلسة 4*\n\n- يقيس تمثيل الفئات وضوضاء التسميات والتكرار والتسرب في جدول تدريب\n- يقيس الحداثة والتعارض والتكرار في مجموعة وثائق\n- يقرر الاستخدام أو الإصلاح أو الرفض ويسمّي أثر الفجوات على الفئات","notes":"","minutes":null,"lo":["LO5","LO6"]},{"id":"ai-two-uses","n":33,"title":"استخدامان، وأسئلة جودة مختلفة لكل منهما","kind":"content","session":4,"hash":"d4570907","md":"#### [day3#ai-two-uses] استخدامان، وأسئلة جودة مختلفة لكل منهما\n\n*بيانات يستخدمها الذكاء الاصطناعي*\n\n- **جدول يتعلم منه نموذج.** هل يمثّل الفئات؟ هل التسميات متسقة؟ هل فيه تكرار؟ هل فيه عمود يعرف النتيجة مسبقًا؟\n- **وثائق يجيب منها مساعد.** هل هي حديثة؟ هل فيها إصدارات ملغاة؟ هل تتعارض؟ هل فيها بيانات شخصية؟\n\nسلسلة ISO/IEC 5259 (2024–2025) تخص جودة البيانات للتحليلات وتعلم الآلة: الأجزاء 1 إلى 5، من المفاهيم والمقاييس إلى إطار العمليات وإطار الحوكمة.","notes":"لا نقتبس تعريفات المعيار: نصوصه غير متاحة مجانًا، ونذكر عنوان السلسلة وأجزاءها فقط. القياسات هنا شائعة في الممارسة.\n\nهل يحق استخدام البيانات للتدريب أصلًا؟ سؤال الأهلية والصلاحيات في LDS-DMG-301. هنا نقيس الصلاحية فقط.\n\nالمصادر: ISO/IEC 5259-1 إلى 5259-5؛ سدايا، مبادئ أخلاقيات الذكاء الاصطناعي.","minutes":null,"lo":["LO5"]},{"id":"representativeness","n":34,"title":"فئة قليلة في التدريب يتعلم النموذج عنها أقل","kind":"content","session":4,"hash":"0412d014","md":"#### [day3#representativeness] فئة قليلة في التدريب يتعلم النموذج عنها أقل\n\n*التمثيل*\n\n| البند | القيمة |\n| --- | --- |\n| التصاريح المساعدة في السجل | 32.5% |\n| في جدول تدريب مقترح | 9.0% |\n\nالنسبة 0.28: التدريب فيه ربع حصتها في الواقع تقريبًا. قارن حصة كل فئة في التدريب بحصتها في المجتمع، لا العدد وحده.\n\n32.5% من ملف التصاريح (491 من 1,509). جدول التدريب افتراضي. الأشرطة بمقياس 50%.","notes":"مبادئ أخلاقيات الذكاء الاصطناعي من سدايا تطلب العدالة: ألا يعامل النظام فئة أسوأ. التمثيل الناقص أول طريق إلى ذلك.\n\nاسأل: من يتضرر إن أخطأ نموذج في ترتيب أصحاب التصاريح المساعدة للتدريب الإضافي؟","minutes":null,"lo":["LO5"]},{"id":"label-agreement","n":35,"title":"90% اتفاق قد يكون اتفاقًا متوسطًا فقط","kind":"content","session":4,"hash":"9e594146","md":"#### [day3#label-agreement] 90% اتفاق قد يكون اتفاقًا متوسطًا فقط\n\n*ضوضاء التسميات*\n\n| 100 ملف تصريح | المراجع ب: ناقص | ب: مكتمل |\n| --- | --- | --- |\n| المراجع أ: ناقص | 6 | 4 |\n| أ: مكتمل | 6 | 84 |\n\n**0.49** كابا كوهين، مع اتفاق 90%\n\nحين تكون فئة نادرة، يتفق المراجعان كثيرًا بالصدفة. كابا تطرح اتفاق الصدفة. المثال افتراضي.","notes":"الحساب: الاتفاق 0.90، واتفاق الصدفة 0.10 × 0.12 + 0.90 × 0.88 = 0.804، وكابا (0.90 − 0.804) ÷ (1 − 0.804) = 0.49. السكربت في ملفات العمل.\n\nإن كان المراجعان يختلفان، فالنموذج يتعلم الاختلاف. العلاج: معيار تقييم مكتوب، ومراجعة الحالات المختلف عليها.","minutes":null,"lo":["LO5"]},{"id":"duplication-leakage","n":36,"title":"نموذج يبدو ممتازًا في الاختبار ويفشل في الاستخدام","kind":"content","session":4,"hash":"13195043","md":"#### [day3#duplication-leakage] نموذج يبدو ممتازًا في الاختبار ويفشل في الاستخدام\n\n*التكرار والتسرب*\n\n- **التكرار.** الصف نفسه في التدريب والاختبار: النموذج يتذكره لا يتعلمه.\n- **التسرب.** عمود يُسجَّل بعد النتيجة: «أُحيل إلى تدريب إضافي» يعرف أن الشهادة كانت ناقصة. عند الاستخدام لا يكون موجودًا بعد.\n\n> **اسأل لكل عمود:** هل يُعرف قبل اللحظة التي سيقرر فيها النموذج؟","notes":"علامة التسرب: عمود يفصل النتيجة فصلًا شبه تام. حين ترى نسبة 0% في قيمة و80% في أخرى، اسأل متى يُسجَّل.","minutes":null,"lo":["LO5"]},{"id":"docs-for-retrieval","n":37,"title":"المساعد يجيب بثقة من أقدم وثيقة يجدها","kind":"content","session":4,"hash":"b38bab93","md":"#### [day3#docs-for-retrieval] المساعد يجيب بثقة من أقدم وثيقة يجدها\n\n*وثائق للمساعد*\n\n| القياس | مثال في تعاميم التصاريح |\n| --- | --- |\n| إصدار ملغى ما زال في المجموعة | تعميم ساعات التدريب 2023 بجانب تعميم 2025 |\n| تعارض | دليل يقول 8 ساعات، وأسئلة شائعة تقول 6 |\n| حداثة | لا تاريخ سريان، أو لم تُراجع منذ سنة |\n| تكرار | نسختان من الوثيقة نفسها |\n| بيانات شخصية | رسالة متقدم أرفقت بالخطأ |\n\n> **الأداة تنبّه، وأنت تحكم.** رقمان مختلفان في موضوع واحد قد يكونان عن شيئين مختلفين.","notes":"الأمثلة افتراضية عن التصاريح. التنبيه الآلي يجد المرشحين، وقراءة الوثيقتين تقرر. في المختبر بعض التنبيهات كاذبة عمدًا.","minutes":null,"lo":["LO5"]},{"id":"use-fix-reject","n":38,"title":"استخدام، أو إصلاح ثم استخدام، أو رفض، بالأرقام","kind":"content","session":4,"hash":"7c8b4430","md":"#### [day3#use-fix-reject] استخدام، أو إصلاح ثم استخدام، أو رفض، بالأرقام\n\n*القرار*\n\n- **استخدام.** لا فجوة تمس فئة أو قرارًا.\n- **إصلاح.** الفجوات معروفة وقابلة للإصلاح، ويبقى بعدها ما يكفي.\n- **رفض.** ما يبقى بعد الإصلاح لا يكفي، أو الفجوة لا تُصلح.\n\nالحكم يُكتب في ثلاثة أسطر: الرقم، والأثر على الفئات، وما يُصلح أولًا. وتبقى قاعدة شهرية بعد الإصلاح.","notes":"هذا القرار لمكتب البيانات مع قائد برنامج الذكاء الاصطناعي، لا لفريق النموذج وحده. في الحالة: رقية الدخيل الله.","minutes":null,"lo":["LO5","LO6"]},{"id":"check-ai-fitness","n":39,"title":"ما الذي يُفعل بهذا العمود؟","kind":"quiz","session":4,"hash":"099ac165","md":"#### [day3#check-ai-fitness] ما الذي يُفعل بهذا العمود؟\n\n*نقطة تحقق*\n\n**سؤال:** جدول لتدريب نموذج يتنبأ بمن سيرسب في اختبار الإسعافات. عمود `retake_booked` (حُجز موعد إعادة): «نعم» يرسب منهم 92%، و«لا» يرسب 0%. ما الصواب؟\n\n- أ. إبقاؤه، فهو أقوى عمود في الجدول\n- ب. استبعاده قبل التدريب\n- ج. إبقاؤه بوزن أقل في النموذج\n- د. حذف الصفوف المكررة ثم إبقاؤه","notes":"الإجابة: ب، وهي أقصر الخيارات. المثال افتراضي. اربطه بالمختبر: ابحث عن عمود يُسجَّل بعد الزيارة.","minutes":null,"lo":["LO5"]},{"id":"lab-3-4","n":40,"title":"صلاحية مجموعتين للذكاء الاصطناعي","kind":"lab","session":4,"hash":"d429d06a","md":"#### [day3#lab-3-4] صلاحية مجموعتين للذكاء الاصطناعي\n\nالمختبر 3.4 · 35 دقيقة\n\nتقيس جدول تاريخ التفتيش الذي يريد برنامج الذكاء الاصطناعي تدريب نموذج خطر عليه، ومجموعة 24 وثيقة يريد أن يجيب منها مساعد المتقدمين، وتحكم على كل منهما بالأرقام.\n\n[D3_4_ai_fitness.html](https://sdaiaacademy.github.io/lds-dmg-203/labs/D3_4_ai_fitness.html)\n\n- [ ] شغّل قياسات جدول التفتيش واقرأ كل رقم (7 د)\n- [ ] اكتب لكل فجوة أثرها على الفئات وما تفعله بها (9 د)\n- [ ] شغّل قياسات الوثائق وافرز التنبيهات الحقيقية (8 د)\n- [ ] احكم على كل مجموعة: استخدام أو إصلاح أو رفض (7 د)\n- [ ] اختر أولوية مشروعك الختامي الأولى (4 د)\n- [ ] ✱ إضافي: اقترح قاعدة جودة تُشغَّل كل شهر على جدول التدريب بعد إصلاحه، بعتبتها ومالكها","notes":"البداية من ملفات day3/ai/ والوثائق في day3/ai/docs/. لا نموذج يُدرَّب ولا يُستدعى. راقب من يقبل كل تنبيهات الوثائق دون فتحها، ومن يرى عمود المتابعة ميزة.\n\nالخطوة الخامسة تمهد للمشروع الختامي: لا تؤخرها.","minutes":null,"lo":[]},{"id":"debrief-3-4","n":41,"title":"المجموعتان: إصلاح ثم استخدام","kind":"content","session":4,"hash":"23819f13","md":"#### [day3#debrief-3-4] المجموعتان: إصلاح ثم استخدام\n\n*بعد المختبر 3.4*\n\n| جدول التفتيش |  |\n| --- | --- |\n| حضانات الشوحط المنزلية | 1.1% أمام 7.4% |\n| مكرر | 140 (6.0%) |\n| اتفاق التسميات | 82.5%، كابا 0.60 |\n| تسرب: المتابعة | 81.5% أمام 0.0% |\n| قائمة 2019 الملغاة | 926 (39.9%) |\n\n| الوثائق |  |\n| --- | --- |\n| متطابقتان | DOC-04 وDOC-05 |\n| إصدارات ملغاة | 4 |\n| تعارض حقيقي | نسبة مقدمي الرعاية: 6 أم 8 |\n| تنبيهات حداثة | 9 |\n| بيانات شخصية | DOC-19 |","notes":"الأرقام من `uv run solutions/check.py 3.4`. التنبيهات الكاذبة: التفتيش (90 يومًا و42 بندًا)، والتجديد (مهلتان)، والمساحة (سنة لا قياس).\n\nاسأل: ماذا يقول المساعد اليوم لمتقدم يسأل عن نسبة مقدمي الرعاية؟ قد يقول «ثمانية» من أسئلة شائعة لم تُحدَّث.","minutes":null,"lo":["LO5","LO6"]},{"id":"capstone-kickoff","n":42,"title":"خطة جودة لمجال الترخيص، تدافع عنها أمام لجنة","kind":"content","session":4,"hash":"7ca22386","md":"#### [day3#capstone-kickoff] خطة جودة لمجال الترخيص، تدافع عنها أمام لجنة\n\n*المشروع الختامي*\n\n- الأولويات والعناصر الحرجة بمستهلكيها وملاكها\n- كتالوج من 15 قاعدة أو أكثر، وملف فحوص، وسجل تشغيل\n- بطاقة أداء، وسجل مشكلات ومسار عملها\n- تحليل سبب جذري، والمراقبة والتصعيد\n\n- **المناقشة.** 10 دقائق عرض و10 مع اللجنة. تعترض اللجنة على أولوية، ويزرع المقيّم عيبًا جديدًا تشغّل فحوصك عليه أمامها.\n- **الذكاء الاصطناعي.** مسموح في القواعد الإضافية وصياغة الخطة، بسطر تبرير لكل اقتراح. لا صفوف ولا مخرجات فيها مفاتيح.\n\nالموجز في `files/capstone/capstone_brief.txt`. التسليم رابط مجلد Google Drive قبل أول مناقشة.","notes":"وزّع الموجز واقرأ معهم المعايير ونسبها من صفحة المقرر. يوم المشروع يبدأ بالاختبار العملي الموجّه (60 دقيقة، دون ذكاء اصطناعي)، ثم 30 دقيقة للتحضير الأخير، ثم المناقشات.\n\nما بنوه في المختبرات مواد خام: الكتالوج والبطاقة وتحليل السبب. المطلوب خطة متماسكة، لا ملف لكل مختبر.","minutes":null,"lo":["LO6"]},{"id":"wrap-up","n":43,"title":"ثلاثة أمور تبقى معك","kind":"content","session":4,"hash":"44ae7bcd","md":"#### [day3#wrap-up] ثلاثة أمور تبقى معك\n\n*خلاصة اليوم 3*\n\n- **تُغلق بالقياس.** المشكلة تُفرز بالأثر والامتداد، وتُغلق حين يثبت رقم أن السبب عولج.\n- **المنشأ تصميم.** قسّم حتى يظهر، واسأل حتى تصل إلى ما يُغيَّر، وقِ عند الإدخال.\n- **قِس قبل أن يتعلم.** التمثيل والتسميات والتسرب والحداثة أرقام تُحكم بها البيانات.","notes":"اطلب من كل مشارك أن يقول أولويته الأولى في المشروع الختامي بجملة. اسمع ثلاثًا أو أربعًا، ولا تحكم: اللجنة غدًا تفعل.","minutes":null,"lo":[]},{"id":"next","n":44,"title":"يوم المشروع الختامي","kind":"content","session":4,"hash":"fb4eae49","md":"#### [day3#next] يوم المشروع الختامي\n\n*التالي*\n\nاختبار عملي موجّه دون ذكاء اصطناعي، ثم تحضير أخير، ثم مناقشة كل خطة أمام اللجنة الصورية، ثم مراجعة جماعية.","notes":"ذكّر بموعد التسليم ورابط المجلد، وبأن الاختبار العملي في أول اليوم: قواعد لخمسة عناصر وتنميط واحد، دون أي مساعد.","minutes":null,"lo":[]}],"activities":[{"id":"review-day2-q1","slide":"review-day2","type":"single","prompt":"سجل تشغيل التصاريح: قاعدة «التصريح الساري لم ينته تاريخه» تفشل في 18 من 786. أي جملة يسندها هذا السجل وحده؟","options":[{"key":"أ","text":"موظفو التصاريح ينسون تحديث الحالة"},{"key":"ب","text":"18 مقدم رعاية يعملون اليوم بلا تصريح"},{"key":"ج","text":"القاعدة ناجحة عمليًا: 18 من 786 أقل من 3%، والعتبة 100 تُقرأ تقريبًا"},{"key":"د","text":"18 تصريحًا حالتها ساري وتاريخها انتهى، ويلزم بحث في السبب"}],"correct":[3],"explanation":"سجل التشغيل يعدّ صفوفًا تخالف شرطًا. السبب والأثر الفعلي يحتاجان دليلًا آخر، وهذا عمل اليوم.","misconceptions":["يقدّم سببًا لا يعرفه السجل؛ السجل يقول ماذا لا لماذا","يخلط الحالة المخزنة بالواقع: قد يكون التصريح جُدد ولم يُسجَّل التجديد","العدد صغير لكن القاعدة عتبتها 100؛ الحكم بالعتبة لا بالانطباع",""],"lo":["LO2","LO3"]},{"id":"check-triage-q1","slide":"check-triage","type":"single","prompt":"سجل التشغيل: 22 تصريحًا من 1,509 بساعات تدريب صفر (1.5%). الحقل تستعمله خطة التدريب السنوية الداخلية فقط، ولا يدخل قرار إصدار التصريح ولا المناوبات. وصل بلاغ واحد من إدارة التدريب. ما الخطورة بحسب الدليل؟","options":[{"key":"أ","text":"منخفضة: لا قرار خاطئ عن أي شخص"},{"key":"ب","text":"متوسطة: أثر متوسط، وبلاغ واحد فالامتداد محدود"},{"key":"ج","text":"عالية: أثر متوسط وامتداد واسع (1.5%)"},{"key":"د","text":"حرجة: كل ما يتعلق بمقدمي الرعاية يمس السلامة"}],"correct":[2],"explanation":"الأثر متوسط: خطة داخلية تُبنى على رقم خاطئ، دون قرار عن أشخاص. والامتداد من سجل التشغيل (1.5% أكبر من 1%) لا من عدد البلاغات. متوسط × واسع = عالية.","misconceptions":["الخطة تُبنى على رقم خاطئ فيتعطل عمل داخلي؛ هذا أثر متوسط لا إزعاج دون قرار","يقدّر الامتداد بعدد البلاغات، والامتداد المقيس 1.5% فوق حد 1% في الدليل","","يجعل كل ما يمس مقدمي الرعاية عالي الأثر، والحقل هنا لا يدخل قرارًا عن طفل أو شخص"],"lo":["LO4","LO6"]},{"id":"check-root-cause-q1","slide":"check-root-cause","type":"single","prompt":"تحليل لساعات تدريب صفرية في تصاريح جديدة انتهى عند: «الموظف لا يكتب الساعات لأن الحقل اختياري ويقبل الصفر افتراضيًا». ما الإجراء الوقائي الأنسب؟","options":[{"key":"أ","text":"تدريب الموظفين على أهمية الحقل"},{"key":"ب","text":"الحقل إلزامي بلا قيمة افتراضية، والتحقق يرفض ما دون الحد"},{"key":"ج","text":"تصحيح التصاريح الـ 22 يدويًا من ملفات التدريب"},{"key":"د","text":"قاعدة أسبوعية تنبّه على كل صفر جديد في السجل، ويصححه المشرف خلال يوم"}],"correct":[1],"explanation":"المنشأ تصميم الحقل، فالوقاية تغيّر التصميم عند الإدخال. التصحيح والقاعدة الأسبوعية مكمّلان لا بديلان.","misconceptions":["تدريب الناس لا يغير تصميمًا يدفعهم إلى الخطأ، فيعود الخطأ مع كل موظف جديد","","تصحيح للصفوف الحالية، لا وقاية: الصفوف الجديدة تأتي بالصفر نفسه","الفحص يكتشف بعد الحدوث؛ مفيد حاجزًا ثانيًا لكنه ليس الأقرب إلى المنشأ"],"lo":["LO4"]},{"id":"check-operations-q1","slide":"check-operations","type":"single","prompt":"مستخرج التصاريح للنشر: فحص التكرار يجد 9 صفوف، وفحص المراكز الصغيرة يجد 4 مراكز فيها مقدم رعاية واحد أو اثنان، والبقية تنجح. الموعد غدًا. ما القرار؟","options":[{"key":"أ","text":"انشر في الموعد مع ملاحظة عن العيبين"},{"key":"ب","text":"أوقف النشر حتى المراجعة الربعية"},{"key":"ج","text":"احذف الصفوف المكررة التسعة وانشر كما هو"},{"key":"د","text":"انشر بعد حذف المكرر وجمع المراكز الأربعة الصغيرة على مستوى أعلى"}],"correct":[3],"explanation":"المراكز الصغيرة تكشف أفرادًا، فلا تُنشر كما هي. وكلا العيبين يُصلح سريعًا، فالإيقاف الطويل لا يلزم.","misconceptions":["يعامل كشف الأفراد كأنه عيب جودة يكفيه تنبيه، وهو خصوصية","يوقف كل شيء لعيبين يُصلحان في ساعة، فيفوّت الموعد دون داع","يصلح التكرار ويترك المراكز الصغيرة التي تكشف أشخاصًا",""],"lo":["LO6"]},{"id":"check-ai-fitness-q1","slide":"check-ai-fitness","type":"single","prompt":"جدول لتدريب نموذج يتنبأ بمن سيرسب في اختبار الإسعافات. عمود retake_booked (حُجز موعد إعادة): «نعم» يرسب منهم 92%، و«لا» يرسب 0%. ما الصواب؟","options":[{"key":"أ","text":"إبقاؤه، فهو أقوى عمود في الجدول"},{"key":"ب","text":"استبعاده قبل التدريب"},{"key":"ج","text":"إبقاؤه بوزن أقل في النموذج"},{"key":"د","text":"حذف الصفوف المكررة ثم إبقاؤه"}],"correct":[1],"explanation":"الإعادة تُحجز بعد الرسوب. لحظة التنبؤ لا يكون العمود معروفًا، فيفشل النموذج في الاستخدام.","misconceptions":["يرى قوة الفصل ميزة، وهي علامة أن العمود يعرف النتيجة","","الوزن لا يحل المشكلة: العمود غير موجود لحظة التنبؤ","التكرار مشكلة أخرى؛ حذف المكرر لا يزيل عمودًا متسربًا"],"lo":["LO5"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day3.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

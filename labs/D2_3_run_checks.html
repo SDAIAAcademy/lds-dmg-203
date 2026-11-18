@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="executives">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 2.3 · تنفيذ القواعد · إدارة جودة البيانات</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D2_3_run_checks.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day2.html#lab-2-3">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 2.3</span>
+<h1>تنفيذ القواعد</h1>
+<p>تبدأ من كتالوج مرجعي من 20 قاعدة وملف فحوص كُتبت فيه 14، فتكتب الفحوص الست الناقصة وتشغّل الكل حتى يغطي سجل التشغيل كل قاعدة في الكتالوج.</p>
+<div class="meta"><span>35 دقيقة</span><span>اليوم 2</span><span>الجلسة 3: من القاعدة إلى فحص يُشغَّل</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="2.3">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>ملف فحوص يشغّل القواعد العشرين في الكتالوج المرجعي، وسجل تشغيل ليس فيه خطأ ولا قاعدة غير مشغّلة.</li>
+    <li>مقارنة بين سجل التشغيل وسجل عيوبك، وقاعدة مقترحة لعيب لم يلتقطه الكتالوج.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/day2/rules_reference.csv" download><b>day2/rules_reference.csv</b><span>الكتالوج المرجعي: عشرون قاعدة، لكل منها البعد والطريقة والعتبة والمالك.</span></a>
+  <a href="files/day2/checks_start.yml" download><b>day2/checks_start.yml</b><span>ملف الفحوص: أربع عشرة قاعدة مكتوبة، وست مواضعها معلّمة بتعليق.</span></a>
+  <a href="files/data/centres.csv" download><b>data/</b><span>الجداول نفسها وقوائم الرموز.</span></a>
+</div>
+<p class="small">تبدأ من الكتالوج المرجعي لا من كتالوجك في 1.3، فيكون لكل المشاركين سجل واحد يُقارن. مرشد ذكاء اصطناعي مسموح لشرح نوع فحص أو رسالة خطأ في YAML، ولا يكتب الفحوص عنك، دون صفوف من البيانات.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · التشغيل الأول <span class="min">5 د</span></h3>
+  <p>شغّل الملف كما هو. اقرأ السطر الأخير: كم قاعدة لم تُشغَّل؟ المحرك يقارن الملف بالكتالوج ولا يسكت عن قاعدة غائبة.</p>
+  <pre class="code"><code>uv run kit/run_checks.py files/day2/checks_start.yml --catalogue files/day2/rules_reference.csv</code></pre>
+</div>
+
+<div class="step">
+  <h3>2 · الفحوص الست <span class="min">15 د</span></h3>
+  <p>اكتب R07 وR09 وR13 وR16 وR18 وR19 في مواضعها. أنواع الفحوص السبعة مشروحة في رأس <code>kit/run_checks.py</code> وفي شريحة «أنواع الفحوص»، وكل تعليق يقول النوع المناسب. فحص يحتاج جدولين يأخذ <code>from:</code>، وإن تكرر اسم عمود في الجدولين فاكتبه باسم جدوله (مثل <code>districts.city_code</code>).</p>
+  <pre class="code"><code>  - id: P07
+    cde: permits.permit_type
+    dimension: الاتساق
+    table: permits
+    from: permits JOIN centres USING (centre_id)
+    type: row
+    where: "centre_type = 'HOME' AND status = 'ACTIVE'"
+    must: "permit_type = 'FULL'"
+    threshold: 100
+    owner: محلل الجودة</code></pre>
+  <p class="small">مثال من سجل تصاريح مقدمي الرعاية، لا من بيانات المختبر: الشكل لا الجواب.</p>
+</div>
+
+<div class="step">
+  <h3>3 · حتى يكتمل <span class="min">6 د</span></h3>
+  <p>أعد التشغيل حتى يكون السطر الأخير <code>ERROR 0  NOT RUN 0</code>. افتح <code>out/run_log.csv</code>: لكل قاعدة عدد المفحوص والفاشل ونسبة النجاح، وخمسة مفاتيح نموذجية لا قيم.</p>
+</div>
+
+<div class="step">
+  <h3>4 · السجلان <span class="min">5 د</span></h3>
+  <p>ضع سجل التشغيل بجانب سجل عيوبك من المختبرين 2.1 و2.2. أي قاعدة فشلت بعدد يساوي عيبًا في سجلك؟ وأيها بعدد أكبر، ولماذا؟</p>
+</div>
+
+<div class="step">
+  <h3>5 · ما لم يلتقطه أحد <span class="min">4 د</span></h3>
+  <p>سمِّ عيبًا في سجلك لا تلتقطه أي قاعدة من العشرين، واكتب قاعدته: العنصر والبعد والطريقة والعتبة.</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>أضف قاعدتك إلى الملف وإلى نسخة من الكتالوج، وشغّلها، وتأكد أنها تلتقط العيب وحده.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>كم قاعدة فشلت من العشرين؟</li>
+  <li>لماذا تفشل R13 في صفوف أكثر من عيب المدينة الذي وجدته في 2.2؟</li>
+  <li>أي قاعدة فشلت دون أن تكون في سجل عيوبك، وهل هي عيب؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب</summary>
+  <ul>
+    <li>المرجع: <code>solutions/reference/checks_reference.yml</code> و<code>solutions/D2_3_run_checks.md</code>. التحقق: <code>uv run solutions/check.py 2.3</code>.</li>
+    <li>التشغيل الأول: PASS 9 وFAIL 5 وNOT RUN 6. بعد الإكمال: 11 قاعدة تفشل من 20.</li>
+    <li>R13 تفشل في 87 = 56 مدينة مخالفة + 31 رمزًا من خمسة أرقام لا يُقرأ. R09 تفشل في 19 = 12 حضانة منزلية فوق عشرة + 7 حضانات منزلية مقاعدها 999. R18 (444 زيارة متأخرة الإدخال) ليست عيبًا مزروعًا: هي التوقيت كما هو، ولا يجدها التنميط لأنه لا يقارن عمودين.</li>
+    <li>ما لم يلتقطه الكتالوج: تواريخ التقديم 1900-01-01 (D4)، لأن الكتالوج لا يفحص جدول الطلبات.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D2_2_relationships.html" rel="prev">→ المختبر السابق</a><a href="D2_4_scorecard.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار التنفيذيين والقادة · إدارة جودة البيانات<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-18⁩ · الإيداع 1a2a277</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-18T01:01:43Z","version":"2027.1.0","commit":"1a2a277"},"course":{"id":"lds-dmg-203","code":"LDS-DMG-203","title":"إدارة جودة البيانات","track":"executives","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/lds-dmg-203/","repo":"SDAIAAcademy/lds-dmg-203","home":"../index.html"},"lab":{"id":"2.3","title":"تنفيذ القواعد","summary":"تبدأ من كتالوج مرجعي من 20 قاعدة وملف فحوص كُتبت فيه 14، فتكتب الفحوص الست الناقصة وتشغّل الكل حتى يغطي سجل التشغيل كل قاعدة في الكتالوج.","minutes":35,"day":2,"unit":"اليوم 2","session":3,"deck":"../slides/day2.html#lab-2-3","prev":"D2_2_relationships.html","next":"D2_4_scorecard.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

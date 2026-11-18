@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="executives">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 3.4 · صلاحية مجموعتين للذكاء الاصطناعي · إدارة جودة البيانات</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D3_4_ai_fitness.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day3.html#lab-3-4">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 3.4</span>
+<h1>صلاحية مجموعتين للذكاء الاصطناعي</h1>
+<p>تقيس جدول تاريخ التفتيش الذي يريد برنامج الذكاء الاصطناعي تدريب نموذج خطر عليه، ومجموعة 24 وثيقة يريد أن يجيب منها مساعد المتقدمين، وتحكم على كل منهما بالأرقام.</p>
+<div class="meta"><span>35 دقيقة</span><span>اليوم 3</span><span>الجلسة 4: بيانات يستخدمها الذكاء الاصطناعي</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="3.4">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>حكم بالأرقام على جدول تاريخ التفتيش لتدريب نموذج خطر: استخدام أو إصلاح أو رفض، وأثر كل فجوة على الفئات.</li>
+    <li>حكم بالأرقام على 24 وثيقة يريد مساعد المتقدمين أن يجيب منها، والتنبيهات الحقيقية مفصولة عن الكاذبة.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/day3/ai/inspection_history.csv" download><b>day3/ai/inspection_history.csv</b><span>جدول التدريب المقترح: 2,321 زيارة بنتيجتها.</span></a>
+  <a href="files/day3/ai/licensed_population.csv" download><b>day3/ai/licensed_population.csv</b><span>عدد المراكز المرخصة بحسب المدينة والنوع.</span></a>
+  <a href="files/day3/ai/label_audit.csv" download><b>day3/ai/label_audit.csv</b><span>80 زيارة أعاد مفتش ثانٍ تقييمها.</span></a>
+  <a href="files/day3/ai/docs_index.csv" download><b>day3/ai/docs_index.csv</b><span>فهرس الوثائق الـ 24 وتواريخها وإصداراتها، والنصوص في <code>docs/</code>.</span></a>
+</div>
+<p class="small">لا نموذج في هذا المختبر: نقيس البيانات قبل أن يتعلم منها أي نموذج. مرشد ذكاء اصطناعي مسموح لشرح مقياس، دون صفوف أو نصوص الوثائق.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · قياسات الجدول <span class="min">7 د</span></h3>
+  <p>شغّل القياسات الخمسة واقرأ كل رقم: التمثيل، والتكرار، واتفاق التسميات، وعمود يُسجَّل بعد النتيجة، وإصدار قائمة التحقق.</p>
+  <pre class="code"><code>uv run kit/ai_fitness.py table</code></pre>
+</div>
+
+<div class="step">
+  <h3>2 · الأثر على الفئات <span class="min">9 د</span></h3>
+  <p>لكل فجوة: أي فئة من المراكز يتعلم النموذج عنها أقل أو أسوأ، وماذا يحدث لها حين يقرر النموذج من يُزار أولًا؟ وما تفعله: إصلاح، أو استبعاد عمود، أو جمع بيانات.</p>
+</div>
+
+<div class="step">
+  <h3>3 · قياسات الوثائق <span class="min">8 د</span></h3>
+  <p>شغّل القياسات وافتح كل وثيقة نبّهت عليها الأداة. أي التنبيهات حقيقي؟ رقمان مختلفان في موضوع واحد قد يكونان عن شيئين مختلفين.</p>
+  <pre class="code"><code>uv run kit/ai_fitness.py docs</code></pre>
+</div>
+
+<div class="step">
+  <h3>4 · الحكم <span class="min">7 د</span></h3>
+  <p>لكل مجموعة: استخدام، أو إصلاح ثم استخدام، أو رفض. اكتب الحكم في ثلاثة أسطر بالأرقام، وما يُصلح أولًا.</p>
+</div>
+
+<div class="step">
+  <h3>5 · مشروعك الختامي <span class="min">4 د</span></h3>
+  <p>اختر الأولوية الأولى في خطتك وسببها في سطر. ستدافع عنها أمام اللجنة.</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>اقترح قاعدة جودة تُشغَّل كل شهر على جدول التدريب بعد إصلاحه، بعتبتها ومالكها.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>أي فئة أقل تمثيلًا، وبأي نسبة من حصتها في الواقع؟</li>
+  <li>أي عمود يجب أن يُستبعد قبل التدريب، ولماذا يبدو مفيدًا؟</li>
+  <li>كم تعارضًا حقيقيًا في الوثائق، وما الذي يجيب به المساعد اليوم لو سُئل عنه؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب</summary>
+  <ul>
+    <li>المرجع: <code>solutions/D3_4_ai_fitness.md</code>. التحقق: <code>uv run solutions/check.py 3.4</code>.</li>
+    <li>الجدول: الحضانات المنزلية في الشوحط 25 صفًا (1.1% أمام 7.4%، نسبة 0.15) وفي الأثاب 30؛ 140 صفًا مكررًا (6.0%)؛ اتفاق التسميات 66 من 80 (82.5%) وكابا 0.60؛ <code>followup_scheduled</code> تسرب (Y تفشل 81.5%، N صفر)؛ 926 صفًا (39.9%) بقائمة 2019 الملغاة. الحكم: إصلاح ثم استخدام.</li>
+    <li>الوثائق: DOC-04 وDOC-05 متطابقتان، DOC-10 وDOC-11 إصداران؛ 4 إصدارات ملغاة ما زالت في المجموعة؛ تعارض حقيقي واحد في نسبة مقدمي الرعاية (DOC-02: ستة، DOC-03: ثمانية)، والبقية أرقام عن أشياء مختلفة؛ 9 تنبيهات حداثة؛ DOC-19 فيها بيانات شخصية وتُحذف. الحكم: إصلاح ثم استخدام.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D3_3_operations.html" rel="prev">→ المختبر السابق</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار التنفيذيين والقادة · إدارة جودة البيانات<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-18⁩ · الإيداع 1a2a277</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-18T01:01:43Z","version":"2027.1.0","commit":"1a2a277"},"course":{"id":"lds-dmg-203","code":"LDS-DMG-203","title":"إدارة جودة البيانات","track":"executives","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/lds-dmg-203/","repo":"SDAIAAcademy/lds-dmg-203","home":"../index.html"},"lab":{"id":"3.4","title":"صلاحية مجموعتين للذكاء الاصطناعي","summary":"تقيس جدول تاريخ التفتيش الذي يريد برنامج الذكاء الاصطناعي تدريب نموذج خطر عليه، ومجموعة 24 وثيقة يريد أن يجيب منها مساعد المتقدمين، وتحكم على كل منهما بالأرقام.","minutes":35,"day":3,"unit":"اليوم 3","session":4,"deck":"../slides/day3.html#lab-3-4","prev":"D3_3_operations.html","next":null,"alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

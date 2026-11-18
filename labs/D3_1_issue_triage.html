@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="executives">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 3.1 · فرز سجل المشكلات · إدارة جودة البيانات</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D3_1_issue_triage.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day3.html#lab-3-1">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 3.1</span>
+<h1>فرز سجل المشكلات</h1>
+<p>اثنتا عشرة مشكلة وصلت إلى مكتب البيانات: تربط المكرر منها بأصله، وتعطي كل مشكلة خطورتها ومالكها ومدتها ومسار تصعيدها، وتحسب مؤشرين لأداء المعالجة.</p>
+<div class="meta"><span>35 دقيقة</span><span>اليوم 3</span><span>الجلسة 1: دورة حياة المشكلة</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="3.1">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>سجل مشكلات مفروز: لكل مشكلة أصلية الأثر والامتداد والخطورة والمالك ومدة الخطة والتنفيذ ومسار التصعيد، والمكررة مربوطة بأصلها.</li>
+    <li>مؤشران لأداء معالجة المشكلات في 2026-10-31، محسوبان من السجل.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/day3/issue_log.csv" download><b>day3/issue_log.csv</b><span>اثنتا عشرة مشكلة وصلت إلى مكتب إدارة البيانات بين أغسطس وأكتوبر 2026.</span></a>
+  <a href="files/day3/severity_guide.txt" download><b>day3/severity_guide.txt</b><span>دليل الخطورة ومدد الخدمة والتصعيد والإغلاق.</span></a>
+  <a href="files/day2/run_log_reference.csv" download><b>day2/run_log_reference.csv</b><span>سجل التشغيل المرجعي، لتقدير الامتداد.</span></a>
+</div>
+<p class="small">مرشد ذكاء اصطناعي مسموح لشرح مفهوم، بكلماتك ودون صفوف. يكفي جدول بيانات.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · القراءة <span class="min">5 د</span></h3>
+  <p>اقرأ الدليل كاملًا ثم السجل. أضف إلى السجل الأعمدة: <code>duplicate_of</code> و<code>impact</code> و<code>reach</code> و<code>severity</code> و<code>owner</code> و<code>plan_due_wd</code> و<code>fix_due_wd</code> و<code>escalation</code> و<code>status_after_review</code>.</p>
+</div>
+
+<div class="step">
+  <h3>2 · المكرر <span class="min">6 د</span></h3>
+  <p>أي المشكلات تصف الشيء نفسه من مكان آخر؟ اربط كل مكررة بالأقدم. المكررة تزيد امتداد الأصل ولا تُعد مشكلة جديدة.</p>
+</div>
+
+<div class="step">
+  <h3>3 · الخطورة <span class="min">10 د</span></h3>
+  <p>لكل مشكلة أصلية: الأثر (عالٍ، متوسط، منخفض) والامتداد (واسع، محدود) من الدليل، ثم الخطورة من الجدول. الامتداد من سجل التشغيل حين يكون للمشكلة قاعدة، لا من عدد البلاغات.</p>
+</div>
+
+<div class="step">
+  <h3>4 · المالك والمدد والتصعيد <span class="min">8 د</span></h3>
+  <p>سمِّ المالك بالاسم من الدليل وموجز الحالة، ومدة الخطة والتنفيذ بأيام العمل، ومن يُصعَّد إليه. راجع المشكلتين المغلقتين: هل تنطبق عليهما قاعدة الإغلاق؟</p>
+</div>
+
+<div class="step">
+  <h3>5 · مؤشران <span class="min">6 د</span></h3>
+  <p>في 2026-10-31: كم مشكلة أصلية أُغلقت بدليل؟ وكم مشكلة مفتوحة فاتت مدة خطتها؟ اكتب كل مؤشر بالعدد والمقام.</p>
+  <pre class="code"><code>uv run kit/sql.py "SELECT status, count(*) FROM 'files/day3/issue_log.csv' GROUP BY 1"</code></pre>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>اكتب لكل مشكلة مغلقة في السجل الدليل الذي كان يجب أن يُطلب قبل إغلاقها.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>كم مشكلة أصلية بقيت بعد ربط المكرر؟</li>
+  <li>أي مشكلة أغلقت وهي لم تُحل؟ وما الدليل؟</li>
+  <li>أي مشكلة تذهب إلى غير مالك البيانات، ولماذا؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب</summary>
+  <ul>
+    <li>المرجع: <code>solutions/reference/issue_triage_reference.csv</code> و<code>solutions/D3_1_issue_triage.md</code>. التحقق: <code>uv run solutions/check.py 3.1</code>.</li>
+    <li>ISS-103 وISS-106 وISS-110 مكررات ISS-101 (مدينة الموقع). تبقى تسع مشكلات أصلية، واحدة منها فقط مغلقة بحق (ISS-111). ISS-104 أُغلقت بتصحيح رخصة واحدة ووراءها 41 رخصة: تُعاد فتحها.</li>
+    <li>ISS-112 حرجة وحادثة بيانات شخصية: تذهب إلى مسؤول حماية البيانات الشخصية، لا إلى مسار الجودة وحده.</li>
+    <li>المؤشران: 1 من 9 أُغلقت بدليل، و7 من 8 مفتوحة فاتت مدة خطتها.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D2_4_scorecard.html" rel="prev">→ المختبر السابق</a><a href="D3_2_root_cause.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار التنفيذيين والقادة · إدارة جودة البيانات<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-18⁩ · الإيداع 1a2a277</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-18T01:01:43Z","version":"2027.1.0","commit":"1a2a277"},"course":{"id":"lds-dmg-203","code":"LDS-DMG-203","title":"إدارة جودة البيانات","track":"executives","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/lds-dmg-203/","repo":"SDAIAAcademy/lds-dmg-203","home":"../index.html"},"lab":{"id":"3.1","title":"فرز سجل المشكلات","summary":"اثنتا عشرة مشكلة وصلت إلى مكتب البيانات: تربط المكرر منها بأصله، وتعطي كل مشكلة خطورتها ومالكها ومدتها ومسار تصعيدها، وتحسب مؤشرين لأداء المعالجة.","minutes":35,"day":3,"unit":"اليوم 3","session":1,"deck":"../slides/day3.html#lab-3-1","prev":"D2_4_scorecard.html","next":"D3_2_root_cause.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

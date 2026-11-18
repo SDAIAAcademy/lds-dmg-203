@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="executives">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 1.4 · عتبات من خط الأساس · إدارة جودة البيانات</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D1_4_thresholds.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day1.html#lab-1-4">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 1.4</span>
+<h1>عتبات من خط الأساس</h1>
+<p>من نتائج ست قواعد على مدى اثني عشر شهرًا تحسب خط الأساس، وتحدد لكل قاعدة معيار اجتياز وحد تصعيد بسببهما، وتكتب استثناءين في سجل الاستثناءات.</p>
+<div class="meta"><span>35 دقيقة</span><span>اليوم 1</span><span>الجلسة 4: العتبات والتفاوتات والاستثناءات</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="1.4">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>لست قواعد تعمل منذ سنة: خط أساس محسوب، ومعيار اجتياز وحد تصعيد بسببهما من حاجة المستهلك.</li>
+    <li>سجل استثناءات فيه استثناءان، لكل منهما نطاق وسبب وتاريخ انتهاء ومالك.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/day1/rule_history.csv" download><b>day1/rule_history.csv</b><span>نتائج ست قواعد شهرًا بشهر من نوفمبر 2025 إلى أكتوبر 2026: الصفوف المفحوصة والناجحة.</span></a>
+  <a href="files/day1/requirements.csv" download><b>day1/requirements.csv</b><span>حاجة كل مستهلك؛ رقم المتطلب المرتبط بكل قاعدة في الخطوة 2.</span></a>
+</div>
+<p class="small">مرشد ذكاء اصطناعي مسموح لشرح مفهوم، ويكفي جدول بيانات أو <code>uv run kit/sql.py</code>.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · خط الأساس <span class="min">8 د</span></h3>
+  <p>لكل قاعدة: النسبة المجمعة على السنة (الناجح ÷ المفحوص)، وأسوأ شهر، وآخر شهر.</p>
+  <pre class="code"><code>uv run kit/sql.py "SELECT rule_id, round(100.0*sum(rows_passed)/sum(rows_checked), 2) FROM 'files/day1/rule_history.csv' GROUP BY 1 ORDER BY 1"</code></pre>
+</div>
+
+<div class="step">
+  <h3>2 · حاجة المستهلك <span class="min">5 د</span></h3>
+  <p>اربط القواعد بالمتطلبات: H1 بـ Q06، وH2 بـ Q12، وH3 بـ Q07، وH4 وH6 بـ Q05، وH5 بـ Q13. ماذا يحدث لقرار المستهلك إذا فشل 1% من الصفوف؟ و5%؟</p>
+</div>
+
+<div class="step">
+  <h3>3 · معيار الاجتياز وحد التصعيد <span class="min">10 د</span></h3>
+  <p>المعيار من الحاجة، لا من خط الأساس. حد التصعيد أدنى منه: تحته يُبلَّغ المالك فورًا. اكتب لكل قاعدة رقمين وسببًا في سطر.</p>
+</div>
+
+<div class="step">
+  <h3>4 · استثناءان <span class="min">7 د</span></h3>
+  <p>صفوف لا تنطبق عليها القاعدة لسبب مشروع: اكتب نطاقها بدقة، وسببها، وتاريخ انتهاء الاستثناء، ومن يملكه. الاستثناء بلا تاريخ انتهاء قاعدة ملغاة.</p>
+</div>
+
+<div class="step">
+  <h3>5 · ما تقوله للمالك <span class="min">5 د</span></h3>
+  <p>أي قاعدة تفشل اليوم بمعيارك؟ اكتب لمالكها جملتين: الرقم، وما يعنيه لقراره.</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ تمرين إضافي</h3>
+  <p>احسب كم شهرًا من الاثني عشر كان سيطلق تنبيهًا بحد التصعيد الذي اخترته لكل قاعدة.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>ما خط الأساس لـ H1، وما معيارك له؟</li>
+  <li>لماذا لم تخفض المعيار إلى خط الأساس؟</li>
+  <li>ما الاستثناء الذي كتبته، ومتى ينتهي؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب</summary>
+  <ul>
+    <li>المرجع: <code>solutions/reference/thresholds_reference.csv</code> و<code>exceptions_reference.csv</code> و<code>solutions/D1_4_thresholds.md</code>. التحقق: <code>uv run solutions/check.py 1.4</code>.</li>
+    <li>خط الأساس: H1 ‏91.55، وH2 ‏100، وH3 ‏100، وH4 ‏99.37، وH5 ‏97.26، وH6 ‏99.21. بالمعايير المرجعية تفشل H1 وحدها (المعيار 95)، وكانت تحت حد التصعيد 90 في شهرين.</li>
+    <li>الفخ الأكبر: معيار يساوي خط الأساس، فتنجح القاعدة ولا يتحسن شيء. اقبل أرقامًا أخرى إذا جاء سببها من المستهلك.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D1_3_rules.html" rel="prev">→ المختبر السابق</a><a href="D2_1_column_profiling.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار التنفيذيين والقادة · إدارة جودة البيانات<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-18⁩ · الإيداع 1a2a277</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-18T01:01:43Z","version":"2027.1.0","commit":"1a2a277"},"course":{"id":"lds-dmg-203","code":"LDS-DMG-203","title":"إدارة جودة البيانات","track":"executives","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/lds-dmg-203/","repo":"SDAIAAcademy/lds-dmg-203","home":"../index.html"},"lab":{"id":"1.4","title":"عتبات من خط الأساس","summary":"من نتائج ست قواعد على مدى اثني عشر شهرًا تحسب خط الأساس، وتحدد لكل قاعدة معيار اجتياز وحد تصعيد بسببهما، وتكتب استثناءين في سجل الاستثناءات.","minutes":35,"day":1,"unit":"اليوم 1","session":4,"deck":"../slides/day1.html#lab-1-4","prev":"D1_3_rules.html","next":"D2_1_column_profiling.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>
