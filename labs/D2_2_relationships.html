@@ -19,7 +19,8 @@
 <div class="step">
   <h3>1 · المفاتيح <span class="min">10 د</span></h3>
   <p>هل يتكرر ما يجب ألا يتكرر؟ هل يشير عمود إلى مفتاح غير موجود في جدوله؟ جرّب كل علاقة: الزيارة بالرخصة، والرخصة بالطلب والمنشأة.</p>
-  <pre class="code"><code>uv run kit/sql.py "SELECT count(*) FROM inspections i WHERE NOT EXISTS (SELECT 1 FROM licences l WHERE l.licence_no = i.licence_no)"</code></pre>
+  <pre class="code"><code>uv run kit/sql.py "SELECT count(*) FROM 'files/examples/permits.csv' p WHERE NOT EXISTS (SELECT 1 FROM centres c WHERE c.centre_id = p.centre_id)"</code></pre>
+  <p class="small">مثال من سجل التصاريح: شكل فحص الصف اليتيم، لا جواب المختبر.</p>
 </div>
 
 <div class="step">

@@ -34,12 +34,13 @@ uv run kit/profile.py inspections</code></pre>
 <div class="step">
   <h3>3 · استعلام لكل شك <span class="min">14 د</span></h3>
   <p>اكتب لكل سطر استعلامًا يعدّ الصفوف التي فيها العيب، وانسخه في عمود <code>query</code>. شك بلا استعلام لا يُعد عيبًا.</p>
-  <pre class="code"><code>uv run kit/sql.py "SELECT outcome, count(*) FROM inspections GROUP BY 1 ORDER BY 2 DESC"</code></pre>
+  <pre class="code"><code>uv run kit/sql.py "SELECT training_hours, count(*) FROM 'files/examples/permits.csv' GROUP BY 1 ORDER BY 1 LIMIT 5"</code></pre>
+  <p class="small">مثال من سجل التصاريح لا من جداول المختبر: الشكل لا الجواب.</p>
 </div>
 
 <div class="step">
   <h3>4 · البعد <span class="min">4 د</span></h3>
-  <p>أسند كل عيب إلى بعد: اكتمال، أو صلاحية، أو تفرد، أو اتساق، أو توقيت، أو دقة. «غير محدد» في عمود رمز ليست صلاحية فقط: اسأل ماذا تخفي.</p>
+  <p>أسند كل عيب إلى بعد: اكتمال، أو صلاحية، أو تفرد، أو اتساق، أو توقيت، أو دقة. نص يملأ خانة رمز ليس عيب صلاحية فقط: اسأل ماذا يخفي.</p>
 </div>
 
 <div class="step">
